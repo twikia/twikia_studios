@@ -703,16 +703,23 @@
     color: #667eea;
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
     background: rgba(255, 255, 255, 0.2);
     padding: 10px 20px;
     border-radius: 25px;
     backdrop-filter: blur(10px);
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
 }
 
 .contact-link:hover {
     color: white;
     background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive Design */
