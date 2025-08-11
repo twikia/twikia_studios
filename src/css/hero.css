@@ -5,7 +5,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     overflow: hidden;
 }
 
@@ -23,6 +22,7 @@
     margin-bottom: 20px;
     animation: fadeInUp 1s ease;
     position: relative;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-subtitle {
@@ -30,6 +30,7 @@
     margin-bottom: 30px;
     opacity: 0.9;
     animation: fadeInUp 1s ease 0.2s both;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .cta-button {
@@ -52,15 +53,7 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* Three.js Container */
-#threejs-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-}
+/* Three.js Container - Removed as we now use full screen background */
 
 /* Typing Cursor Animation */
 @keyframes blink {

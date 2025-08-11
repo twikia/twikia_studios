@@ -1,6 +1,6 @@
 /* Footer */
 .footer {
-    background: #2c3e50;
+    background: #2c3e50 !important;
     color: white;
     padding: 60px 0 20px;
     text-align: center;
@@ -100,4 +100,32 @@
         gap: 20px;
         align-items: center;
     }
+}
+
+/* Footer support links styling */
+.footer-support-link {
+    color: white !important;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.footer-support-link:hover {
+    color: #667eea !important;
+    text-decoration: underline;
+}
+
+/* Make the support section paragraph have proper spacing */
+.footer-section p {
+    color: #bdc3c7;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Container for the support links to put them on same line */
+.footer-support-links {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 } 

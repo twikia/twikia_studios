@@ -1,211 +1,311 @@
-// Three.js Scene Management for TerraBlitz 3D Website
+// Simple Three.js Background Scene using ES Modules
+// With 3D model loading and animations
 
-// Global Three.js variables
-let scene, camera, renderer, controls;
-let currentMesh = null;
+// Import Three.js modules
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+// Global variables
+let scene, camera, renderer;
 let animationId = null;
-let isSceneInitialized = false;
+let mixer = null;
+let loadedModel = null;
 
-// Scene configuration
-const sceneConfig = {
-    backgroundColor: 0x000000,
-    fogColor: 0x000000,
-    fogNear: 1,
-    fogFar: 1000,
-    cameraFov: 75,
-    cameraNear: 0.1,
-    cameraFar: 1000
-};
-
-// Initialize Three.js scene
-function initThreeScene() {
-    console.log('Initializing Three.js scene...');
+// Initialize simple Three.js scene
+function initThreeBackground() {
+    console.log('Initializing simple Three.js scene with ES modules...');
     
     // Create scene
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(sceneConfig.backgroundColor);
-    scene.fog = new THREE.Fog(sceneConfig.fogColor, sceneConfig.fogNear, sceneConfig.fogFar);
+    scene.background = new THREE.Color(0x0a0a0a);
     
     // Create camera
-    const container = document.getElementById('threejs-container');
-    const aspect = container.clientWidth / container.clientHeight;
-    camera = new THREE.PerspectiveCamera(sceneConfig.cameraFov, aspect, sceneConfig.cameraNear, sceneConfig.cameraFar);
-    camera.position.set(0, 0, 5);
+    const aspect = window.innerWidth / window.innerHeight;
+    camera = new THREE.PerspectiveCamera(75, aspect, 0.1, 1000);
+    camera.position.set(0, 5, 10);
+    camera.lookAt(0, 0, 0);
     
     // Create renderer
     renderer = new THREE.WebGLRenderer({ 
         antialias: true,
-        alpha: true,
-        powerPreference: "high-performance"
+        alpha: false
     });
-    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    renderer.outputEncoding = THREE.sRGBEncoding;
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.2;
     
     // Add renderer to container
-    container.appendChild(renderer.domElement);
-    
-    // Add orbit controls
-    if (typeof THREE.OrbitControls !== 'undefined') {
-        controls = new THREE.OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true;
-        controls.dampingFactor = 0.05;
-        controls.enableZoom = true;
-        controls.enablePan = true;
-        controls.enableRotate = true;
-        controls.autoRotate = false;
-        controls.autoRotateSpeed = 2.0;
-    }
-    
-    // Add lights
-    addLights();
-    
-    // Add initial model
-    createModel('cube');
-    
-    // Start animation loop
-    animate();
-    
-    isSceneInitialized = true;
-    console.log('Three.js scene initialized successfully');
-}
-
-// Add lights to the scene
-function addLights() {
-    // Ambient light
-    const ambientLight = new THREE.AmbientLight(0x404040, 0.4);
-    scene.add(ambientLight);
-    
-    // Directional light (main light)
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-    directionalLight.position.set(5, 5, 5);
-    directionalLight.castShadow = true;
-    directionalLight.shadow.mapSize.width = 2048;
-    directionalLight.shadow.mapSize.height = 2048;
-    directionalLight.shadow.camera.near = 0.5;
-    directionalLight.shadow.camera.far = 50;
-    directionalLight.shadow.camera.left = -10;
-    directionalLight.shadow.camera.right = 10;
-    directionalLight.shadow.camera.top = 10;
-    directionalLight.shadow.camera.bottom = -10;
-    scene.add(directionalLight);
-    
-    // Point light for additional illumination
-    const pointLight = new THREE.PointLight(0x667eea, 0.5, 100);
-    pointLight.position.set(-5, 5, -5);
-    scene.add(pointLight);
-    
-    // Hemisphere light for better color balance
-    const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.3);
-    scene.add(hemisphereLight);
-}
-
-// Create different 3D models
-function createModel(modelType) {
-    // Remove current model if exists
-    if (currentMesh) {
-        scene.remove(currentMesh);
-        currentMesh.geometry.dispose();
-        currentMesh.material.dispose();
-    }
-    
-    let geometry, material;
-    
-    switch (modelType) {
-        case 'cube':
-            geometry = new THREE.BoxGeometry(2, 2, 2);
-            material = new THREE.MeshPhongMaterial({
-                color: 0x667eea,
-                shininess: 100,
-                transparent: true,
-                opacity: 0.9
-            });
-            break;
-            
-        case 'sphere':
-            geometry = new THREE.SphereGeometry(1.5, 32, 32);
-            material = new THREE.MeshPhongMaterial({
-                color: 0x764ba2,
-                shininess: 150,
-                transparent: true,
-                opacity: 0.8
-            });
-            break;
-            
-        case 'torus':
-            geometry = new THREE.TorusGeometry(1.5, 0.5, 16, 100);
-            material = new THREE.MeshPhongMaterial({
-                color: 0x28a745,
-                shininess: 200,
-                transparent: true,
-                opacity: 0.9
-            });
-            break;
-            
-        case 'custom':
-            // Create a more complex geometry for custom model
-            geometry = new THREE.OctahedronGeometry(1.5);
-            material = new THREE.MeshPhongMaterial({
-                color: 0xff6b6b,
-                shininess: 120,
-                transparent: true,
-                opacity: 0.8,
-                wireframe: false
-            });
-            break;
-            
-        default:
-            geometry = new THREE.BoxGeometry(2, 2, 2);
-            material = new THREE.MeshPhongMaterial({
-                color: 0x667eea,
-                shininess: 100
-            });
-    }
-    
-    // Create mesh
-    currentMesh = new THREE.Mesh(geometry, material);
-    currentMesh.castShadow = true;
-    currentMesh.receiveShadow = true;
-    
-    // Add to scene
-    scene.add(currentMesh);
-    
-    // Reset camera position
-    camera.position.set(0, 0, 5);
-    if (controls) {
-        controls.reset();
-    }
-    
-    console.log(`Created ${modelType} model`);
-}
-
-// Update Three.js scene with new model
-function updateThreeScene(modelType) {
-    if (!isSceneInitialized) {
-        console.warn('Three.js scene not initialized yet');
+    const container = document.getElementById('threejs-background');
+    if (container) {
+        container.appendChild(renderer.domElement);
+    } else {
+        console.error('Container #threejs-background not found!');
         return;
     }
     
-    createModel(modelType);
+    // Add simple lighting
+    const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+    scene.add(ambientLight);
+    
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    directionalLight.position.set(5, 5, 5);
+    scene.add(directionalLight);
+    
+    // Create interesting background scene
+    createInterestingBackground();
+    
+    // Load the 3D model
+    loadGLBModel();
+    
+    // Start animation
+    animate();
+    
+    console.log('Simple Three.js scene initialized successfully');
 }
 
-// Animation loop
+// Create interesting background
+function createInterestingBackground() {
+    // No ground needed - just floating elements
+    
+    // Create floating geometric shapes
+    const shapes = [];
+    const geometries = [
+        new THREE.SphereGeometry(1, 8, 8),
+        new THREE.BoxGeometry(1.5, 1.5, 1.5),
+        new THREE.TetrahedronGeometry(1.2),
+        new THREE.OctahedronGeometry(1),
+        new THREE.TorusGeometry(1, 0.3, 8, 16)
+    ];
+    
+    const colors = [0x667eea, 0x764ba2, 0x28a745, 0xff6b6b, 0xffa500];
+    
+    for (let i = 0; i < 20; i++) {
+        const geometry = geometries[Math.floor(Math.random() * geometries.length)];
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        
+        const material = new THREE.MeshLambertMaterial({ 
+            color: color,
+            transparent: true,
+            opacity: 0.7
+        });
+        
+        const mesh = new THREE.Mesh(geometry, material);
+        
+        // Random positioning
+        mesh.position.set(
+            (Math.random() - 0.5) * 60,
+            Math.random() * 15 + 2,
+            (Math.random() - 0.5) * 60
+        );
+        
+        // Random rotation
+        mesh.rotation.set(
+            Math.random() * Math.PI,
+            Math.random() * Math.PI,
+            Math.random() * Math.PI
+        );
+        
+        // Store animation properties
+        mesh.userData = {
+            rotationSpeed: {
+                x: (Math.random() - 0.5) * 0.02,
+                y: (Math.random() - 0.5) * 0.02,
+                z: (Math.random() - 0.5) * 0.02
+            },
+            floatSpeed: Math.random() * 0.01 + 0.005,
+            floatOffset: Math.random() * Math.PI * 2,
+            originalY: mesh.position.y
+        };
+        
+        shapes.push(mesh);
+        scene.add(mesh);
+    }
+    
+    // Create particle system
+    createParticleSystem();
+    
+    // Create distant mountains
+    createMountains();
+}
+
+// Create particle system for atmosphere
+function createParticleSystem() {
+    const particleCount = 1000;
+    const particles = new THREE.BufferGeometry();
+    const positions = new Float32Array(particleCount * 3);
+    const colors = new Float32Array(particleCount * 3);
+    
+    for (let i = 0; i < particleCount * 3; i += 3) {
+        positions[i] = (Math.random() - 0.5) * 200;     // x
+        positions[i + 1] = Math.random() * 50;          // y
+        positions[i + 2] = (Math.random() - 0.5) * 200; // z
+        
+        // Create color variation
+        const hue = 0.6 + Math.random() * 0.2; // Blue to purple
+        const color = new THREE.Color().setHSL(hue, 0.8, 0.5 + Math.random() * 0.3);
+        colors[i] = color.r;
+        colors[i + 1] = color.g;
+        colors[i + 2] = color.b;
+    }
+    
+    particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    particles.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    
+    const particleMaterial = new THREE.PointsMaterial({
+        size: 0.2,
+        transparent: true,
+        opacity: 0.6,
+        vertexColors: true,
+        blending: THREE.AdditiveBlending
+    });
+    
+    const particleSystem = new THREE.Points(particles, particleMaterial);
+    scene.add(particleSystem);
+}
+
+// Create distant mountains
+function createMountains() {
+    const mountainGeometry = new THREE.ConeGeometry(5, 12, 8);
+    const mountainMaterial = new THREE.MeshLambertMaterial({ 
+        color: 0x2a2a2a,
+        transparent: true,
+        opacity: 0.6
+    });
+    
+    const mountainPositions = [
+        { x: -40, y: 6, z: -80 },
+        { x: 30, y: 6, z: -85 },
+        { x: -20, y: 6, z: -90 },
+        { x: 50, y: 6, z: -75 },
+        { x: -60, y: 6, z: -70 },
+        { x: 70, y: 6, z: -95 }
+    ];
+    
+    mountainPositions.forEach(pos => {
+        const mountain = new THREE.Mesh(mountainGeometry, mountainMaterial);
+        mountain.position.set(pos.x, pos.y, pos.z);
+        scene.add(mountain);
+    });
+}
+
+// Load the GLB model with animations
+function loadGLBModel() {
+    const loader = new GLTFLoader();
+    
+    loader.load(
+        'src/models/studios_website.glb',
+        function (gltf) {
+            console.log('GLB model loaded successfully');
+            
+            loadedModel = gltf.scene;
+            
+            // Scale and position the model
+            loadedModel.scale.set(1, 1, 1);
+            loadedModel.position.set(0, 0, 0);
+            
+            // Enable shadows for all meshes in the model
+            loadedModel.traverse((child) => {
+                if (child.isMesh) {
+                    child.castShadow = true;
+                    child.receiveShadow = true;
+                    
+                    // Enhance materials if they exist
+                    if (child.material) {
+                        child.material.needsUpdate = true;
+                    }
+                }
+            });
+            
+            scene.add(loadedModel);
+            
+            // Set up animations if they exist
+            if (gltf.animations && gltf.animations.length > 0) {
+                mixer = new THREE.AnimationMixer(loadedModel);
+                
+                // Play all animations on loop
+                gltf.animations.forEach((clip) => {
+                    const action = mixer.clipAction(clip);
+                    action.setLoop(THREE.LoopRepeat);
+                    action.play();
+                    console.log('Playing animation:', clip.name);
+                });
+                
+                console.log(`Loaded ${gltf.animations.length} animations`);
+            } else {
+                console.log('No animations found in the model');
+            }
+            
+            // Adjust camera to frame the model
+            const box = new THREE.Box3().setFromObject(loadedModel);
+            const center = box.getCenter(new THREE.Vector3());
+            const size = box.getSize(new THREE.Vector3());
+            
+            const maxDim = Math.max(size.x, size.y, size.z);
+            const fov = camera.fov * (Math.PI / 180);
+            let cameraZ = Math.abs(maxDim / 2 / Math.tan(fov / 2));
+            
+            // Position camera to show the model nicely
+            camera.position.set(center.x, center.y + 2, center.z + cameraZ * 1.5);
+            camera.lookAt(center);
+            
+        },
+        function (progress) {
+            console.log('Loading progress:', (progress.loaded / progress.total * 100) + '%');
+        },
+        function (error) {
+            console.error('Error loading GLB model:', error);
+            console.log('Creating fallback cube instead');
+            createFallbackCube();
+        }
+    );
+}
+
+// Create fallback cube if model fails to load
+function createFallbackCube() {
+    const cubeGeometry = new THREE.BoxGeometry(2, 2, 2);
+    const cubeMaterial = new THREE.MeshLambertMaterial({ 
+        color: 0x667eea,
+        transparent: true,
+        opacity: 0.8
+    });
+    
+    const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+    cube.position.set(0, 1, 0);
+    scene.add(cube);
+    
+    console.log('Fallback cube created');
+}
+
+// Animation loop with interesting effects
 function animate() {
     animationId = requestAnimationFrame(animate);
     
-    // Update controls
-    if (controls) {
-        controls.update();
+    const time = Date.now() * 0.001;
+    const deltaTime = 0.016; // Approximate 60fps
+    
+    // Update model animations if mixer exists
+    if (mixer) {
+        mixer.update(deltaTime);
     }
     
-    // Animate current mesh with reduced rotation speed for better performance
-    if (currentMesh) {
-        currentMesh.rotation.x += 0.003; // Reduced from 0.005
-        currentMesh.rotation.y += 0.006; // Reduced from 0.01
+    // Animate floating shapes
+    scene.children.forEach(child => {
+        if (child.userData && child.userData.rotationSpeed) {
+            // Rotation animation
+            child.rotation.x += child.userData.rotationSpeed.x;
+            child.rotation.y += child.userData.rotationSpeed.y;
+            child.rotation.z += child.userData.rotationSpeed.z;
+            
+            // Floating animation
+            const floatY = Math.sin(time * child.userData.floatSpeed + child.userData.floatOffset) * 2;
+            child.position.y = child.userData.originalY + floatY;
+        }
+    });
+    
+    // Subtle camera movement (only if model isn't loaded yet)
+    if (!loadedModel) {
+        camera.position.x = Math.sin(time * 0.1) * 2;
+        camera.position.z = 10 + Math.cos(time * 0.1) * 1;
+        camera.lookAt(0, 2, 0);
     }
     
     // Render scene
@@ -213,236 +313,69 @@ function animate() {
 }
 
 // Handle window resize
-function resizeThreeScene() {
-    if (!isSceneInitialized) return;
+function resizeThreeBackground() {
+    if (!renderer) return;
     
-    const container = document.getElementById('threejs-container');
-    const width = container.clientWidth;
-    const height = container.clientHeight;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
     
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
     
     renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 }
 
-// Initialize model viewer scene (for the models section)
-function initModelViewer() {
-    console.log('Initializing model viewer...');
-    
-    const container = document.getElementById('model-container');
-    if (!container) {
-        console.warn('Model container not found');
-        return;
-    }
-    
-    // Create scene for model viewer
-    const viewerScene = new THREE.Scene();
-    viewerScene.background = new THREE.Color(0xf8f9fa);
-    
-    // Create camera for model viewer
-    const aspect = container.clientWidth / container.clientHeight;
-    const viewerCamera = new THREE.PerspectiveCamera(75, aspect, 0.1, 1000);
-    viewerCamera.position.set(0, 0, 5);
-    
-    // Create renderer for model viewer
-    const viewerRenderer = new THREE.WebGLRenderer({ 
-        antialias: true,
-        alpha: true
-    });
-    viewerRenderer.setSize(container.clientWidth, container.clientHeight);
-    viewerRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    viewerRenderer.shadowMap.enabled = true;
-    viewerRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    
-    container.appendChild(viewerRenderer.domElement);
-    
-    // Add lights to viewer scene
-    const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
-    viewerScene.add(ambientLight);
-    
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-    directionalLight.position.set(5, 5, 5);
-    directionalLight.castShadow = true;
-    viewerScene.add(directionalLight);
-    
-    // Add orbit controls for model viewer
-    let viewerControls;
-    if (typeof THREE.OrbitControls !== 'undefined') {
-        viewerControls = new THREE.OrbitControls(viewerCamera, viewerRenderer.domElement);
-        viewerControls.enableDamping = true;
-        viewerControls.dampingFactor = 0.05;
-    }
-    
-    // Create initial model for viewer
-    const geometry = new THREE.BoxGeometry(2, 2, 2);
-    const material = new THREE.MeshPhongMaterial({
-        color: 0x667eea,
-        shininess: 100
-    });
-    const mesh = new THREE.Mesh(geometry, material);
-    mesh.castShadow = true;
-    mesh.receiveShadow = true;
-    viewerScene.add(mesh);
-    
-    // Animation function for viewer
-    function animateViewer() {
-        requestAnimationFrame(animateViewer);
-        
-        if (viewerControls) {
-            viewerControls.update();
-        }
-        
-        mesh.rotation.x += 0.005;
-        mesh.rotation.y += 0.01;
-        
-        viewerRenderer.render(viewerScene, viewerCamera);
-    }
-    
-    animateViewer();
-    
-    // Handle resize for model viewer
-    function resizeViewer() {
-        const width = container.clientWidth;
-        const height = container.clientHeight;
-        
-        viewerCamera.aspect = width / height;
-        viewerCamera.updateProjectionMatrix();
-        
-        viewerRenderer.setSize(width, height);
-    }
-    
-    window.addEventListener('resize', resizeViewer);
-    
-    console.log('Model viewer initialized');
-}
-
-// Load custom 3D model (GLTF/GLB format)
-function loadCustomModel(modelPath) {
-    if (typeof THREE.GLTFLoader === 'undefined') {
-        console.error('GLTFLoader not available');
-        return;
-    }
-    
-    const loader = new THREE.GLTFLoader();
-    
-    loader.load(
-        modelPath,
-        function (gltf) {
-            // Remove current model
-            if (currentMesh) {
-                scene.remove(currentMesh);
-            }
-            
-            // Add loaded model
-            const model = gltf.scene;
-            model.scale.set(1, 1, 1);
-            model.position.set(0, 0, 0);
-            
-            // Enable shadows for all meshes
-            model.traverse((child) => {
-                if (child.isMesh) {
-                    child.castShadow = true;
-                    child.receiveShadow = true;
-                }
-            });
-            
-            scene.add(model);
-            currentMesh = model;
-            
-            console.log('Custom model loaded successfully');
-        },
-        function (progress) {
-            console.log('Loading progress:', (progress.loaded / progress.total * 100) + '%');
-        },
-        function (error) {
-            console.error('Error loading model:', error);
-        }
-    );
-}
-
-// Utility function to create particle system
-function createParticleSystem() {
-    const particleCount = 1000;
-    const particles = new THREE.BufferGeometry();
-    const positions = new Float32Array(particleCount * 3);
-    
-    for (let i = 0; i < particleCount * 3; i += 3) {
-        positions[i] = (Math.random() - 0.5) * 20;
-        positions[i + 1] = (Math.random() - 0.5) * 20;
-        positions[i + 2] = (Math.random() - 0.5) * 20;
-    }
-    
-    particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    
-    const particleMaterial = new THREE.PointsMaterial({
-        color: 0x667eea,
-        size: 0.05,
-        transparent: true,
-        opacity: 0.6
-    });
-    
-    const particleSystem = new THREE.Points(particles, particleMaterial);
-    scene.add(particleSystem);
-    
-    return particleSystem;
-}
-
-// Clean up resources
-function disposeScene() {
+// Clean up
+function disposeThreeBackground() {
     if (animationId) {
         cancelAnimationFrame(animationId);
     }
     
-    if (currentMesh) {
-        scene.remove(currentMesh);
-        currentMesh.geometry.dispose();
-        currentMesh.material.dispose();
+    // Stop and clean up animations
+    if (mixer) {
+        mixer.stopAllAction();
+        mixer = null;
+    }
+    
+    // Clean up model
+    if (loadedModel) {
+        scene.remove(loadedModel);
+        loadedModel.traverse((child) => {
+            if (child.geometry) {
+                child.geometry.dispose();
+            }
+            if (child.material) {
+                if (Array.isArray(child.material)) {
+                    child.material.forEach(material => material.dispose());
+                } else {
+                    child.material.dispose();
+                }
+            }
+        });
+        loadedModel = null;
     }
     
     if (renderer) {
         renderer.dispose();
     }
     
-    if (controls) {
-        controls.dispose();
-    }
-    
     console.log('Three.js scene disposed');
 }
 
-// Initialize scene when DOM is loaded
+// Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize hero scene
-    initThreeScene();
+    console.log('DOM loaded, initializing Three.js with ES modules...');
+    initThreeBackground();
     
-    // Initialize model viewer when models section is visible
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                setTimeout(() => {
-                    initModelViewer();
-                }, 500);
-                observer.unobserve(entry.target);
-            }
-        });
-    });
-    
-    const modelsSection = document.getElementById('models');
-    if (modelsSection) {
-        observer.observe(modelsSection);
-    }
+    // Handle window resize
+    window.addEventListener('resize', resizeThreeBackground);
 });
 
-// Export functions for use in other modules
-window.ThreeScene = {
-    initThreeScene,
-    updateThreeScene,
-    resizeThreeScene,
-    loadCustomModel,
-    disposeScene,
-    createParticleSystem
+// Export functions
+window.ThreeBackground = {
+    initThreeBackground,
+    resizeThreeBackground,
+    disposeThreeBackground
 };
 
-console.log('Three.js scene module loaded'); 
+console.log('Simple Three.js scene module loaded with ES modules'); 

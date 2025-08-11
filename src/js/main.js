@@ -123,9 +123,9 @@ function scrollToSection(sectionId) {
 
 // Handle window resize
 function handleWindowResize() {
-    // Call Three.js resize function if available
-    if (typeof resizeThreeScene === 'function') {
-        resizeThreeScene();
+    // Call Three.js background resize function if available
+    if (typeof resizeThreeBackground === 'function') {
+        resizeThreeBackground();
     }
 }
 

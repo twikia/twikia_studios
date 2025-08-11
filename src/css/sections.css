@@ -2,16 +2,19 @@
 .play {
     min-height: 100vh;
     padding: 100px 0;
-    background: #f8f9fa;
     display: flex;
     align-items: center;
+    background: transparent !important;
+    border: none !important;
+    margin: 0 !important;
 }
 
 .play h2 {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 60px;
-    color: #333;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .play-content {
@@ -26,13 +29,15 @@
     text-align: left;
     font-size: 2.5rem;
     margin-bottom: 30px;
-    color: #333;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .play-text p {
     font-size: 1.1rem;
     margin-bottom: 20px;
-    color: #666;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     line-height: 1.8;
 }
 
@@ -58,6 +63,8 @@
     overflow: visible;
     position: relative;
     z-index: 1;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .feature:hover {
@@ -104,16 +111,19 @@
 .socials {
     min-height: 100vh;
     padding: 120px 0 100px 0; /* Reduced top padding from 100px to 80px */
-    background: white;
     display: flex;
     align-items: center;
+    background: transparent !important;
+    border: none !important;
+    margin: 0 !important;
 }
 
 .socials h2 {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 10px;
-    color: #333;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .socials-content {
@@ -129,7 +139,8 @@
 
 .socials-text p {
     font-size: 1.1rem;
-    color: #666;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     line-height: 1.8;
 }
 
@@ -154,6 +165,8 @@
     overflow: visible;
     position: relative;
     z-index: 1;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .social-link .social-icon {
@@ -197,10 +210,12 @@
 .videos {
     min-height: 140vh;
     padding: 100px 0 120px 0; /* Reduced top padding from 120px to 100px */
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     display: flex;
     align-items: center;
+    background: transparent !important;
+    border: none !important;
+    margin: 0 !important;
 }
 
 .videos h2 {
@@ -437,16 +452,19 @@
 .about {
     min-height: 100vh;
     padding: 100px 0;
-    background: #f8f9fa;
     display: flex;
     align-items: center;
+    background: transparent !important;
+    border: none !important;
+    margin: 0 !important;
 }
 
 .about h2 {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 60px;
-    color: #333;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .about-content {
@@ -479,7 +497,8 @@
 
 .about-text p {
     font-size: 1.1rem;
-    color: #666;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     line-height: 1.8;
     margin-bottom: 30px;
     text-align: left;
@@ -636,10 +655,12 @@
 .contact {
     min-height: 100vh;
     padding: 100px 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     display: flex;
     align-items: center;
+    background: transparent !important;
+    border: none !important;
+    margin: 0 !important;
 }
 
 .contact h2 {

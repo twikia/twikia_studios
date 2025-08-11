@@ -17,6 +17,32 @@ body {
     line-height: 1.6;
     color: #333;
     overflow-x: hidden;
+    position: relative;
+}
+
+/* Full Screen 3D Background */
+#threejs-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Make all sections completely transparent with no blur */
+section,
+section.play,
+section.socials,
+section.videos,
+section.about,
+section.contact {
+    background: transparent !important;
+    border: none !important;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1;
 }
 
 /* Container */
