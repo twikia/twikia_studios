@@ -67,10 +67,10 @@ const sectionConfigs = {
     'home-transition': { spinRate: 0.0035, height: 1.8, zoom: 22 },
     'play': { spinRate: reducedRotationSpeed, height: 2.0, zoom: 17 },
     'play-detail': { spinRate: 0.0015, height: 2.5, zoom: 16 },
-    'socials': { spinRate: reducedRotationSpeed, height: 1.2, zoom: 14 },
-    'socials-detail': { spinRate: 0.001, height: 1.0, zoom: 13 },
-    'videos': { spinRate: reducedRotationSpeed, height: 1.8, zoom: 12 },
-    'videos-detail': { spinRate: 0.0018, height: 2.2, zoom: 10 },
+    'socials': { spinRate: reducedRotationSpeed, height: 1.2, zoom: 12 },
+    'socials-detail': { spinRate: 0.001, height: 1.0, zoom: 11 },
+    'videos': { spinRate: reducedRotationSpeed, height: 1.8, zoom: 9 },
+    'videos-detail': { spinRate: 0.0018, height: 2.2, zoom: 8 },
     'about': { spinRate: reducedRotationSpeed, height: 2.5, zoom: 7 }, // Closest zoom for best readability
     'about-detail': { spinRate: 0.001, height: 2.8, zoom: 6 }, // Very close for detailed reading
     'contact': { spinRate: reducedRotationSpeed, height: 2.0, zoom: 10 },
