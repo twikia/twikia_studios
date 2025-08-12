@@ -1,29 +1,36 @@
-# TerraBlitz - Interactive 3D Website
+# TerraBlitz - Interactive 3D Particle Website
 
-A modern, responsive website showcasing interactive 3D models built with Three.js, featuring beautiful animations, smooth user interactions, and cutting-edge web technologies.
+A cutting-edge, responsive website featuring an interactive 3D particle system that dynamically responds to user scrolling, clicking, and navigation. Built with Three.js and modern web technologies, offering a unique and immersive user experience.
 
 ## 🌟 Features
 
-### 3D Visualization
-- **Interactive 3D Models**: Cube, Sphere, Torus, and Custom models
-- **Real-time Rendering**: Smooth 60fps WebGL rendering
-- **Camera Controls**: Orbit, pan, and zoom functionality
-- **Dynamic Lighting**: Multiple light sources with shadows
-- **Material Effects**: Transparent materials with realistic reflections
+### 🎮 Interactive 3D Particle System
+- **Dynamic Point Clouds**: Three separate particle systems with 12,800 points each
+- **Scroll-Based Effects**: Colors, heights, zoom, and rotation change based on scroll position
+- **Click Interactions**: Global click detection triggers particle height surges
+- **Smooth Transitions**: Linear interpolation between section states
+- **Performance Optimized**: 60fps capped rendering with reduced update frequency
 
-### User Experience
-- **Responsive Design**: Optimized for all devices and screen sizes
-- **Smooth Animations**: CSS and JavaScript animations throughout
-- **Loading Screen**: Professional loading experience
-- **Interactive Elements**: Hover effects, ripple animations, and micro-interactions
-- **Accessibility**: Full keyboard navigation and screen reader support
+### 🎨 Visual Design
+- **Glass Morphism**: Blurred backgrounds with transparency effects
+- **Dynamic Color Schemes**: 12 different color palettes for each section
+- **Responsive Layout**: Adapts seamlessly to all device sizes
+- **Modern Typography**: Clean, readable text with shadows and strokes
+- **Smooth Animations**: CSS transitions and Three.js animations
 
-### Modern Web Technologies
-- **Three.js**: Advanced 3D graphics and WebGL rendering
-- **Vanilla JavaScript**: No framework dependencies
-- **CSS Grid & Flexbox**: Modern layout techniques
-- **Intersection Observer**: Performance-optimized scroll animations
-- **Progressive Enhancement**: Works without JavaScript
+### 📱 User Experience
+- **Section-Based Navigation**: Smooth scrolling between sections
+- **Interactive Elements**: Hover effects and click animations
+- **Loading States**: Professional loading experience
+- **Accessibility**: Keyboard navigation and screen reader support
+- **Cross-Browser**: Works on all modern browsers
+
+### 🛠️ Technical Features
+- **ES6 Modules**: Modern JavaScript with import/export
+- **Three.js Integration**: Advanced WebGL rendering
+- **Performance Optimization**: FPS capping, reduced geometry complexity
+- **Responsive Design**: Mobile-first approach
+- **Progressive Enhancement**: Graceful degradation
 
 ## 🚀 Quick Start
 
@@ -69,103 +76,180 @@ A modern, responsive website showcasing interactive 3D models built with Three.j
 
 ```
 terrablitz/
-├── index.html              # Main HTML file
-├── privacy_policy.html     # Privacy policy page
-├── README.md              # Project documentation
+├── index.html                    # Main HTML file
+├── disclaimer.html               # Disclaimer page
+├── privacy_policy.html           # Privacy policy page
+├── README.md                     # Project documentation
 └── src/
     ├── css/
-    │   └── style.css      # Main stylesheet
+    │   ├── base.css              # Base styles and 3D background
+    │   ├── header.css            # Navigation header styles
+    │   ├── hero.css              # Hero section styles
+    │   ├── sections.css          # All section styles
+    │   └── footer.css            # Footer styles
     ├── js/
-    │   ├── main.js        # Core functionality
-    │   ├── three-scene.js # Three.js scene management
-    │   └── ui.js          # UI interactions
-    └── models/            # 3D model assets (optional)
+    │   ├── main.js               # Core functionality
+    │   ├── three-scene.js        # Interactive 3D particle scene
+    │   ├── typing-animation.js   # Hero typing effect
+    │   └── ui.js                 # UI interactions
+    ├── icons/                    # Image assets
+    │   ├── social_icons/         # Social media icons
+    │   └── *.png                 # Various icons and images
+    ├── misc/                     # Miscellaneous files
+    │   └── *.pdf                 # Resume and documents
+    └── models/                   # 3D model assets
+        └── *.glb                 # 3D models
 ```
 
-## 🎮 Usage
+## 🎮 Usage Guide
 
-### Navigation
-- **Desktop**: Use the navigation menu at the top
-- **Mobile**: Tap the hamburger menu for mobile navigation
-- **Keyboard**: Use Tab to navigate, Enter to activate, Escape to close menus
+### 🖱️ Navigation & Interaction
 
-### 3D Model Controls
-- **Mouse/Touch**:
-  - Left click + drag: Rotate the model
-  - Right click + drag: Pan the view
-  - Scroll: Zoom in/out
-- **Model Switching**: Click the model buttons (Cube, Sphere, Torus, Custom)
+#### **Scroll-Based Effects**
+- **Color Changes**: Each section has unique color schemes that blend smoothly
+- **Height Variations**: Particle heights change dramatically between sections
+- **Camera Zoom**: Dynamic zoom levels for optimal viewing
+- **Rotation Speed**: Faster rotation on home, slower on content sections
 
-### Interactive Features
-- **Hero Section**: Animated 3D background with typing effect
-- **Model Gallery**: Interactive 3D viewer with model information
-- **Contact Form**: Functional contact form with validation
+#### **Click Interactions**
+- **Global Click Detection**: Click anywhere to trigger particle effects
+- **Button Animations**: Interactive elements have CSS click animations
+- **3D Response**: Particles surge with random height multipliers
+- **Duration**: Effects last 1.5 seconds with smooth fade-out
+
+#### **Section Navigation**
+- **Smooth Scrolling**: Navigate between sections seamlessly
+- **12 Sections**: Home, Play, Socials, Videos, About, Contact (with transitions)
+- **Dynamic Transitions**: Colors and effects change based on scroll position
+
+### 🎨 Visual Sections
+
+#### **Hero Section**
+- **Typing Animation**: Dynamic text typing effect
+- **3D Background**: Full-screen particle system
 - **Responsive Design**: Adapts to all screen sizes
+
+#### **Play Section**
+- **Game Links**: TerraBlitz beta and GitHub projects
+- **Glass Morphism**: Blurred background for text content
+- **Interactive Cards**: Hover effects and click animations
+
+#### **Socials Section**
+- **Community Links**: Instagram, Discord, TikTok, Reddit, YouTube
+- **Glass Cards**: Semi-transparent social media cards
+- **Hover Effects**: Elevation and color transitions
+
+#### **Videos Section**
+- **Embedded Content**: YouTube videos with hover effects
+- **Feature Cards**: Additional video content links
+- **Responsive Grid**: Adapts to screen size
+
+#### **About Section**
+- **Professional Info**: Personal background and skills
+- **Resume Download**: PDF download with preview
+- **GitHub Link**: Portfolio and project links
+- **Blur Container**: Entire section in glass morphism box
+
+#### **Contact Section**
+- **Multiple Methods**: Instagram, Email, Ko-fi, Buy Me a Coffee
+- **Interactive Cards**: Hover effects and click animations
+- **Copy Functionality**: Email address copy to clipboard
+
+### 🎯 3D Particle System
+
+#### **Technical Specifications**
+- **Point Count**: 38,400 total points (3 clouds × 12,800 each)
+- **Performance**: 60fps capped, optimized rendering
+- **Geometry**: 16×16 sphere segments for efficiency
+- **Materials**: Basic materials for performance
+
+#### **Dynamic Properties**
+- **Colors**: RGB values interpolated between sections
+- **Heights**: Multipliers range from 0.3x to 2.8x
+- **Zoom**: Camera distance from 6 to 25 units
+- **Rotation**: Speed varies from 0.001 to 0.005 radians/frame
+
+#### **Click Effects**
+- **Random Heights**: Each point gets unique height multiplier
+- **Subtle Changes**: 0.2x to 0.5x additional height
+- **No Color Flash**: Maintains section colors
+- **Smooth Recovery**: Gradual return to normal state
 
 ## 🛠️ Customization
 
-### Adding Custom 3D Models
+### Modifying 3D Scene
 
-1. **Place your model file** in the `src/models/` directory
-2. **Supported formats**: GLTF, GLB, OBJ, FBX
-3. **Update the model loading code** in `src/js/three-scene.js`:
+#### **Section Configuration**
+Edit `src/js/three-scene.js` to modify section effects:
 
 ```javascript
-// Example: Load a custom GLTF model
-function loadCustomModel() {
-    const loader = new THREE.GLTFLoader();
-    loader.load(
-        'src/models/your-model.gltf',
-        function (gltf) {
-            // Handle successful load
-            scene.add(gltf.scene);
-        },
-        function (progress) {
-            // Handle progress
-        },
-        function (error) {
-            // Handle error
-        }
-    );
-}
+// Section color schemes
+const sectionColors = {
+    'home': { r: 1, g: 0, b: 0, r2: 0, g2: 1, b2: 0, r3: 0, g3: 0, b3: 1 },
+    // Add more sections...
+};
+
+// Section configurations
+const sectionConfigs = {
+    'home': { spinRate: 0.005, height: 1.5, zoom: 25 },
+    // Modify values...
+};
+```
+
+#### **Click Effect Customization**
+```javascript
+// Modify click effect duration and intensity
+const clickEffectDuration = 1500; // milliseconds
+const randomFactor = 0.2 + (Math.random() * 0.3); // height multiplier range
 ```
 
 ### Styling Customization
 
-The website uses CSS custom properties for easy theming:
+#### **Glass Morphism Effects**
+```css
+.glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+}
+```
 
+#### **Color Scheme**
 ```css
 :root {
     --primary-color: #667eea;
     --secondary-color: #764ba2;
-    --text-color: #333;
-    --background-color: #f8f9fa;
+    --text-color: #fff;
+    --background-transparent: rgba(255, 255, 255, 0.1);
 }
 ```
 
 ### Adding New Sections
 
 1. **Add HTML structure** in `index.html`
-2. **Add CSS styles** in `src/css/style.css`
-3. **Add JavaScript functionality** in `src/js/main.js`
+2. **Add CSS styles** in `src/css/sections.css`
+3. **Add section configuration** in `src/js/three-scene.js`
+4. **Update navigation** if needed
 
 ## 🔧 Development
 
 ### Browser Support
-- Chrome 60+
+- Chrome 60+ (recommended)
 - Firefox 55+
 - Safari 12+
 - Edge 79+
 
 ### Performance Optimization
-- **Lazy Loading**: Images and non-critical resources
-- **Throttled Events**: Scroll and resize events
-- **Efficient Rendering**: Optimized Three.js scene
-- **Minified Assets**: Production-ready code
+- **FPS Capping**: Limited to 60fps for consistent performance
+- **Reduced Updates**: Scroll effects update every 2 frames
+- **Optimized Geometry**: Simplified sphere geometry
+- **Efficient Rendering**: Disabled antialiasing and other expensive features
 
 ### Debugging
 - Open browser developer tools
-- Check console for Three.js and application logs
+- Check console for Three.js logs
+- Monitor FPS and performance
 - Use WebGL inspector for 3D debugging
 
 ## 📱 Mobile Optimization
@@ -177,15 +261,15 @@ The website uses CSS custom properties for easy theming:
 
 ## 🔒 Security Considerations
 
-- **Content Security Policy**: Configured for Three.js
+- **External Links**: All external links have `rel="noopener noreferrer"`
+- **Content Security**: Configured for Three.js and external resources
 - **Input Validation**: Form validation and sanitization
-- **XSS Prevention**: Safe DOM manipulation
 - **HTTPS Recommended**: For production deployment
 
 ## 🚀 Deployment
 
 ### Static Hosting
-The website can be deployed to any static hosting service:
+Deploy to any static hosting service:
 
 - **Netlify**: Drag and drop the project folder
 - **Vercel**: Connect your Git repository
@@ -194,7 +278,7 @@ The website can be deployed to any static hosting service:
 
 ### Production Optimization
 1. **Minify CSS and JavaScript**
-2. **Optimize images**
+2. **Optimize images and icons**
 3. **Enable gzip compression**
 4. **Set up CDN for assets**
 5. **Configure caching headers**
@@ -204,7 +288,7 @@ The website can be deployed to any static hosting service:
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Test thoroughly
+4. Test thoroughly on multiple browsers
 5. Submit a pull request
 
 ## 📄 License
@@ -213,18 +297,18 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 🙏 Acknowledgments
 
-- **Three.js**: 3D graphics library
-- **WebGL**: Graphics API
-- **Modern CSS**: Layout and styling techniques
-- **Web Standards**: Accessibility and performance
+- **Three.js**: 3D graphics library and examples
+- **WebGL**: Graphics API for 3D rendering
+- **Modern CSS**: Glass morphism and backdrop-filter
+- **ES6 Modules**: Modern JavaScript module system
 
 ## 📞 Support
 
 For questions, issues, or contributions:
 - Create an issue on GitHub
-- Contact: hello@terrablitz.com
-- Documentation: [Project Wiki](link-to-wiki)
+- Contact: [Your Contact Information]
+- Documentation: [Project Wiki]
 
 ---
 
-**Built with ❤️ using Three.js and modern web technologies** 
+**Built with ❤️ using Three.js, modern CSS, and cutting-edge web technologies** 
