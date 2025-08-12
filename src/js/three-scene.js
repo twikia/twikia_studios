@@ -65,13 +65,13 @@ const sectionColors = {
 const sectionConfigs = {
     'home': { spinRate: baseRotationSpeed, height: 1.5, zoom: 25 }, // Furthest zoom
     'home-transition': { spinRate: 0.0035, height: 1.8, zoom: 22 },
-    'play': { spinRate: reducedRotationSpeed, height: 2.0, zoom: 18 },
+    'play': { spinRate: reducedRotationSpeed, height: 2.0, zoom: 17 },
     'play-detail': { spinRate: 0.0015, height: 2.5, zoom: 16 },
-    'socials': { spinRate: reducedRotationSpeed, height: 1.2, zoom: 15 },
+    'socials': { spinRate: reducedRotationSpeed, height: 1.2, zoom: 14 },
     'socials-detail': { spinRate: 0.001, height: 1.0, zoom: 13 },
-    'videos': { spinRate: reducedRotationSpeed, height: 1.8, zoom: 14 },
-    'videos-detail': { spinRate: 0.0018, height: 2.2, zoom: 12 },
-    'about': { spinRate: reducedRotationSpeed, height: 2.5, zoom: 8 }, // Closest zoom for best readability
+    'videos': { spinRate: reducedRotationSpeed, height: 1.8, zoom: 12 },
+    'videos-detail': { spinRate: 0.0018, height: 2.2, zoom: 10 },
+    'about': { spinRate: reducedRotationSpeed, height: 2.5, zoom: 7 }, // Closest zoom for best readability
     'about-detail': { spinRate: 0.001, height: 2.8, zoom: 6 }, // Very close for detailed reading
     'contact': { spinRate: reducedRotationSpeed, height: 2.0, zoom: 10 },
     'contact-end': { spinRate: 0.001, height: 1.8, zoom: 12 }
@@ -82,6 +82,12 @@ let currentColors = { r: 1, g: 0, b: 0, r2: 0, g2: 1, b2: 0, r3: 0, g3: 1, b3: 1
 
 // Store original geometry positions for height animation
 let originalPositions = [];
+
+// Click effect variables
+let clickEffectActive = false;
+let clickEffectTimer = 0;
+const clickEffectDuration = 1500; // 1 second
+let clickEffectIntensity = 0;
 
 function generatePointCloudGeometry( color, width, length, geometryIndex ) {
 
@@ -338,12 +344,30 @@ function lerp(start, end, factor) {
 	return start + (end - start) * factor;
 }
 
+// Click effect function
+function triggerClickEffect() {
+	clickEffectActive = true;
+	clickEffectTimer = 0;
+	clickEffectIntensity = 1.0;
+}
+
 // Optimization variables
 let frameCount = 0;
 const updateFrequency = 2; // Update every 2 frames for performance
 
 // Update particle colors, heights, and camera zoom based on scroll
 function updateScrollEffects() {
+	// Update click effect timer
+	if (clickEffectActive) {
+		clickEffectTimer += clock.getDelta() * 1000; // Convert to milliseconds
+		clickEffectIntensity = Math.max(0, 1 - (clickEffectTimer / clickEffectDuration));
+		
+		if (clickEffectTimer >= clickEffectDuration) {
+			clickEffectActive = false;
+			clickEffectIntensity = 0;
+		}
+	}
+	
 	// Smooth interpolation for all properties
 	currentSpinRate += (targetSpinRate - currentSpinRate) * 0.08;
 	currentHeightMultiplier += (targetHeightMultiplier - currentHeightMultiplier) * 0.06;
@@ -384,11 +408,21 @@ function updateScrollEffects() {
 			const originalY = originalPos[i3 + 1];
 			const newY = originalY * currentHeightMultiplier;
 			
-			// Update position
-			positionAttribute.setY(i, newY);
+			// Apply click effect if active
+			let clickHeightMultiplier = 1.0;
 			
-			// Update color based on new height
-			const intensity = (newY + 0.1) * 5;
+			if (clickEffectActive) {
+				// Generate random multiplier for each point (much more subtle)
+				const randomFactor = 0.2 + (Math.random() * 0.3); // Random between 0.2 and 0.5
+				clickHeightMultiplier = 1.0 + (clickEffectIntensity * randomFactor);
+			}
+			
+			// Apply final height with click effect
+			const finalY = newY * clickHeightMultiplier;
+			positionAttribute.setY(i, finalY);
+			
+			// Update color based on new height (no click effect on colors)
+			const intensity = (finalY + 0.1) * 5;
 			colorAttribute.setX(i, currentColor.r * intensity);
 			colorAttribute.setY(i, currentColor.g * intensity);
 			colorAttribute.setZ(i, currentColor.b * intensity);
@@ -490,17 +524,32 @@ function disposeThreeBackground() {
 	console.log('Raycasting points scene disposed');
 }
 
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-	console.log('DOM loaded, initializing raycasting points scene...');
-	initThreeBackground();
-});
-
 // Export functions
 window.ThreeBackground = {
 	initThreeBackground,
 	resizeThreeBackground,
-	disposeThreeBackground
+	disposeThreeBackground,
+	triggerClickEffect
 };
+
+
+// Add global click listener for 3D scene effect
+function addGlobalClickListener() {
+	document.addEventListener('click', function(e) {
+		// Trigger 3D scene effect on any click
+		if (window.ThreeBackground && window.ThreeBackground.triggerClickEffect) {
+			window.ThreeBackground.triggerClickEffect();
+		}
+	});
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+	console.log('DOM loaded, initializing raycasting points scene...');
+	initThreeBackground();
+	
+	// Add global click listener for 3D scene effect
+	addGlobalClickListener();
+});
 
 console.log('Raycasting points Three.js scene module loaded');
