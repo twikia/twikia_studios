@@ -277,6 +277,8 @@ function initThreeBackground() {
 
 	window.addEventListener( 'resize', onWindowResize );
 	document.addEventListener( 'pointermove', onPointerMove );
+	document.addEventListener( 'touchmove', onPointerMove, { passive: false } ); // Add touch support for mobile
+	document.addEventListener( 'touchstart', onPointerMove, { passive: false } ); // Add touch start support
 	window.addEventListener( 'scroll', onScroll );
 
 	// Start animation loop
@@ -435,9 +437,17 @@ function updateScrollEffects() {
 }
 
 function onPointerMove( event ) {
+	// Prevent default behavior for touch events to avoid scrolling issues
+	// if (event.type === 'touchmove' || event.type === 'touchstart') {
+	// 	event.preventDefault();
+	// }
 
-	pointer.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-	pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+	// Get the correct coordinates for both mouse and touch events
+	const clientX = event.clientX || (event.touches && event.touches[0] ? event.touches[0].clientX : 0);
+	const clientY = event.clientY || (event.touches && event.touches[0] ? event.touches[0].clientY : 0);
+
+	pointer.x = ( clientX / window.innerWidth ) * 2 - 1;
+	pointer.y = - ( clientY / window.innerHeight ) * 2 + 1;
 
 }
 

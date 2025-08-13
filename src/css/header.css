@@ -88,7 +88,7 @@
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 15px; /* Increased from 10px */
+    gap: 10px; /* Reduced from 15px for closer spacing */
     position: absolute;
     right: 80px; /* Position to the left of hamburger */
     opacity: 0;
@@ -177,13 +177,31 @@
     }
     
     .nav-menu {
-        right: 70px; /* Adjust position for mobile */
-        gap: 12px; /* Slightly reduced gap for mobile */
+        position: absolute;
+        top: 100%; /* Position below the navbar */
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-radius: 0 0 20px 20px;
+        padding: 20px;
+        flex-direction: column;
+        gap: 15px;
+        transform: translateY(-20px);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .nav-menu.active {
+        transform: translateY(0);
     }
     
     .nav-link {
-        font-size: 1.1rem; /* Increased from 1rem */
-        padding: 10px 16px; /* Increased from 6px 12px */
+        font-size: 1.1rem;
+        padding: 12px 20px;
+        width: 100%;
+        text-align: center;
+        border-radius: 10px;
     }
     
     .logo-image {

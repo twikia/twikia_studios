@@ -22,7 +22,7 @@
     margin-bottom: 20px;
     animation: fadeInUp 1s ease;
     position: relative;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 6px 6px 12px rgba(0, 0, 0, 1), 4px 4px 8px rgba(0, 0, 0, 1), 2px 2px 4px rgba(0, 0, 0, 1);
 }
 
 .hero-subtitle {
@@ -30,7 +30,7 @@
     margin-bottom: 30px;
     opacity: 0.9;
     animation: fadeInUp 1s ease 0.2s both;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    text-shadow: 6px 6px 12px rgba(0, 0, 0, 1), 4px 4px 8px rgba(0, 0, 0, 1), 2px 2px 4px rgba(0, 0, 0, 1);
 }
 
 .cta-button {

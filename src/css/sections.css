@@ -136,7 +136,17 @@
     font-size: 2.5rem;
     margin-bottom: 10px;
     color: #fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow:
+    /* 8-directional outline for bubble effect */
+    -4px -4px 0 black, -3px -4px 0 black, -2px -4px 0 black, -1px -4px 0 black, 0px -4px 0 black, 1px -4px 0 black, 2px -4px 0 black, 3px -4px 0 black, 4px -4px 0 black,
+    -4px -3px 0 black, -3px -3px 0 black, -2px -3px 0 black, -1px -3px 0 black, 0px -3px 0 black, 1px -3px 0 black, 2px -3px 0 black, 3px -3px 0 black, 4px -3px 0 black,
+    -4px -2px 0 black, -3px -2px 0 black, -2px -2px 0 black, -1px -2px 0 black, 0px -2px 0 black, 1px -2px 0 black, 2px -2px 0 black, 3px -2px 0 black, 4px -2px 0 black,
+    -4px -1px 0 black, -3px -1px 0 black, -2px -1px 0 black, -1px -1px 0 black, 0px -1px 0 black, 1px -1px 0 black, 2px -1px 0 black, 3px -1px 0 black, 4px -1px 0 black,
+    -4px  0px 0 black, -3px  0px 0 black, -2px  0px 0 black, -1px  0px 0 black, 0px  0px 0 black, 1px  0px 0 black, 2px  0px 0 black, 3px  0px 0 black, 4px  0px 0 black,
+    -4px  1px 0 black, -3px  1px 0 black, -2px  1px 0 black, -1px  1px 0 black, 0px  1px 0 black, 1px  1px 0 black, 2px  1px 0 black, 3px  1px 0 black, 4px  1px 0 black,
+    -4px  2px 0 black, -3px  2px 0 black, -2px  2px 0 black, -1px  2px 0 black, 0px  2px 0 black, 1px  2px 0 black, 2px  2px 0 black, 3px  2px 0 black, 4px  2px 0 black,
+    -4px  3px 0 black, -3px  3px 0 black, -2px  3px 0 black, -1px  3px 0 black, 0px  3px 0 black, 1px  3px 0 black, 2px  3px 0 black, 3px  3px 0 black, 4px  3px 0 black,
+    -4px  4px 0 black, -3px  4px 0 black, -2px  4px 0 black, -1px  4px 0 black, 0px  4px 0 black, 1px  4px 0 black, 2px  4px 0 black, 3px  4px 0 black, 4px  4px 0 black;
 }
 
 .socials-content {
@@ -153,7 +163,15 @@
 .socials-text p {
     font-size: 1.1rem;
     color: #fff;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    text-shadow:
+    /* 8-directional outline for bubble effect */
+    -3px -3px 0 black, -2px -3px 0 black, -1px -3px 0 black, 0px -3px 0 black, 1px -3px 0 black, 2px -3px 0 black, 3px -3px 0 black,
+    -3px -2px 0 black, -2px -2px 0 black, -1px -2px 0 black, 0px -2px 0 black, 1px -2px 0 black, 2px -2px 0 black, 3px -2px 0 black,
+    -3px -1px 0 black, -2px -1px 0 black, -1px -1px 0 black, 0px -1px 0 black, 1px -1px 0 black, 2px -1px 0 black, 3px -1px 0 black,
+    -3px  0px 0 black, -2px  0px 0 black, -1px  0px 0 black, 0px  0px 0 black, 1px  0px 0 black, 2px  0px 0 black, 3px  0px 0 black,
+    -3px  1px 0 black, -2px  1px 0 black, -1px  1px 0 black, 0px  1px 0 black, 1px  1px 0 black, 2px  1px 0 black, 3px  1px 0 black,
+    -3px  2px 0 black, -2px  2px 0 black, -1px  2px 0 black, 0px  2px 0 black, 1px  2px 0 black, 2px  2px 0 black, 3px  2px 0 black,
+    -3px  3px 0 black, -2px  3px 0 black, -1px  3px 0 black, 0px  3px 0 black, 1px  3px 0 black, 2px  3px 0 black, 3px  3px 0 black;
     line-height: 1.8;
 }
 
@@ -236,6 +254,18 @@
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 10px; /* Reduced from 20px */
+    color: #fff;
+    text-shadow:
+    /* 8-directional outline for bubble effect */
+    -4px -4px 0 black, -3px -4px 0 black, -2px -4px 0 black, -1px -4px 0 black, 0px -4px 0 black, 1px -4px 0 black, 2px -4px 0 black, 3px -4px 0 black, 4px -4px 0 black,
+    -4px -3px 0 black, -3px -3px 0 black, -2px -3px 0 black, -1px -3px 0 black, 0px -3px 0 black, 1px -3px 0 black, 2px -3px 0 black, 3px -3px 0 black, 4px -3px 0 black,
+    -4px -2px 0 black, -3px -2px 0 black, -2px -2px 0 black, -1px -2px 0 black, 0px -2px 0 black, 1px -2px 0 black, 2px -2px 0 black, 3px -2px 0 black, 4px -2px 0 black,
+    -4px -1px 0 black, -3px -1px 0 black, -2px -1px 0 black, -1px -1px 0 black, 0px -1px 0 black, 1px -1px 0 black, 2px -1px 0 black, 3px -1px 0 black, 4px -1px 0 black,
+    -4px  0px 0 black, -3px  0px 0 black, -2px  0px 0 black, -1px  0px 0 black, 0px  0px 0 black, 1px  0px 0 black, 2px  0px 0 black, 3px  0px 0 black, 4px  0px 0 black,
+    -4px  1px 0 black, -3px  1px 0 black, -2px  1px 0 black, -1px  1px 0 black, 0px  1px 0 black, 1px  1px 0 black, 2px  1px 0 black, 3px  1px 0 black, 4px  1px 0 black,
+    -4px  2px 0 black, -3px  2px 0 black, -2px  2px 0 black, -1px  2px 0 black, 0px  2px 0 black, 1px  2px 0 black, 2px  2px 0 black, 3px  2px 0 black, 4px  2px 0 black,
+    -4px  3px 0 black, -3px  3px 0 black, -2px  3px 0 black, -1px  3px 0 black, 0px  3px 0 black, 1px  3px 0 black, 2px  3px 0 black, 3px  3px 0 black, 4px  3px 0 black,
+    -4px  4px 0 black, -3px  4px 0 black, -2px  4px 0 black, -1px  4px 0 black, 0px  4px 0 black, 1px  4px 0 black, 2px  4px 0 black, 3px  4px 0 black, 4px  4px 0 black;
 }
 
 .videos-content {
@@ -428,6 +458,16 @@
     font-size: 1.1rem;
     opacity: 0.9;
     line-height: 1.8;
+    color: #fff;
+    text-shadow:
+    /* 8-directional outline for bubble effect */
+    -3px -3px 0 black, -2px -3px 0 black, -1px -3px 0 black, 0px -3px 0 black, 1px -3px 0 black, 2px -3px 0 black, 3px -3px 0 black,
+    -3px -2px 0 black, -2px -2px 0 black, -1px -2px 0 black, 0px -2px 0 black, 1px -2px 0 black, 2px -2px 0 black, 3px -2px 0 black,
+    -3px -1px 0 black, -2px -1px 0 black, -1px -1px 0 black, 0px -1px 0 black, 1px -1px 0 black, 2px -1px 0 black, 3px -1px 0 black,
+    -3px  0px 0 black, -2px  0px 0 black, -1px  0px 0 black, 0px  0px 0 black, 1px  0px 0 black, 2px  0px 0 black, 3px  0px 0 black,
+    -3px  1px 0 black, -2px  1px 0 black, -1px  1px 0 black, 0px  1px 0 black, 1px  1px 0 black, 2px  1px 0 black, 3px  1px 0 black,
+    -3px  2px 0 black, -2px  2px 0 black, -1px  2px 0 black, 0px  2px 0 black, 1px  2px 0 black, 2px  2px 0 black, 3px  2px 0 black,
+    -3px  3px 0 black, -2px  3px 0 black, -1px  3px 0 black, 0px  3px 0 black, 1px  3px 0 black, 2px  3px 0 black, 3px  3px 0 black;
 }
 
 .video-grid {
@@ -694,6 +734,18 @@
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 30px;
+    color: #fff;
+    text-shadow:
+    /* 8-directional outline for bubble effect */
+    -4px -4px 0 black, -3px -4px 0 black, -2px -4px 0 black, -1px -4px 0 black, 0px -4px 0 black, 1px -4px 0 black, 2px -4px 0 black, 3px -4px 0 black, 4px -4px 0 black,
+    -4px -3px 0 black, -3px -3px 0 black, -2px -3px 0 black, -1px -3px 0 black, 0px -3px 0 black, 1px -3px 0 black, 2px -3px 0 black, 3px -3px 0 black, 4px -3px 0 black,
+    -4px -2px 0 black, -3px -2px 0 black, -2px -2px 0 black, -1px -2px 0 black, 0px -2px 0 black, 1px -2px 0 black, 2px -2px 0 black, 3px -2px 0 black, 4px -2px 0 black,
+    -4px -1px 0 black, -3px -1px 0 black, -2px -1px 0 black, -1px -1px 0 black, 0px -1px 0 black, 1px -1px 0 black, 2px -1px 0 black, 3px -1px 0 black, 4px -1px 0 black,
+    -4px  0px 0 black, -3px  0px 0 black, -2px  0px 0 black, -1px  0px 0 black, 0px  0px 0 black, 1px  0px 0 black, 2px  0px 0 black, 3px  0px 0 black, 4px  0px 0 black,
+    -4px  1px 0 black, -3px  1px 0 black, -2px  1px 0 black, -1px  1px 0 black, 0px  1px 0 black, 1px  1px 0 black, 2px  1px 0 black, 3px  1px 0 black, 4px  1px 0 black,
+    -4px  2px 0 black, -3px  2px 0 black, -2px  2px 0 black, -1px  2px 0 black, 0px  2px 0 black, 1px  2px 0 black, 2px  2px 0 black, 3px  2px 0 black, 4px  2px 0 black,
+    -4px  3px 0 black, -3px  3px 0 black, -2px  3px 0 black, -1px  3px 0 black, 0px  3px 0 black, 1px  3px 0 black, 2px  3px 0 black, 3px  3px 0 black, 4px  3px 0 black,
+    -4px  4px 0 black, -3px  4px 0 black, -2px  4px 0 black, -1px  4px 0 black, 0px  4px 0 black, 1px  4px 0 black, 2px  4px 0 black, 3px  4px 0 black, 4px  4px 0 black;
 }
 
 .contact-content {
@@ -711,6 +763,16 @@
     font-size: 1.1rem;
     opacity: 0.9;
     line-height: 1.8;
+    color: #fff;
+    text-shadow:
+    /* 8-directional outline for bubble effect */
+    -3px -3px 0 black, -2px -3px 0 black, -1px -3px 0 black, 0px -3px 0 black, 1px -3px 0 black, 2px -3px 0 black, 3px -3px 0 black,
+    -3px -2px 0 black, -2px -2px 0 black, -1px -2px 0 black, 0px -2px 0 black, 1px -2px 0 black, 2px -2px 0 black, 3px -2px 0 black,
+    -3px -1px 0 black, -2px -1px 0 black, -1px -1px 0 black, 0px -1px 0 black, 1px -1px 0 black, 2px -1px 0 black, 3px -1px 0 black,
+    -3px  0px 0 black, -2px  0px 0 black, -1px  0px 0 black, 0px  0px 0 black, 1px  0px 0 black, 2px  0px 0 black, 3px  0px 0 black,
+    -3px  1px 0 black, -2px  1px 0 black, -1px  1px 0 black, 0px  1px 0 black, 1px  1px 0 black, 2px  1px 0 black, 3px  1px 0 black,
+    -3px  2px 0 black, -2px  2px 0 black, -1px  2px 0 black, 0px  2px 0 black, 1px  2px 0 black, 2px  2px 0 black, 3px  2px 0 black,
+    -3px  3px 0 black, -2px  3px 0 black, -1px  3px 0 black, 0px  3px 0 black, 1px  3px 0 black, 2px  3px 0 black, 3px  3px 0 black;
 }
 
 .contact-methods {
@@ -821,6 +883,12 @@
     .play-content {
         grid-template-columns: 1fr;
         gap: 40px;
+        padding: 0 20px; /* Add padding to match video section */
+    }
+    
+    .play-text-side {
+        width: 100%; /* Ensure full width on mobile */
+        max-width: none; /* Remove any max-width constraints */
     }
     
     .social-links,
@@ -830,11 +898,53 @@
         gap: 20px;
     }
     
+    .socials .container,
+    .videos .container,
+    .play .container,
+    .contact .container {
+        width: 100%; /* Ensure containers take full width */
+        max-width: none; /* Remove max-width constraints */
+        padding: 0 20px; /* Add consistent padding */
+    }
+    
+    .about .container {
+        width: 90%; /* Ensure container takes full width */
+        padding: 0 20px; /* Add consistent padding */
+        margin: 0 auto; /* Center the container */
+    }
+    
     .about,
     .play,
     .socials,
     .videos,
     .contact {
         padding: 60px 0;
+    }
+    
+    /* Fix videography middle section for mobile */
+    .videos-middle {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin-bottom: 80px;
+        padding: 0 20px;
+    }
+    
+    .videos-middle .video-container {
+        justify-self: center;
+        margin-right: 0;
+        margin-bottom: 30px;
+    }
+    
+    .videos-middle .video-features {
+        justify-self: center;
+        margin-left: 0;
+        margin-top: 0;
+        gap: 20px;
+    }
+    
+    .videos-middle .video-features .video-feature-card {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
     }
 } 
