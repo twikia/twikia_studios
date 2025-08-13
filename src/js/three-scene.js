@@ -29,8 +29,8 @@ let currentSectionIndex = 0;
 let scrollProgress = 0;
 let targetSpinRate = 0.005;
 let currentSpinRate = 0.005;
-let targetHeightMultiplier = 1.0;
-let currentHeightMultiplier = 1.0;
+let targetHeightMultiplier = 1.5; // Match home section height
+let currentHeightMultiplier = 1.5; // Match home section height
 let targetZoom = 25;
 let currentZoom = 25;
 
@@ -77,8 +77,8 @@ const sectionConfigs = {
     'contact-end': { spinRate: 0.001, height: 1.8, zoom: 12 }
 };
 
-// Current interpolated values
-let currentColors = { r: 1, g: 0, b: 0, r2: 0, g2: 1, b2: 0, r3: 0, g3: 1, b3: 1 };
+// Current interpolated values - Initialize with home section colors
+let currentColors = { r: 1, g: 0, b: 0, r2: 0, g2: 1, b2: 0, r3: 0, g3: 0, b3: 1 };
 
 // Store original geometry positions for height animation
 let originalPositions = [];
@@ -234,7 +234,7 @@ function initThreeBackground() {
 	pcIndexed.position.set( 0, 0, 0 );
 	scene.add( pcIndexed );
 
-	const pcIndexedOffset = generateIndexedWithOffsetPointcloud( new THREE.Color( 0, 1, 1 ), width, length, 2 );
+	const pcIndexedOffset = generateIndexedWithOffsetPointcloud( new THREE.Color( 0, 0, 1 ), width, length, 2 );
 	pcIndexedOffset.scale.set( 5, 10, 10 );
 	pcIndexedOffset.position.set( 5, 0, 0 );
 	scene.add( pcIndexedOffset );
