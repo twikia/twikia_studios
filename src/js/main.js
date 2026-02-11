@@ -53,12 +53,14 @@ function initNavigation() {
     const navMenu = document.querySelector('.nav-menu');
     
     if (hamburger && navMenu) {
-        // Toggle menu when hamburger is clicked
+        if (window.innerWidth > 768) {
+            hamburger.classList.add('active');
+            navMenu.classList.add('active');
+        }
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
-        
     }
 }
 

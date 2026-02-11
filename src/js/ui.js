@@ -251,22 +251,34 @@ function addAriaLabels() {
 // Add smooth section transitions
 function initSectionTransitions() {
     const sections = document.querySelectorAll('section');
-    
+    const sectionRatios = new Map();
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const sectionId = entry.target.id;
-                updateActiveNavigation(sectionId);
-                currentSection = sectionId;
+            if (entry.target.id) {
+                sectionRatios.set(entry.target.id, entry.isIntersecting ? entry.intersectionRatio : 0);
             }
         });
+        let maxRatio = 0;
+        let activeSectionId = 'home';
+        sectionRatios.forEach((ratio, id) => {
+            if (ratio > maxRatio) {
+                maxRatio = ratio;
+                activeSectionId = id;
+            }
+        });
+        updateActiveNavigation(activeSectionId);
+        currentSection = activeSectionId;
     }, {
-        threshold: 0.4,
+        threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
         rootMargin: '5% 0px 5% 0px'
     });
-    
+
     sections.forEach(section => {
-        observer.observe(section);
+        if (section.id) {
+            sectionRatios.set(section.id, 0);
+            observer.observe(section);
+        }
     });
 }
 

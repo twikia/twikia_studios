@@ -22,7 +22,7 @@
     margin-bottom: 20px;
     animation: fadeInUp 1s ease;
     position: relative;
-    text-shadow: 6px 6px 12px rgba(0, 0, 0, 1), 4px 4px 8px rgba(0, 0, 0, 1), 2px 2px 4px rgba(0, 0, 0, 1);
+    text-shadow: 0 2px 10px rgba(50, 50, 50, 0.8), 0 4px 20px rgba(50, 50, 50, 0.5);
 }
 
 .hero-subtitle {
@@ -30,7 +30,14 @@
     margin-bottom: 30px;
     opacity: 0.9;
     animation: fadeInUp 1s ease 0.2s both;
-    text-shadow: 6px 6px 12px rgba(0, 0, 0, 1), 4px 4px 8px rgba(0, 0, 0, 1), 2px 2px 4px rgba(0, 0, 0, 1);
+    text-shadow: 0 2px 10px rgba(50, 50, 50, 0.8), 0 4px 20px rgba(50, 50, 50, 0.5);
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .cta-button {
@@ -53,12 +60,169 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
+/* Scroll Down Indicator */
+.scroll-down-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    z-index: 10;
+    animation: fadeInUp 1s ease 0.6s both;
+}
+
+.arrow-down {
+    width: 30px;
+    height: 30px;
+    border-left: 3px solid white;
+    border-bottom: 3px solid white;
+    transform: rotate(-45deg);
+    animation: bounce 2s infinite;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: rotate(-45deg) translateY(0);
+    }
+
+    40% {
+        transform: rotate(-45deg) translateY(-10px);
+    }
+
+    60% {
+        transform: rotate(-45deg) translateY(-5px);
+    }
+}
+
+.scroll-down-indicator:hover .arrow-down {
+    border-color: #667eea;
+}
+
+/* Quadrant Cards */
+.hero-quadrant-cards {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.quadrant-card {
+    position: absolute;
+    width: 240px;
+    height: 140px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    pointer-events: auto;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        inset 0 2px 8px rgba(255, 255, 255, 0.1),
+        inset 0 -2px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeInScale 1s ease both;
+}
+
+.quadrant-card:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow:
+        0 12px 40px rgba(102, 126, 234, 0.4),
+        inset 0 2px 12px rgba(255, 255, 255, 0.2),
+        inset 0 -2px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Quadrant Positioning - Closer to center */
+.quadrant-card.top-left {
+    top: 20%;
+    left: 20%;
+    animation-delay: 0.2s;
+}
+
+.quadrant-card.top-right {
+    top: 20%;
+    right: 20%;
+    animation-delay: 0.4s;
+}
+
+.quadrant-card.bottom-left {
+    bottom: 20%;
+    left: 20%;
+    animation-delay: 0.6s;
+}
+
+.quadrant-card.bottom-right {
+    bottom: 20%;
+    right: 20%;
+    animation-delay: 0.8s;
+}
+
+/* Card Content */
+.card-gif-placeholder {
+    font-size: 4rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s ease;
+}
+
+.quadrant-card:hover .card-gif-placeholder {
+    transform: scale(1.15);
+}
+
+.card-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
 /* Three.js Container - Removed as we now use full screen background */
 
 /* Typing Cursor Animation */
 @keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
 }
 
 /* Mobile Responsive */
@@ -66,9 +230,33 @@
     .hero-title {
         font-size: 2.5rem;
     }
-    
+
     .hero-subtitle {
         font-size: 1.1rem;
+    }
+
+    /* Adjust quadrant cards for tablets */
+    .quadrant-card {
+        width: 140px;
+        height: 140px;
+    }
+
+    .card-gif-placeholder {
+        font-size: 3rem;
+    }
+
+    .card-label {
+        font-size: 0.9rem;
+    }
+
+    .quadrant-card.top-left,
+    .quadrant-card.top-right {
+        top: 8%;
+    }
+
+    .quadrant-card.bottom-left,
+    .quadrant-card.bottom-right {
+        bottom: 12%;
     }
 }
 
@@ -76,4 +264,10 @@
     .hero-title {
         font-size: 2rem;
     }
-} 
+
+    /* Hide quadrant cards on very small screens */
+    .hero-quadrant-cards,
+    .connecting-lines {
+        display: none;
+    }
+}

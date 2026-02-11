@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Homepage for Twikia Studios.">
     <meta name="keywords" content="3D, Three.js, WebGL, Interactive, Models, twikia, terrablitz, html, css, javascript">
     <meta name="author" content="Tai Polanowski">
-    
+
     <title>Twikia Studios</title>
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="src/icons/T-small.png">
-    
+
     <!-- Modular CSS -->
     <link rel="stylesheet" href="src/css/base.css">
     <link rel="stylesheet" href="src/css/header.css">
     <link rel="stylesheet" href="src/css/hero.css">
     <link rel="stylesheet" href="src/css/sections.css">
     <link rel="stylesheet" href="src/css/footer.css">
-    
+
     <!-- ES Module Shims for better browser compatibility -->
     <script async src="https://unpkg.com/es-module-shims@1.10.0"></script>
 
@@ -32,6 +33,7 @@
         }
     </script>
 </head>
+
 <body>
     <!-- Loading Screen -->
     <div id="loading-screen">
@@ -51,11 +53,11 @@
                 </a>
             </div>
             <ul class="nav-menu">
-                <li><a href="#play" class="nav-link">Play</a></li>
-                <li><a href="#socials" class="nav-link">Community</a></li>
-                <li><a href="#videos" class="nav-link">Videos</a></li>
+                <li><a href="#games" class="nav-link">Games</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#contact" class="nav-link">Community</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#videos" class="nav-link">Videos</a></li>
             </ul>
             <div class="hamburger">
                 <span class="bar"></span>
@@ -68,37 +70,101 @@
     <!-- Full Screen 3D Background Canvas -->
     <div id="threejs-background"></div>
 
+    <!-- Dark Overlay for Better Text Readability -->
+    <div id="background-overlay"></div>
+
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <!-- Quadrant Cards -->
+        <div class="hero-quadrant-cards">
+            <!-- Top Left - Games -->
+            <a href="#games" class="quadrant-card top-left">
+                <div class="card-gif-placeholder">🎮</div>
+                <div class="card-label">Games</div>
+            </a>
+
+            <!-- Top Right - Videos -->
+            <a href="#videos" class="quadrant-card top-right">
+                <div class="card-gif-placeholder">🎬</div>
+                <div class="card-label">Videos</div>
+            </a>
+
+            <!-- Bottom Left - About -->
+            <a href="#about" class="quadrant-card bottom-left">
+                <div class="card-gif-placeholder">👨‍💻</div>
+                <div class="card-label">About</div>
+            </a>
+
+            <!-- Bottom Right - Steam -->
+            <a href="https://store.steampowered.com/app/4298070/Dying_for_Parts/" target="_blank"
+                rel="noopener noreferrer" class="quadrant-card bottom-right">
+                <div class="card-gif-placeholder">🎯</div>
+                <div class="card-label">Steam</div>
+            </a>
+        </div>
+
         <div class="hero-content">
             <h1 class="hero-title">Welcome to Twikia Studios</h1>
-            <p class="hero-subtitle">Created by a student who wants to create free, exciting experiences for everyone!</p>
-            <button class="cta-button" onclick="scrollToSection('play')">Start Playing</button>
+            <p class="hero-subtitle">Creating the moments I loved as a kid, for the players of today.</p>
+            <!-- <div class="cta-buttons">
+                <button class="cta-button" onclick="scrollToSection('games')">Games!</button>
+                <button class="cta-button" onclick="scrollToSection('projects')">Projects!</button>
+            </div> -->
+        </div>
+        <div class="scroll-down-indicator" onclick="scrollToSection('games')">
+            <div class="arrow-down"></div>
         </div>
     </section>
 
-    <!-- Play Section -->
-    <section id="play" class="play">
+    <!-- Games Section -->
+    <section id="games" class="play">
         <div class="container">
+            <h2>Games</h2>
+            <div class="game-featured">
+                <div class="game-featured-main">
+                    <div class="steam-capsule-wrap">
+                        <img src="src/misc/BaseRobotWithLogov3.png" alt="Steam capsule" class="steam-capsule">
+                    </div>
+                    <div class="game-featured-actions">
+                        <a href="https://drive.google.com/drive/folders/1kidIFeQWLAk52fV60M0bYhxta80TnZPx?usp=sharing"
+                            class="game-action-link" target="_blank" rel="noopener noreferrer">Press Kit</a>
+                        <a href="https://store.steampowered.com/app/4298070/Dying_for_Parts/" class="game-action-link"
+                            target="_blank" rel="noopener noreferrer">Steam Page</a>
+                        <a href="https://forms.gle/mMavERM4uWtkxJpd8" class="game-action-link game-action-button"
+                            target="_blank" rel="noopener noreferrer">Feedback Form</a>
+                    </div>
+                </div>
+                <div class="game-gifs">
+                    <div class="game-gif-placeholder">Gif 1</div>
+                    <div class="game-gif-placeholder">Gif 2</div>
+                </div>
+                <div class="game-about-block">
+                    <h3>About the game</h3>
+                    <p>Placeholder for about the game.</p>
+                </div>
+            </div>
             <div class="play-content">
                 <div class="play-text-side">
                     <h2>Play Free Games!</h2>
                     <div class="play-text">
                         <p>
-                            TerraBlitz: Test your skills in a hardcore physics platformer - precision is everything!<br><br>
+                            TerraBlitz: Test your skills in a hardcore physics platformer - precision is
+                            everything!<br><br>
                             GitHub: 10+ free python games/exes along with a few other projects!
                         </p>
                     </div>
                 </div>
                 <div class="play-features">
-                    <a href="https://play.google.com/store/apps/details?id=com.twikiastudios.TerraBlitz&pcampaignid=web_share" class="feature" target="_blank" rel="noopener noreferrer">
+                    <a href="https://play.google.com/store/apps/details?id=com.twikiastudios.TerraBlitz&pcampaignid=web_share"
+                        class="feature" target="_blank" rel="noopener noreferrer">
                         <img src="src/icons/blazing_ball_nobg180.png" alt="TerraBlitz" class="feature-icon">
                         <div class="feature-content">
                             <h3>TerraBlitz - Android</h3>
                             <p>Play it now on Google Play!</p>
                         </div>
                     </a>
-                    <a href="https://apps.apple.com/us/app/terrablitz/id6748803271" class="feature" target="_blank" rel="noopener noreferrer">
+                    <a href="https://apps.apple.com/us/app/terrablitz/id6748803271" class="feature" target="_blank"
+                        rel="noopener noreferrer">
                         <img src="src/icons/blazing_ball_nobg180.png" alt="TerraBlitz" class="feature-icon">
                         <div class="feature-content">
                             <h3>TerraBlitz - IOS</h3>
@@ -117,45 +183,134 @@
         </div>
     </section>
 
-    <!-- Socials Section -->
-    <section id="socials" class="socials">
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="src/icons/portrait400.jpg" alt="Twikia Studios Logo">
+                </div>
+                <div class="about-text">
+                    <p>Hi, I'm Tai! I'm a Computer Science student at CU Boulder.
+                        I've always loved playing games like Deadlock, Overwatch, Subnautica, and Minecraft,
+                        which led me to create my own games, like TerraBlitz and Dying for Parts. When I'm not gaming or
+                        coding,
+                        you can usually find me at the gym, flying drones, or editing videos.
+                        My journey into tech started in high school when I fell in love with coding,
+                        since then I've applied this passion in professional software engineering/data
+                        science roles at companies like SMX and HandelStats. For a detailed look at my journey
+                        and projects, my resume and github are linked below.
+                    </p>
+                </div>
+            </div>
+            <div class="about-buttons">
+                <a href="https://drive.google.com/file/d/1r5RqI-H6Y-gTCT_XFo1NpUTQvu6Kasj0/view" class="my-button"
+                    target="_blank" rel="noopener noreferrer">
+                    📄 Open Resume
+                </a>
+                <a href="https://github.com/twikia" class="my-button github-button" target="_blank"
+                    rel="noopener noreferrer">
+                    💡 View My GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
         <div class="container">
             <h2>Join the Community!</h2>
             <div class="socials-content">
                 <div class="socials-text">
-                    <p>Connect with other members, stay updated, and share your thoughts! </p>
+                    <p>Connect with other members, stay updated, and share your thoughts! Ready to collaborate, get beta
+                        access, or just want to say hello? I'd love to hear from you!</p>
                 </div>
                 <div class="social-links">
-                    <a href="https://www.instagram.com/twikia_studios/" class="social-link" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.instagram.com/twikia_studios/" class="social-link" target="_blank"
+                        rel="noopener noreferrer">
                         <img src="src/icons/social_icons/ig_logo180x180.png" alt="Instagram" class="social-icon">
                         <h3>Instagram</h3>
                         <p>Gameplay and contact me!</p>
                     </a>
-                    <a href="https://discord.gg/vQdEHdub3A" class="social-link" target="_blank" rel="noopener noreferrer">
+                    <a href="https://discord.gg/vQdEHdub3A" class="social-link" target="_blank"
+                        rel="noopener noreferrer">
                         <img src="src/icons/social_icons/discord.png" alt="Discord" class="social-icon">
                         <h3>Discord</h3>
                         <p>Join our community!</p>
                     </a>
-                    <a href="https://www.tiktok.com/@twikia_studios" class="social-link" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.tiktok.com/@twikia_studios" class="social-link" target="_blank"
+                        rel="noopener noreferrer">
                         <img src="src/icons/social_icons/tiktok_logo_icon_189233.png" alt="TikTok" class="social-icon">
                         <h3>TikTok</h3>
                         <p>Gameplay and updates!</p>
                     </a>
-                    <a href="https://www.reddit.com/r/TerraBlitz/" class="social-link" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.reddit.com/r/TerraBlitz/" class="social-link" target="_blank"
+                        rel="noopener noreferrer">
                         <img src="src/icons/social_icons/REDDIT.png" alt="Reddit" class="social-icon">
                         <h3>Reddit</h3>
                         <p>Connect with other players!</p>
                     </a>
-                    <a href="https://www.youtube.com/@twikia_studios" class="social-link" target="_blank" rel="noopener noreferrer">
-                        <img src="src/icons/social_icons/youtube_logo_icon_168737.png" alt="YouTube" class="social-icon">
+                    <a href="https://www.youtube.com/@twikia_studios" class="social-link" target="_blank"
+                        rel="noopener noreferrer">
+                        <img src="src/icons/social_icons/youtube_logo_icon_168737.png" alt="YouTube"
+                            class="social-icon">
                         <h3>YouTube</h3>
                         <p>Gameplay and updates!</p>
                     </a>
-                    <a href="#contact" class="social-link">
-                        <img src="src/icons/social_icons/computer_icon.png" alt="Patreon" class="social-icon">
-                        <h3>Donate</h3>
-                        <p>Support the movement!</p>
+                    <a href="#" class="social-link"
+                        onclick="navigator.clipboard.writeText('twikiastudios@gmail.com').then(()=>{const t=this; t.querySelector('.email-feedback').textContent='Copied!'; setTimeout(()=>{t.querySelector('.email-feedback').textContent='';}, 1500);}); return false;">
+                        <img src="src/icons/social_icons/EmailBlue.png" alt="Email" class="social-icon">
+                        <h3>Email</h3>
+                        <p>Instagram dm's preferred but would love to hear from you!</p>
+                        <span class="email-feedback" aria-hidden="true"></span>
                     </a>
+                    <a href="https://ko-fi.com/twikia_studios" class="social-link" target="_blank"
+                        rel="noopener noreferrer">
+                        <img src="src/icons/social_icons/KOFI.png" alt="Ko-fi" class="social-icon">
+                        <h3>Ko-fi</h3>
+                        <p>Enjoying the content? Consider supporting the project</p>
+                    </a>
+                    <a href="https://buymeacoffee.com/twikia_studios" class="social-link" target="_blank"
+                        rel="noopener noreferrer">
+                        <img src="src/icons/social_icons/Buymeacoffee.png" alt="Buy Me a Coffee" class="social-icon">
+                        <h3>Buy me a coffee!</h3>
+                        <p>Support the next long coding session!</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="projects-header">
+                <a href="https://github.com/twikia" class="github-link" target="_blank" rel="noopener noreferrer">
+                    💡 View My GitHub
+                </a>
+            </div>
+            <div class="projects-grid">
+                <div class="project-item">
+                    <div class="project-gif-placeholder">Project GIF 1</div>
+                    <p class="project-description">Interactive Python game showcasing physics-based mechanics</p>
+                </div>
+                <div class="project-item">
+                    <div class="project-gif-placeholder">Project GIF 2</div>
+                    <p class="project-description">Web-based visualization tool with Three.js integration</p>
+                </div>
+                <div class="project-item">
+                    <div class="project-gif-placeholder">Project GIF 3</div>
+                    <p class="project-description">Machine learning model for data analysis and predictions</p>
+                </div>
+                <div class="project-item">
+                    <div class="project-gif-placeholder">Project GIF 4</div>
+                    <p class="project-description">Automated workflow system for content processing</p>
+                </div>
+                <div class="project-item">
+                    <div class="project-gif-placeholder">Project GIF 5</div>
+                    <p class="project-description">Custom API integration for social media analytics</p>
                 </div>
             </div>
         </div>
@@ -168,53 +323,50 @@
             <!-- Centered top text and first video -->
             <div class="videos-top">
                 <div class="videos-text">
-                    <p>Checkout some stunning drone and camera footage!</p>
+                    <p>Checkout some stunning drone and camera footage all filmed and edited by me!</p>
                 </div>
                 <div class="video-container">
                     <div class="video-wrapper">
-                        <iframe
-                            id="first-video"
-                            src="https://www.youtube.com/embed/ve1ExeEt8FE?enablejsapi=1"
-                            title="YouTube video player"
-                            frameborder="0"
+                        <iframe id="first-video" src="https://www.youtube.com/embed/ve1ExeEt8FE?enablejsapi=1"
+                            title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen
-                            class="video-iframe">
+                            allowfullscreen class="video-iframe">
                         </iframe>
                     </div>
                 </div>
             </div>
-                        <!-- Third video and feature cards side by side -->
+            <!-- Third video and feature cards side by side -->
             <div class="videos-middle">
                 <div class="video-container">
-                    <iframe
-                        width="315"
-                        height="560"
-                        src="https://www.youtube.com/embed/0eyda5ctrZU"
-                        title="YouTube video player"
-                        frameborder="0"
+                    <iframe width="315" height="560" src="https://www.youtube.com/embed/0eyda5ctrZU"
+                        title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen
-                        class="video-iframe-center">
+                        allowfullscreen class="video-iframe-center">
                     </iframe>
                 </div>
                 <div class="video-features">
-                    <a class="feature video-feature-card" href="https://www.instagram.com/twikia_drones_on?igsh=MXRkcWowN3p0Ym1pdQ==" target="_blank" rel="noopener noreferrer">
-                        <img src="src/icons/social_icons/ig_logo180x180.png" alt="Gameplay" class="feature-icon video-feature-icon">
+                    <a class="feature video-feature-card"
+                        href="https://www.instagram.com/twikia_drones_on?igsh=MXRkcWowN3p0Ym1pdQ==" target="_blank"
+                        rel="noopener noreferrer">
+                        <img src="src/icons/social_icons/ig_logo180x180.png" alt="Gameplay"
+                            class="feature-icon video-feature-icon">
                         <div class="feature-content">
                             <h3>Full Portfolio!</h3>
                             <p>All the best videos in one place!</p>
                         </div>
                     </a>
-                    <a class="feature video-feature-card" href="https://stock.adobe.com/contributor/212392998/twikia" target="_blank" rel="noopener noreferrer">
-                        <img src="src/icons/social_icons/adobe_stock.png" alt="Tutorials" class="feature-icon video-feature-icon">
+                    <a class="feature video-feature-card" href="https://stock.adobe.com/contributor/212392998/twikia"
+                        target="_blank" rel="noopener noreferrer">
+                        <img src="src/icons/social_icons/adobe_stock.png" alt="Tutorials"
+                            class="feature-icon video-feature-icon">
                         <div class="feature-content">
                             <h3>Stock Footage!</h3>
                             <p>Checkout some uncut footage on adobe stock!</p>
                         </div>
                     </a>
                     <a class="feature video-feature-card" href="#contact">
-                        <img src="src/icons/social_icons/computer_icon.png" alt="Behind the Scenes" class="feature-icon video-feature-icon">
+                        <img src="src/icons/social_icons/computer_icon.png" alt="Behind the Scenes"
+                            class="feature-icon video-feature-icon">
                         <div class="feature-content">
                             <h3>Collaborate!</h3>
                             <p>Contact me below and lets create!</p>
@@ -223,86 +375,21 @@
                 </div>
             </div>
             <!-- Second video full width below everything -->
-            
+
             <div class="video-container">
                 <div class="video-wrapper">
-                    <iframe
-                        src="https://www.youtube.com/embed/sZV5MClaq-4"
-                        title="YouTube video player"
-                        frameborder="0"
+                    <iframe src="https://www.youtube.com/embed/sZV5MClaq-4" title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen
-                        class="video-iframe">
+                        allowfullscreen class="video-iframe">
                     </iframe>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2>About</h2>
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="src/icons/portrait400.jpg" alt="Twikia Studios Logo">
-                </div>
-                <div class="about-text">
-                    <p>Hi, I'm Tai! I'm a Computer Science student at CU Boulder.
-                         I've always loved playing games like Deadlock, Overwatch, Subnautica, and Minecraft,
-                          which led me to create my own games, like TerraBlitz. When I’m not gaming or coding, 
-                          you can usually find me at the gym, flying drones, or creating 3d models. 
-                          My journey into tech started in high school when I fell in love with coding,
-                           since then I've applied this passion in professional software engineering/data 
-                           science roles at companies like SMX and HandelStats. For a detailed look at my journey
-                            and projects, my resume and github are linked below. 
-                    </p>
-                </div>
-            </div>
-            <div class="about-buttons">
-                <a href="src/misc/Tai_Polanowski_Resume 7-30-25.pdf" class="my-button" target="_blank" rel="noopener noreferrer">
-                    📄 Open Resume
-                </a>
-                <a href="https://github.com/twikia" class="my-button github-button" target="_blank" rel="noopener noreferrer">
-                    💡 View My GitHub
-                </a>
-            </div>
-        </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-text">
-                    <p>Ready to collaborate, get beta access, or just want to say hello? I'd love to hear from you!</p>
-                </div>
-                <div class="contact-methods">
-                    <div class="contact-method">
-                        <h3>💬 Instagram</h3>
-                        <p>Shot me a DM for feedback, beta access, and collaborations</p>
-                        <a href="https://www.instagram.com/twikia_studios/" class="contact-link" target="_blank" rel="noopener noreferrer">Instagram</a>
-                    </div>
-                    <div class="contact-method">
-                        <h3>📧 Email</h3>
-                        <p>Instagram perefered but would love to hear from you!</p>
-                        <a href="#" class="contact-link" onclick="navigator.clipboard.writeText('bytethebulletmobile@gmail.com').then(()=>{this.textContent='Copied!'; setTimeout(()=>{this.textContent='Email';}, 1500);}); return false;">Email</a>
-                    </div>
-                    <div class="contact-method">
-                        <h3>💙 Ko-fi</h3>
-                        <p>Enjoying the content? Consider supporting the project</p>
-                        <a href="https://ko-fi.com/twikia_studios" class="contact-link" target="_blank" rel="noopener noreferrer">Support on Ko-fi</a>
-                    </div>
-                    <div class="contact-method">
-                        <h3>☕ Buy me a coffee!</h3>
-                        <p>Support the next long coding session!</p>
-                        <a href="https://buymeacoffee.com/twikia_studios" class="contact-link" target="_blank" rel="noopener noreferrer">Buy me a coffee</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
+
 
     <!-- Footer -->
     <footer id="footer" class="footer">
@@ -312,33 +399,47 @@
                     <div class="footer-section">
                         <h4>Quick Links</h4>
                         <ul>
-                            <li><a href="https://www.instagram.com/twikia_studios/" target="_blank" rel="noopener noreferrer">Studios IG</a></li>
-                            <li><a href="https://www.tiktok.com/@twikia_studios" target="_blank" rel="noopener noreferrer">TikTok</a></li>
-                            <li><a href="https://github.com/twikia" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-                            <li><a href="https://www.instagram.com/twikia_drones_on?igsh=MXRkcWowN3p0Ym1pdQ==" target="_blank" rel="noopener noreferrer">Videography IG</a></li>
-                            <li><a href="src/misc/Tai_Polanowski_Resume 7-30-25.pdf" download="Tai_Resume.pdf">Download Resume</a></li>
+                            <li><a href="https://www.instagram.com/twikia_studios/" target="_blank"
+                                    rel="noopener noreferrer">Studios IG</a></li>
+                            <li><a href="https://www.tiktok.com/@twikia_studios" target="_blank"
+                                    rel="noopener noreferrer">TikTok</a></li>
+                            <li><a href="https://github.com/twikia" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            </li>
+                            <li><a href="https://www.instagram.com/twikia_drones_on?igsh=MXRkcWowN3p0Ym1pdQ=="
+                                    target="_blank" rel="noopener noreferrer">Videography IG</a></li>
+                            <li><a href="src/misc/Tai_Polanowski_Resume 7-30-25.pdf" download="Tai_Resume.pdf">Download
+                                    Resume</a></li>
                         </ul>
                     </div>
                     <div class="footer-section">
                         <h4>Support The Community!</h4>
-                        <p>Enjoying the content? I believe in creating free content, with little to no ads, and no paywalls.
-                            Your support makes that possible and helps me dedicate more time to new projects. 
-                            If you had some fun, consider donating a coffee! 
-                            <br>☕ <a href="https://ko-fi.com/twikia_studios" class="footer-support-link" target="_blank" rel="noopener noreferrer">Support on Ko-fi</a><span>&nbsp;&nbsp;</span><a href="https://buymeacoffee.com/twikia_studios" class="footer-support-link" target="_blank" rel="noopener noreferrer">Buy me a coffee</a></p>
+                        <p>Enjoying the content? I believe in creating free content, with little to no ads, and no
+                            paywalls.
+                            Your support makes that possible and helps me dedicate more time to new projects.
+                            If you had some fun, consider donating a coffee!
+                            <br>☕ <a href="https://ko-fi.com/twikia_studios" class="footer-support-link" target="_blank"
+                                rel="noopener noreferrer">Support on Ko-fi</a><span>&nbsp;&nbsp;</span><a
+                                href="https://buymeacoffee.com/twikia_studios" class="footer-support-link"
+                                target="_blank" rel="noopener noreferrer">Buy me a coffee</a>
+                        </p>
                     </div>
                     <div class="footer-section">
                         <h4>Get Involved!</h4>
                         <ul>
-                            <li><a href="https://www.instagram.com/twikia_studios/" target="_blank" rel="noopener noreferrer">Contact</a></li>
-                            <li><a href="https://discord.gg/vQdEHdub3A" target="_blank" rel="noopener noreferrer">Discord Community</a></li>
-                            <li><a href="#play">Play Free Games</a></li>
-                            <li><a href="#socials">Join the Community</a></li>
+                            <li><a href="https://www.instagram.com/twikia_studios/" target="_blank"
+                                    rel="noopener noreferrer">Contact</a></li>
+                            <li><a href="https://discord.gg/vQdEHdub3A" target="_blank"
+                                    rel="noopener noreferrer">Discord Community</a></li>
+                            <li><a href="#games">Play Free Games</a></li>
+                            <li><a href="#contact">Join the Community</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Twikia Studios. All rights reserved. | <a href="privacy_policy.html">Privacy Policy</a> | <a href="disclaimer.html">Disclaimer</a></p>
+                <p>&copy; 2025 Twikia Studios. All rights reserved. | <a href="privacy_policy.html">Privacy Policy</a> |
+                    <a href="disclaimer.html">Disclaimer</a>
+                </p>
             </div>
         </div>
     </footer>
@@ -349,4 +450,5 @@
     <script src="src/js/ui.js"></script>
     <script src="src/js/typing-animation.js"></script>
 </body>
+
 </html>
