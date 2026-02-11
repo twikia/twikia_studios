@@ -11,7 +11,7 @@
     <title>Twikia Studios</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="src/icons/T-small.png">
+    <link rel="icon" type="image/webp" href="src/icons/T-small.webp">
 
     <!-- Modular CSS -->
     <link rel="stylesheet" href="src/css/base.css">
@@ -35,21 +35,13 @@
 </head>
 
 <body>
-    <!-- Loading Screen -->
-    <div id="loading-screen">
-        <div class="loading-content">
-            <div class="spinner"></div>
-            <h2>Loading 3D Experience...</h2>
-            <p>Please wait while we prepare your immersive journey</p>
-        </div>
-    </div>
 
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
                 <a href="#home" class="logo-link">
-                    <img src="src/icons/stuidos logo reuce size.png" alt="TerraBlitz Logo" class="logo-image">
+                    <img src="src/icons/stuidos logo reuce size.webp" alt="TerraBlitz Logo" class="logo-image">
                 </a>
             </div>
             <ul class="nav-menu">
@@ -77,32 +69,43 @@
     <section id="home" class="hero">
         <!-- Quadrant Cards -->
         <div class="hero-quadrant-cards">
-            <!-- Top Left - Games -->
-            <a href="#games" class="quadrant-card top-left">
-                <div class="card-gif-placeholder">🎮</div>
-                <div class="card-label">Games</div>
-            </a>
+            <!-- Top Left - Steam -->
+            <div class="card-container top-left">
+                <a href="https://store.steampowered.com/app/4298070/Dying_for_Parts/" target="_blank"
+                    rel="noopener noreferrer" class="quadrant-card top-left">
+                    <video autoplay muted loop playsinline preload="metadata" class="card-video">
+                        <source src="src/Vids/DFP quick action (3).webm" type="video/webm">
+                    </video>
+                </a>
+                <div class="card-label">DFP on Steam</div>
+            </div>
 
-            <!-- Top Right - Videos -->
-            <a href="#videos" class="quadrant-card top-right">
-                <div class="card-gif-placeholder">🎬</div>
+            <!-- Top Right - Projects -->
+            <div class="card-container top-right">
+                <a href="#projects" class="quadrant-card top-right">
+                    <div class="card-gif-placeholder">�</div>
+                </a>
+                <div class="card-label">Projects</div>
+            </div>
+
+            <!-- Bottom Left - Videos -->
+            <div class="card-container bottom-left">
+                <a href="#videos" class="quadrant-card bottom-left">
+                    <video autoplay muted loop playsinline preload="metadata" class="card-video">
+                        <source src="src/Vids/VideosGif (1).webm" type="video/webm">
+                    </video>
+                </a>
                 <div class="card-label">Videos</div>
-            </a>
+            </div>
 
-            <!-- Bottom Left - About -->
-            <a href="#about" class="quadrant-card bottom-left">
-                <div class="card-gif-placeholder">👨‍💻</div>
-                <div class="card-label">About</div>
-            </a>
-
-            <!-- Bottom Right - Steam -->
-            <a href="https://store.steampowered.com/app/4298070/Dying_for_Parts/" target="_blank"
-                rel="noopener noreferrer" class="quadrant-card bottom-right">
-                <div class="card-gif-placeholder">🎯</div>
-                <div class="card-label">Steam</div>
-            </a>
+            <!-- Bottom Right - About -->
+            <div class="card-container bottom-right">
+                <a href="#about" class="quadrant-card bottom-right">
+                    <div class="card-gif-placeholder">👨‍💻</div>
+                </a>
+                <div class="card-label">Meet Me</div>
+            </div>
         </div>
-
         <div class="hero-content">
             <h1 class="hero-title">Welcome to Twikia Studios</h1>
             <p class="hero-subtitle">Creating the moments I loved as a kid, for the players of today.</p>
@@ -148,16 +151,16 @@
                     <h2>Play Free Games!</h2>
                     <div class="play-text">
                         <p>
-                            TerraBlitz: Test your skills in a hardcore physics platformer - precision is
+                            TerraBlitz: Test your skills in a hardcore physics platformer, precision is
                             everything!<br><br>
-                            GitHub: 10+ free python games/exes along with a few other projects!
+                            GitHub: Free python games/exes along with a few other projects!
                         </p>
                     </div>
                 </div>
                 <div class="play-features">
                     <a href="https://play.google.com/store/apps/details?id=com.twikiastudios.TerraBlitz&pcampaignid=web_share"
                         class="feature" target="_blank" rel="noopener noreferrer">
-                        <img src="src/icons/blazing_ball_nobg180.png" alt="TerraBlitz" class="feature-icon">
+                        <img src="src/icons/blazing_ball_nobg180.webp" alt="TerraBlitz" class="feature-icon">
                         <div class="feature-content">
                             <h3>TerraBlitz - Android</h3>
                             <p>Play it now on Google Play!</p>
@@ -165,14 +168,14 @@
                     </a>
                     <a href="https://apps.apple.com/us/app/terrablitz/id6748803271" class="feature" target="_blank"
                         rel="noopener noreferrer">
-                        <img src="src/icons/blazing_ball_nobg180.png" alt="TerraBlitz" class="feature-icon">
+                        <img src="src/icons/blazing_ball_nobg180.webp" alt="TerraBlitz" class="feature-icon">
                         <div class="feature-content">
                             <h3>TerraBlitz - IOS</h3>
                             <p>Play it now on the App Store!</p>
                         </div>
                     </a>
                     <a href="https://github.com/twikia" class="feature" target="_blank" rel="noopener noreferrer">
-                        <img src="src/icons/python_icon.png" alt="TerraBlitz" class="feature-icon">
+                        <img src="src/icons/python_icon.webp" alt="TerraBlitz" class="feature-icon">
                         <div class="feature-content">
                             <h3>GitHub - Windows/Linux/Mac</h3>
                             <p>Try out games and checkout the source code too!</p>
@@ -189,7 +192,7 @@
             <h2>About</h2>
             <div class="about-content">
                 <div class="about-image">
-                    <img src="src/icons/portrait400.jpg" alt="Twikia Studios Logo">
+                    <img src="src/icons/portrait400.webp" alt="Twikia Studios Logo">
                 </div>
                 <div class="about-text">
                     <p>Hi, I'm Tai! I'm a Computer Science student at CU Boulder.
@@ -229,51 +232,51 @@
                 <div class="social-links">
                     <a href="https://www.instagram.com/twikia_studios/" class="social-link" target="_blank"
                         rel="noopener noreferrer">
-                        <img src="src/icons/social_icons/ig_logo180x180.png" alt="Instagram" class="social-icon">
+                        <img src="src/icons/social_icons/ig_logo180x180.webp" alt="Instagram" class="social-icon">
                         <h3>Instagram</h3>
                         <p>Gameplay and contact me!</p>
                     </a>
                     <a href="https://discord.gg/vQdEHdub3A" class="social-link" target="_blank"
                         rel="noopener noreferrer">
-                        <img src="src/icons/social_icons/discord.png" alt="Discord" class="social-icon">
+                        <img src="src/icons/social_icons/discord.webp" alt="Discord" class="social-icon">
                         <h3>Discord</h3>
                         <p>Join our community!</p>
                     </a>
                     <a href="https://www.tiktok.com/@twikia_studios" class="social-link" target="_blank"
                         rel="noopener noreferrer">
-                        <img src="src/icons/social_icons/tiktok_logo_icon_189233.png" alt="TikTok" class="social-icon">
+                        <img src="src/icons/social_icons/tiktok_logo_icon_189233.webp" alt="TikTok" class="social-icon">
                         <h3>TikTok</h3>
                         <p>Gameplay and updates!</p>
                     </a>
                     <a href="https://www.reddit.com/r/TerraBlitz/" class="social-link" target="_blank"
                         rel="noopener noreferrer">
-                        <img src="src/icons/social_icons/REDDIT.png" alt="Reddit" class="social-icon">
+                        <img src="src/icons/social_icons/REDDIT.webp" alt="Reddit" class="social-icon">
                         <h3>Reddit</h3>
                         <p>Connect with other players!</p>
                     </a>
                     <a href="https://www.youtube.com/@twikia_studios" class="social-link" target="_blank"
                         rel="noopener noreferrer">
-                        <img src="src/icons/social_icons/youtube_logo_icon_168737.png" alt="YouTube"
+                        <img src="src/icons/social_icons/youtube_logo_icon_168737.webp" alt="YouTube"
                             class="social-icon">
                         <h3>YouTube</h3>
                         <p>Gameplay and updates!</p>
                     </a>
                     <a href="#" class="social-link"
                         onclick="navigator.clipboard.writeText('twikiastudios@gmail.com').then(()=>{const t=this; t.querySelector('.email-feedback').textContent='Copied!'; setTimeout(()=>{t.querySelector('.email-feedback').textContent='';}, 1500);}); return false;">
-                        <img src="src/icons/social_icons/EmailBlue.png" alt="Email" class="social-icon">
+                        <img src="src/icons/social_icons/EmailBlue.webp" alt="Email" class="social-icon">
                         <h3>Email</h3>
                         <p>Instagram dm's preferred but would love to hear from you!</p>
                         <span class="email-feedback" aria-hidden="true"></span>
                     </a>
                     <a href="https://ko-fi.com/twikia_studios" class="social-link" target="_blank"
                         rel="noopener noreferrer">
-                        <img src="src/icons/social_icons/KOFI.png" alt="Ko-fi" class="social-icon">
+                        <img src="src/icons/social_icons/KOFI.webp" alt="Ko-fi" class="social-icon">
                         <h3>Ko-fi</h3>
                         <p>Enjoying the content? Consider supporting the project</p>
                     </a>
                     <a href="https://buymeacoffee.com/twikia_studios" class="social-link" target="_blank"
                         rel="noopener noreferrer">
-                        <img src="src/icons/social_icons/Buymeacoffee.png" alt="Buy Me a Coffee" class="social-icon">
+                        <img src="src/icons/social_icons/Buymeacoffee.webp" alt="Buy Me a Coffee" class="social-icon">
                         <h3>Buy me a coffee!</h3>
                         <p>Support the next long coding session!</p>
                     </a>
@@ -330,7 +333,7 @@
                         <iframe id="first-video" src="https://www.youtube.com/embed/ve1ExeEt8FE?enablejsapi=1"
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen class="video-iframe">
+                            allowfullscreen class="video-iframe" loading="lazy">
                         </iframe>
                     </div>
                 </div>
@@ -341,14 +344,14 @@
                     <iframe width="315" height="560" src="https://www.youtube.com/embed/0eyda5ctrZU"
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen class="video-iframe-center">
+                        allowfullscreen class="video-iframe-center" loading="lazy">
                     </iframe>
                 </div>
                 <div class="video-features">
                     <a class="feature video-feature-card"
                         href="https://www.instagram.com/twikia_drones_on?igsh=MXRkcWowN3p0Ym1pdQ==" target="_blank"
                         rel="noopener noreferrer">
-                        <img src="src/icons/social_icons/ig_logo180x180.png" alt="Gameplay"
+                        <img src="src/icons/social_icons/ig_logo180x180.webp" alt="Gameplay"
                             class="feature-icon video-feature-icon">
                         <div class="feature-content">
                             <h3>Full Portfolio!</h3>
@@ -357,7 +360,7 @@
                     </a>
                     <a class="feature video-feature-card" href="https://stock.adobe.com/contributor/212392998/twikia"
                         target="_blank" rel="noopener noreferrer">
-                        <img src="src/icons/social_icons/adobe_stock.png" alt="Tutorials"
+                        <img src="src/icons/social_icons/adobe_stock.webp" alt="Stock Footage"
                             class="feature-icon video-feature-icon">
                         <div class="feature-content">
                             <h3>Stock Footage!</h3>
@@ -365,7 +368,7 @@
                         </div>
                     </a>
                     <a class="feature video-feature-card" href="#contact">
-                        <img src="src/icons/social_icons/computer_icon.png" alt="Behind the Scenes"
+                        <img src="src/icons/social_icons/computer_icon.webp" alt="Behind the Scenes"
                             class="feature-icon video-feature-icon">
                         <div class="feature-content">
                             <h3>Collaborate!</h3>
@@ -380,7 +383,7 @@
                 <div class="video-wrapper">
                     <iframe src="https://www.youtube.com/embed/sZV5MClaq-4" title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen class="video-iframe">
+                        allowfullscreen class="video-iframe" loading="lazy">
                     </iframe>
                 </div>
             </div>
@@ -448,7 +451,6 @@
     <script src="src/js/main.js"></script>
     <script type="module" src="src/js/three-scene.js"></script>
     <script src="src/js/ui.js"></script>
-    <script src="src/js/typing-animation.js"></script>
 </body>
 
 </html>

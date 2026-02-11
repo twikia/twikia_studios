@@ -6,26 +6,23 @@ let isLoading = true;
 let isScrolling = false;
 
 // DOM Content Loaded
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     console.log('TerraBlitz 3D Website loaded');
-    
+
     // Initialize the website
     initWebsite();
-    
+
     // Initialize navigation
     initNavigation();
-    
-    // Initialize loading screen
-    initLoadingScreen();
 });
 
 // Initialize website
 function initWebsite() {
     console.log('Initializing TerraBlitz website...');
-    
+
     // Add resize event listener
     window.addEventListener('resize', handleWindowResize);
-    
+
     // add smooth scrolling
     initSmoothScrolling();
 
@@ -33,25 +30,11 @@ function initWebsite() {
     initVideoAutoplay();
 }
 
-// Initialize loading screen
-function initLoadingScreen() {
-    const loadingScreen = document.getElementById('loading-screen');
-    
-    // Simulate loading time (you can replace this with actual loading logic)
-    setTimeout(() => {
-        loadingScreen.style.opacity = '0';
-        setTimeout(() => {
-            loadingScreen.style.display = 'none';
-            isLoading = false;
-        }, 500);
-    }, 2000);
-}
-
 // Initialize navigation
 function initNavigation() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
-    
+
     if (hamburger && navMenu) {
         if (window.innerWidth > 768) {
             hamburger.classList.add('active');
@@ -84,9 +67,9 @@ function smoothScrollTo(element, duration = 1000) {
     if (isScrolling) {
         return;
     }
-    
+
     isScrolling = true;
-    
+
     const targetPosition = element.offsetTop;
     const startPosition = window.scrollY;
     const distance = targetPosition - startPosition;
@@ -134,12 +117,12 @@ function handleWindowResize() {
 // Initialize video autoplay functionality
 function initVideoAutoplay() {
     const firstVideo = document.getElementById('first-video');
-    
+
     if (!firstVideo) {
         console.log('First video element not found');
         return;
     }
-    
+
     // Create intersection observer for the first video
     const videoObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -148,8 +131,8 @@ function initVideoAutoplay() {
                 const currentSrc = firstVideo.src;
                 if (!currentSrc.includes('autoplay=1')) {
                     // YouTube requires mute=1 for autoplay to work reliably
-                    const newSrc = currentSrc.includes('?') 
-                        ? currentSrc + '&autoplay=1&mute=1' 
+                    const newSrc = currentSrc.includes('?')
+                        ? currentSrc + '&autoplay=1&mute=1'
                         : currentSrc + '?autoplay=1&mute=1';
                     firstVideo.src = newSrc;
                     console.log('Autoplay enabled for first video');
@@ -162,7 +145,7 @@ function initVideoAutoplay() {
         threshold: 0.5, // Trigger when 30% of video is visible
         rootMargin: '0px 0px -100px 0px'
     });
-    
+
     // Start observing the first video
     videoObserver.observe(firstVideo);
 }

@@ -4,6 +4,8 @@
     color: white;
     padding: 60px 0 20px;
     text-align: center;
+    position: relative;
+    z-index: 2;
 }
 
 .footer-content {
@@ -27,7 +29,7 @@
 .footer-section h3,
 .footer-section h4 {
     margin-bottom: 20px;
-    color: #667eea;
+    color: #a4b4ff;
 }
 
 .footer-section ul {
@@ -41,13 +43,13 @@
 }
 
 .footer-section ul li a {
-    color: #bdc3c7;
+    color: #dfe4e8;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .footer-section ul li a:hover {
-    color: #667eea;
+    color: #a4b4ff;
 }
 
 /* Footer Links Row */
@@ -72,12 +74,12 @@
     text-align: center;
     padding-top: 20px;
     border-top: 1px solid #34495e;
-    color: #bdc3c7;
+    color: #dfe4e8;
     margin-top: 20px;
 }
 
 .footer-bottom a {
-    color: #667eea;
+    color: #a4b4ff;
     text-decoration: none;
 }
 
@@ -86,15 +88,15 @@
     .footer-content {
         gap: 30px;
     }
-    
+
     .footer {
         padding: 40px 0 20px;
     }
-    
+
     .footer-section {
         max-width: 100%;
     }
-    
+
     .footer-links-row {
         flex-direction: column;
         gap: 20px;
@@ -116,7 +118,7 @@
 
 /* Make the support section paragraph have proper spacing */
 .footer-section p {
-    color: #bdc3c7;
+    color: #dfe4e8;
     line-height: 1.6;
     margin-bottom: 15px;
 }
@@ -128,4 +130,4 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-} 
+}

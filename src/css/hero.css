@@ -19,17 +19,17 @@
 .hero-title {
     font-size: 3.5rem;
     font-weight: 700;
-    margin-bottom: 20px;
-    animation: fadeInUp 1s ease;
+    margin-bottom: 0px;
+    animation: fadeInUp 0.6s ease;
     position: relative;
     text-shadow: 0 2px 10px rgba(50, 50, 50, 0.8), 0 4px 20px rgba(50, 50, 50, 0.5);
 }
 
 .hero-subtitle {
     font-size: 1.3rem;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     opacity: 0.9;
-    animation: fadeInUp 1s ease 0.2s both;
+    animation: fadeInUp 0.6s ease 0.1s both;
     text-shadow: 0 2px 10px rgba(50, 50, 50, 0.8), 0 4px 20px rgba(50, 50, 50, 0.5);
 }
 
@@ -115,8 +115,41 @@
     z-index: 1;
 }
 
-.quadrant-card {
+.card-container {
     position: absolute;
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-container.top-left {
+    top: 30%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+}
+
+.card-container.top-right {
+    top: 30%;
+    right: 25%;
+    transform: translate(50%, -50%);
+}
+
+.card-container.bottom-left {
+    bottom: 25%;
+    left: 25%;
+    transform: translate(-50%, 50%);
+}
+
+.card-container.bottom-right {
+    bottom: 25%;
+    right: 25%;
+    transform: translate(50%, 50%);
+}
+
+.quadrant-card {
+    position: relative;
     width: 240px;
     height: 140px;
     background: rgba(255, 255, 255, 0.15);
@@ -151,32 +184,7 @@
         inset 0 -2px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Quadrant Positioning - Closer to center */
-.quadrant-card.top-left {
-    top: 20%;
-    left: 20%;
-    animation-delay: 0.2s;
-}
 
-.quadrant-card.top-right {
-    top: 20%;
-    right: 20%;
-    animation-delay: 0.4s;
-}
-
-.quadrant-card.bottom-left {
-    bottom: 20%;
-    left: 20%;
-    animation-delay: 0.6s;
-}
-
-.quadrant-card.bottom-right {
-    bottom: 20%;
-    right: 20%;
-    animation-delay: 0.8s;
-}
-
-/* Card Content */
 .card-gif-placeholder {
     font-size: 4rem;
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
@@ -193,6 +201,24 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    color: white;
+    text-align: center;
+}
+
+/* Card Video */
+.card-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    opacity: 0.8;
+}
+
+.quadrant-card:hover .card-video {
+    opacity: 1;
 }
 
 

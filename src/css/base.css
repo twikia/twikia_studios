@@ -16,6 +16,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
+    background-color: #000;
     overflow-x: hidden;
     position: relative;
 }
@@ -28,6 +29,18 @@ body {
     width: 100vw;
     height: 100vh;
     z-index: -1;
+    pointer-events: none;
+}
+
+/* Dark Overlay for Better Text Readability */
+#background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 0;
     pointer-events: none;
 }
 
@@ -58,6 +71,7 @@ section.contact {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -65,8 +79,13 @@ section.contact {
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* Focus Management */
