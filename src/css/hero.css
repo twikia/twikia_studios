@@ -126,64 +126,72 @@
 
 .card-container.top-left {
     top: 30%;
-    left: 25%;
+    left: 30%;
     transform: translate(-50%, -50%);
 }
 
 .card-container.top-right {
     top: 30%;
-    right: 25%;
+    right: 30%;
     transform: translate(50%, -50%);
 }
 
 .card-container.bottom-left {
     bottom: 25%;
-    left: 25%;
+    left: 30%;
     transform: translate(-50%, 50%);
 }
 
 .card-container.bottom-right {
     bottom: 25%;
-    right: 25%;
+    right: 30%;
     transform: translate(50%, 50%);
 }
 
 .quadrant-card {
     position: relative;
     width: 240px;
-    height: 140px;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    pointer-events: auto;
+    height: 135px;
+    border-radius: 24px;
     cursor: pointer;
-    text-decoration: none;
-    color: white;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.2),
-        inset 0 2px 8px rgba(255, 255, 255, 0.1),
-        inset 0 -2px 8px rgba(0, 0, 0, 0.1);
-    animation: fadeInScale 1s ease both;
+    overflow: hidden;
+    transition: transform 0.3s ease;
 }
+
+/* Disabled - was causing white overlay on videos */
+/* .quadrant-card::before removed to prevent video washout */
 
 .quadrant-card:hover {
-    transform: scale(1.1);
-    background: rgba(255, 255, 255, 0.25);
-    border-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.05);
     box-shadow:
-        0 12px 40px rgba(102, 126, 234, 0.4),
-        inset 0 2px 12px rgba(255, 255, 255, 0.2),
-        inset 0 -2px 12px rgba(0, 0, 0, 0.15);
+        0 12px 40px rgba(102, 80, 234, 0.6),
+        0 6px 20px rgba(80, 60, 180, 0.4);
 }
 
+/* Card Size Variations - Visual Hierarchy */
+/* Steam - Most Important (Largest) */
+.quadrant-card.top-left {
+    width: 300px;
+    height: 170px;
+}
+
+/* Projects - Second Priority (Large) */
+.quadrant-card.top-right {
+    width: 270px;
+    height: 155px;
+}
+
+/* Videos - Third Priority (Medium) */
+.quadrant-card.bottom-left {
+    width: 250px;
+    height: 145px;
+}
+
+/* Games - Fourth Priority (Standard) */
+.quadrant-card.bottom-right {
+    width: 230px;
+    height: 135px;
+}
 
 .card-gif-placeholder {
     font-size: 4rem;
@@ -196,16 +204,28 @@
 }
 
 .card-label {
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 1.05rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.8),
+        0 4px 12px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(0, 0, 0, 0.3);
     color: white;
     text-align: center;
+    transition: all 0.3s ease;
 }
 
-/* Card Video */
+.card-container:hover .card-label {
+    letter-spacing: 3px;
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.9),
+        0 4px 16px rgba(102, 126, 234, 0.6),
+        0 0 30px rgba(102, 126, 234, 0.4);
+}
+
+/* Card Video - Minimal styling for clean display */
 .card-video {
     position: absolute;
     top: 0;
@@ -213,12 +233,11 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 20px;
-    opacity: 0.8;
+    border-radius: 24px;
 }
 
 .quadrant-card:hover .card-video {
-    opacity: 1;
+    transform: scale(1.01);
 }
 
 
@@ -261,10 +280,25 @@
         font-size: 1.1rem;
     }
 
-    /* Adjust quadrant cards for tablets */
-    .quadrant-card {
+    /* Adjust quadrant cards for tablets - maintain hierarchy */
+    .quadrant-card.top-left {
+        width: 180px;
+        height: 105px;
+    }
+
+    .quadrant-card.top-right {
+        width: 165px;
+        height: 95px;
+    }
+
+    .quadrant-card.bottom-left {
+        width: 155px;
+        height: 90px;
+    }
+
+    .quadrant-card.bottom-right {
         width: 140px;
-        height: 140px;
+        height: 85px;
     }
 
     .card-gif-placeholder {

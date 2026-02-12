@@ -74,7 +74,7 @@
                 <a href="https://store.steampowered.com/app/4298070/Dying_for_Parts/" target="_blank"
                     rel="noopener noreferrer" class="quadrant-card top-left">
                     <video autoplay muted loop playsinline preload="metadata" class="card-video">
-                        <source src="src/Vids/DFP quick action (3).webm" type="video/webm">
+                        <source src="src/Vids/HomeScreen/DFP quick 360 20fp.webm" type="video/webm">
                     </video>
                 </a>
                 <div class="card-label">DFP on Steam</div>
@@ -83,7 +83,9 @@
             <!-- Top Right - Projects -->
             <div class="card-container top-right">
                 <a href="#projects" class="quadrant-card top-right">
-                    <div class="card-gif-placeholder">�</div>
+                    <video autoplay muted loop playsinline preload="metadata" class="card-video">
+                        <source src="src/Vids/HomeScreen/ProjectsGif.webm" type="video/webm">
+                    </video>
                 </a>
                 <div class="card-label">Projects</div>
             </div>
@@ -92,18 +94,20 @@
             <div class="card-container bottom-left">
                 <a href="#videos" class="quadrant-card bottom-left">
                     <video autoplay muted loop playsinline preload="metadata" class="card-video">
-                        <source src="src/Vids/VideosGif (1).webm" type="video/webm">
+                        <source src="src/Vids/HomeScreen/VideosGif (1).webm" type="video/webm">
                     </video>
                 </a>
                 <div class="card-label">Videos</div>
             </div>
 
-            <!-- Bottom Right - About -->
+            <!-- Bottom Right - Games -->
             <div class="card-container bottom-right">
-                <a href="#about" class="quadrant-card bottom-right">
-                    <div class="card-gif-placeholder">👨‍💻</div>
+                <a href="#games" class="quadrant-card bottom-right">
+                    <video autoplay muted loop playsinline preload="metadata" class="card-video">
+                        <source src="src/Vids/HomeScreen/GamesGIF.webm" type="video/webm">
+                    </video>
                 </a>
-                <div class="card-label">Meet Me</div>
+                <div class="card-label">Games</div>
             </div>
         </div>
         <div class="hero-content">
@@ -124,63 +128,93 @@
         <div class="container">
             <h2>Games</h2>
             <div class="game-featured">
-                <div class="game-featured-main">
-                    <div class="steam-capsule-wrap">
-                        <img src="src/misc/BaseRobotWithLogov3.png" alt="Steam capsule" class="steam-capsule">
+                <div class="game-featured-card">
+                    <a href="https://store.steampowered.com/app/4298070/Dying_for_Parts/" target="_blank"
+                        rel="noopener noreferrer" class="game-featured-image-link">
+                        <div class="game-featured-image">
+                            <img src="src/ProjectImages/BaseRobotWithLogov3.webp" alt="Dying for Parts"
+                                class="featured-game-img">
+                        </div>
+                    </a>
+                    <div class="game-featured-description">
+                        <p>Adapt or be scrapped. In this Roguelite FPS, you are trapped in a merciless junkyard fight
+                            club where movement is a weapon. Survive relentless mutated machines, scavenge their parts,
+                            and evolve into the ultimate killing machine.</p>
                     </div>
                     <div class="game-featured-actions">
                         <a href="https://drive.google.com/drive/folders/1kidIFeQWLAk52fV60M0bYhxta80TnZPx?usp=sharing"
-                            class="game-action-link" target="_blank" rel="noopener noreferrer">Press Kit</a>
-                        <a href="https://store.steampowered.com/app/4298070/Dying_for_Parts/" class="game-action-link"
-                            target="_blank" rel="noopener noreferrer">Steam Page</a>
-                        <a href="https://forms.gle/mMavERM4uWtkxJpd8" class="game-action-link game-action-button"
-                            target="_blank" rel="noopener noreferrer">Feedback Form</a>
+                            class="game-action-btn press-kit-btn" target="_blank" rel="noopener noreferrer">📄 Press
+                            Kit</a>
+                        <a href="https://store.steampowered.com/app/4298070/Dying_for_Parts/"
+                            class="game-action-btn steam-btn" target="_blank" rel="noopener noreferrer">🎮 Steam
+                            Page</a>
+                        <a href="https://forms.gle/mMavERM4uWtkxJpd8" class="game-action-btn feedback-btn"
+                            target="_blank" rel="noopener noreferrer">💬 Feedback Form</a>
                     </div>
                 </div>
-                <div class="game-gifs">
-                    <div class="game-gif-placeholder">Gif 1</div>
-                    <div class="game-gif-placeholder">Gif 2</div>
-                </div>
-                <div class="game-about-block">
-                    <h3>About the game</h3>
-                    <p>Placeholder for about the game.</p>
-                </div>
             </div>
-            <div class="play-content">
-                <div class="play-text-side">
-                    <h2>Play Free Games!</h2>
-                    <div class="play-text">
-                        <p>
-                            TerraBlitz: Test your skills in a hardcore physics platformer, precision is
-                            everything!<br><br>
-                            GitHub: Free python games/exes along with a few other projects!
+            <div class="game-showcase">
+                <div class="game-showcase-card">
+                    <div class="game-video-container">
+                        <iframe
+                            src="https://www.youtube.com/embed/8M3chwBWwTA?enablejsapi=1&mute=1&loop=1&playlist=8M3chwBWwTA&controls=0&modestbranding=1&rel=0"
+                            title="Dying for Parts Gameplay" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen class="game-showcase-video">
+                        </iframe>
+                    </div>
+                    <div class="game-details">
+                        <h3>Dying for Parts Development</h3>
+                        <p>Dying for Parts is being made in Unreal Engine 5.6 with blueprints and c++. It is a
+                            fast-paced FPS experience where every decision matters. Scavenge parts from fallen
+                            enemies and customize your loadout each run with a dynamic upgrade system. Movement is your
+                            greatest weapon with
+                            wall running, grapples, slides, and countless more momentum-based movements.
                         </p>
                     </div>
                 </div>
-                <div class="play-features">
-                    <a href="https://play.google.com/store/apps/details?id=com.twikiastudios.TerraBlitz&pcampaignid=web_share"
-                        class="feature" target="_blank" rel="noopener noreferrer">
-                        <img src="src/icons/blazing_ball_nobg180.webp" alt="TerraBlitz" class="feature-icon">
-                        <div class="feature-content">
-                            <h3>TerraBlitz - Android</h3>
-                            <p>Play it now on Google Play!</p>
-                        </div>
-                    </a>
-                    <a href="https://apps.apple.com/us/app/terrablitz/id6748803271" class="feature" target="_blank"
-                        rel="noopener noreferrer">
-                        <img src="src/icons/blazing_ball_nobg180.webp" alt="TerraBlitz" class="feature-icon">
-                        <div class="feature-content">
-                            <h3>TerraBlitz - IOS</h3>
-                            <p>Play it now on the App Store!</p>
-                        </div>
-                    </a>
-                    <a href="https://github.com/twikia" class="feature" target="_blank" rel="noopener noreferrer">
-                        <img src="src/icons/python_icon.webp" alt="TerraBlitz" class="feature-icon">
-                        <div class="feature-content">
-                            <h3>GitHub - Windows/Linux/Mac</h3>
-                            <p>Try out games and checkout the source code too!</p>
-                        </div>
-                    </a>
+            </div>
+            <div class="play-content">
+                <div class="play-gif-showcase">
+                    <iframe
+                        src="https://www.youtube.com/embed/UfEs9zDrTsU?enablejsapi=1&mute=1&loop=1&playlist=UfEs9zDrTsU&controls=0&modestbranding=1&rel=0"
+                        title="TerraBlitz Gameplay" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen class="play-showcase-video">
+                    </iframe>
+                </div>
+                <div class="play-features-side">
+                    <div class="play-features-header">
+                        <h2>TerraBlitz and More!</h2>
+                        <p>Test your skills in a mobile hardcore physics platformers and explore more games and their
+                            code on
+                            GitHub!</p>
+                    </div>
+                    <div class="play-features">
+                        <a href="https://play.google.com/store/apps/details?id=com.twikiastudios.TerraBlitz&pcampaignid=web_share"
+                            class="feature" target="_blank" rel="noopener noreferrer">
+                            <img src="src/icons/blazing_ball_nobg180.webp" alt="TerraBlitz" class="feature-icon">
+                            <div class="feature-content">
+                                <h3>TerraBlitz - Android</h3>
+                                <p>Play it now on Google Play!</p>
+                            </div>
+                        </a>
+                        <a href="https://apps.apple.com/us/app/terrablitz/id6748803271" class="feature" target="_blank"
+                            rel="noopener noreferrer">
+                            <img src="src/icons/blazing_ball_nobg180.webp" alt="TerraBlitz" class="feature-icon">
+                            <div class="feature-content">
+                                <h3>TerraBlitz - IOS</h3>
+                                <p>Play it now on the App Store!</p>
+                            </div>
+                        </a>
+                        <a href="https://github.com/twikia" class="feature" target="_blank" rel="noopener noreferrer">
+                            <img src="src/icons/python_icon.webp" alt="TerraBlitz" class="feature-icon">
+                            <div class="feature-content">
+                                <h3>GitHub - Windows/Linux/Mac</h3>
+                                <p>Try out games and checkout the source code too!</p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -294,27 +328,160 @@
                     💡 View My GitHub
                 </a>
             </div>
-            <div class="projects-grid">
-                <div class="project-item">
-                    <div class="project-gif-placeholder">Project GIF 1</div>
-                    <p class="project-description">Interactive Python game showcasing physics-based mechanics</p>
-                </div>
-                <div class="project-item">
-                    <div class="project-gif-placeholder">Project GIF 2</div>
-                    <p class="project-description">Web-based visualization tool with Three.js integration</p>
-                </div>
-                <div class="project-item">
-                    <div class="project-gif-placeholder">Project GIF 3</div>
-                    <p class="project-description">Machine learning model for data analysis and predictions</p>
-                </div>
-                <div class="project-item">
-                    <div class="project-gif-placeholder">Project GIF 4</div>
-                    <p class="project-description">Automated workflow system for content processing</p>
-                </div>
-                <div class="project-item">
-                    <div class="project-gif-placeholder">Project GIF 5</div>
-                    <p class="project-description">Custom API integration for social media analytics</p>
-                </div>
+            <div class="projects-list">
+                <!-- Project 1: Mobile Apps - Video LEFT -->
+                <a href="https://github.com/twikia/Mobile-Games" target="_blank" rel="noopener noreferrer"
+                    class="project-link">
+                    <div class="project-card project-left">
+                        <div class="project-media">
+                            <div class="vertical-video-placeholder">Vertical Video</div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Mobile Applications & Gameplay Prototypes</h3>
+                            <p class="project-subtitle">Unreal Engine</p>
+                            <p>A handful of smaller apps I made. "Red Button Clicker" (released on Google Play), a 3d
+                                layout
+                                productivity focused Task Manager, and two 3D action prototypes: an infinite runner and
+                                a
+                                base defense shooter. These projects served as an intro for unreal engine for me and
+                                maybe
+                                someday I will revisit them…</p>
+                        </div>
+                    </div>
+                </a>
+
+
+                <!-- Project 2: Web Scraper - Video RIGHT -->
+                <a href="https://github.com/twikia/web-scraper" target="_blank" rel="noopener noreferrer"
+                    class="project-link">
+                    <div class="project-card project-right">
+                        <div class="project-content">
+                            <h3>Automated Web Analysis Tool</h3>
+                            <p class="project-subtitle">Python · BeautifulSoup4 · Pandas · NLP</p>
+                            <p>This comprehensive data extraction framework automates the analysis of websites to
+                                harvest
+                                performance metrics, technology stacks, and contact information using libraries like
+                                BeautifulSoup4 and Pandas. The tool features a modular architecture capable of
+                                batch-processing large dataset to generate detailed reports on page load times, SEO
+                                metadata, and site architecture. By integrating NLP for content summarization and
+                                Wappalyzer
+                                for tech detection, it transforms raw web data into structured, actionable business
+                                summaries.</p>
+                        </div>
+                        <div class="project-media">
+                            <iframe class="project-video"
+                                src="https://www.youtube.com/embed/mPIAQIVvtz0?enablejsapi=1&mute=1&loop=1&playlist=mPIAQIVvtz0&controls=0&modestbranding=1&rel=0&showinfo=0"
+                                title="Web Scraper Demo" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen loading="lazy">
+                            </iframe>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 3: Game Jam - Video LEFT -->
+                <a href="https://github.com/twikia/Game-Gauntlet" target="_blank" rel="noopener noreferrer"
+                    class="project-link">
+                    <div class="project-card project-left">
+                        <div class="project-media">
+                            <iframe class="project-video"
+                                src="https://www.youtube.com/embed/1e2BuVnzXlQ?enablejsapi=1&mute=1&loop=1&playlist=1e2BuVnzXlQ&controls=0&modestbranding=1&rel=0&showinfo=0"
+                                title="Game Gauntlet Demo" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen loading="lazy">
+                            </iframe>
+                        </div>
+                        <div class="project-content">
+                            <h3>Game Gauntlet: Full-Stack Escape Room Experience</h3>
+                            <p class="project-subtitle">Python (Flask) · JavaScript (Kaboom.js) · 24-Hour Hackathon</p>
+                            <p>Developed during the 24-hour HackCU hackathon, this interactive web application features
+                                an
+                                escape room experience comprised of eight distinct mini-games built with Python (Flask)
+                                and
+                                JavaScript (Kaboom.js). I architected the backend system to handle dynamic routing and
+                                session management. The project demonstrates the ability to execute rapid full-stack
+                                development, successfully integrating complex physics-based game logic and state
+                                persistence
+                                under tight time constraints.</p>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: Python Games - Video RIGHT -->
+                    <a href="https://github.com/twikia/Terminal-Galactica" target="_blank" rel="noopener noreferrer"
+                        class="project-link">
+                        <div class="project-card project-right">
+                            <div class="project-content">
+                                <h3>Python Game Development: Galactica & Tik-tac-toe</h3>
+                                <p class="project-subtitle">Python · Pygame ·Threading · ANSI Terminal</p>
+                                <p>This collection showcases versatility in Python programming through two games: a
+                                    high-performance terminal Galactica and a pygame GUI Tic-Tac-Toe. Galactica pushes
+                                    the
+                                    limits of standard libraries by utilizing six concurrent threads to handle real-time
+                                    ANSI
+                                    terminal rendering and collision detection without an external game engine.
+                                    Tic-Tac-Toe
+                                    leverages Pygame to demonstrate clean event loop architecture and robust
+                                    win-condition
+                                    algorithms.</p>
+                            </div>
+                            <div class="project-media">
+                                <iframe class="project-video"
+                                    src="https://www.youtube.com/embed/_tI3RbrLHyU?enablejsapi=1&mute=1&loop=1&playlist=_tI3RbrLHyU&controls=0&modestbranding=1&rel=0&showinfo=0"
+                                    title="Python Games Demo" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen loading="lazy">
+                                </iframe>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Project 5: Robot - Video LEFT -->
+                    <a href="https://github.com/tai-pol/big-hero-7s" target="_blank" rel="noopener noreferrer"
+                        class="project-link">
+                        <div class="project-card project-left">
+                            <div class="project-media">
+                                <iframe class="project-video"
+                                    src="https://www.youtube.com/embed/qzhXF3GQZpQ?enablejsapi=1&mute=1&loop=1&playlist=qzhXF3GQZpQ&controls=0&modestbranding=1&rel=0&showinfo=0"
+                                    title="Autonomous Robot Demo" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen loading="lazy">
+                                </iframe>
+                            </div>
+                            <div class="project-content">
+                                <h3>Autonomous Lidar-Mapping Shopping Robot</h3>
+                                <p class="project-subtitle">Python · Webots · Lidar · Inverse Kinematics</p>
+                                <p>This robot was made in Webots using Python. It uses Lidar and ground sensors for
+                                    precise
+                                    navigation and maps in real time. It avoids obstacles using sensor data and real
+                                    time
+                                    scanned lidar map. It has a inverse kinematic control system for a robotic arm for
+                                    user
+                                    control to grasp, and transport objects within the mapped environment.</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Project 6: RISC-V - Image RIGHT -->
+                    <a href="https://github.com/twikia/Risc-V-PIpeline" target="_blank" rel="noopener noreferrer"
+                        class="project-link">
+                        <div class="project-card project-right">
+                            <div class="project-content">
+                                <h3>High-Performance RISC-V Pipelined Processor</h3>
+                                <p class="project-subtitle">RISC-V · Codasip C · Pipeline Architecture</p>
+                                <p>Designed and implemented a fully functional 5-stage pipelined RISC-V processor using
+                                    pipeline
+                                    diagrams and Codasip C. The architecture features advanced hazard mitigation
+                                    strategies,
+                                    including a dedicated forwarding unit and stall logic to resolve data dependencies
+                                    in
+                                    pipelining as well as branch prediction.</p>
+                            </div>
+                            <div class="project-media">
+                                <img src="src/ProjectImages/Riscv.png" alt="RISC-V Processor Diagram"
+                                    class="project-image">
+                            </div>
+                        </div>
+                    </a>
             </div>
         </div>
     </section>
@@ -330,7 +497,8 @@
                 </div>
                 <div class="video-container">
                     <div class="video-wrapper">
-                        <iframe id="first-video" src="https://www.youtube.com/embed/ve1ExeEt8FE?enablejsapi=1"
+                        <iframe id="first-video"
+                            src="https://www.youtube.com/embed/ve1ExeEt8FE?enablejsapi=1&mute=0&loop=1&playlist=ve1ExeEt8FE"
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen class="video-iframe" loading="lazy">
@@ -341,7 +509,8 @@
             <!-- Third video and feature cards side by side -->
             <div class="videos-middle">
                 <div class="video-container">
-                    <iframe width="315" height="560" src="https://www.youtube.com/embed/0eyda5ctrZU"
+                    <iframe id="second-video" width="315" height="560"
+                        src="https://www.youtube.com/embed/0eyda5ctrZU?enablejsapi=1&mute=0&loop=1&playlist=0eyda5ctrZU"
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen class="video-iframe-center" loading="lazy">
@@ -381,7 +550,9 @@
 
             <div class="video-container">
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/sZV5MClaq-4" title="YouTube video player" frameborder="0"
+                    <iframe id="third-video"
+                        src="https://www.youtube.com/embed/sZV5MClaq-4?enablejsapi=1&mute=0&loop=1&playlist=sZV5MClaq-4"
+                        title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen class="video-iframe" loading="lazy">
                     </iframe>
@@ -410,7 +581,8 @@
                             </li>
                             <li><a href="https://www.instagram.com/twikia_drones_on?igsh=MXRkcWowN3p0Ym1pdQ=="
                                     target="_blank" rel="noopener noreferrer">Videography IG</a></li>
-                            <li><a href="src/misc/Tai_Polanowski_Resume 7-30-25.pdf" download="Tai_Resume.pdf">Download
+                            <li><a href="https://drive.google.com/file/d/1r5RqI-H6Y-gTCT_XFo1NpUTQvu6Kasj0/view"
+                                    target="_blank" rel="noopener noreferrer">Download
                                     Resume</a></li>
                         </ul>
                     </div>
@@ -449,6 +621,7 @@
 
     <!-- JavaScript -->
     <script src="src/js/main.js"></script>
+    <script src="src/js/video-observer.js"></script>
     <script type="module" src="src/js/three-scene.js"></script>
     <script src="src/js/ui.js"></script>
 </body>
