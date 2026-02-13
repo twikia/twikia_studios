@@ -25,10 +25,21 @@ function initializeYouTubePlayers() {
     const youtubeIframes = document.querySelectorAll('iframe[src*="youtube.com"]');
 
     youtubeIframes.forEach((iframe, index) => {
-        // Add enablejsapi=1 to src if not present
+        // Add enablejsapi=1 and origin to src if not present
         let src = iframe.src;
+        let updateSrc = false;
+
         if (!src.includes('enablejsapi=1')) {
             src += (src.includes('?') ? '&' : '?') + 'enablejsapi=1';
+            updateSrc = true;
+        }
+
+        if (!src.includes('origin=')) {
+            src += (src.includes('?') ? '&' : '?') + 'origin=' + encodeURIComponent(window.location.origin);
+            updateSrc = true;
+        }
+
+        if (updateSrc) {
             iframe.src = src;
         }
 

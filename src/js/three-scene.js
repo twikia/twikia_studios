@@ -59,7 +59,7 @@ const sectionColors = {
 	'videos-detail': { r: 1, g: 0, b: 0, r2: 0, g2: 0, b2: 1, r3: 1, g3: 0.5, b3: 0 }, // Red, Blue, Orange
 	'about': { r: 1, g: 0, b: 0, r2: 0, g2: 1, b2: 0, r3: 0.5, g3: 0, b3: 1 }, // Red, Green, Purple
 	'about-detail': { r: 1, g: 0, b: 0, r2: 0, g2: 0, b2: 1, r3: 0, g3: 1, b3: 0 }, // Red, Blue, Green
-	'contact-end': { r: 1, g: 0, b: 0, r2: 0, g2: 0, b2: 1, r3: 1, g3: 1, b3: 0 } // Red, Blue, Yellow
+	'footer': { r: 1, g: 0, b: 0, r2: 0, g2: 0, b2: 1, r3: 1, g3: 1, b3: 0 } // Red, Blue, Yellow
 };
 
 // Section configurations - Adjusted for closer zoom with home furthest and about closest
@@ -76,7 +76,7 @@ const sectionConfigs = {
 	'videos-detail': { spinRate: 0.0018, height: 2.2, zoom: 8 },
 	'about': { spinRate: reducedRotationSpeed, height: 2.5, zoom: 7 }, // Closest zoom for best readability
 	'about-detail': { spinRate: 0.001, height: 2.8, zoom: 6 }, // Very close for detailed reading
-	'contact-end': { spinRate: 0.001, height: 1.8, zoom: 12 }
+	'footer': { spinRate: 0.001, height: 1.8, zoom: 12 }
 };
 
 // Current interpolated values - Initialize with home section colors

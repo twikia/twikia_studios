@@ -121,9 +121,16 @@
     white-space: nowrap;
 }
 
-.nav-link:hover {
-    color: #667eea !important;
-    background: rgba(255, 255, 255, 0.15) !important;
+@media (hover: hover) {
+    .nav-link:hover {
+        color: #667eea !important;
+        background: rgba(255, 255, 255, 0.15) !important;
+    }
+}
+
+.nav-link:active {
+    background: rgba(255, 255, 255, 0.25) !important;
+    transform: scale(0.98);
 }
 
 .nav-link.active {
