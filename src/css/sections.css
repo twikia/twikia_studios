@@ -490,6 +490,17 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Specific styling for Mobile Apps project */
+#project-mobile-apps {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+#project-mobile-apps .project-video-vertical {
+    min-height: 350px;
+    max-height: 450px;
+}
+
 .project-card:hover {
     transform: translateY(-5px);
     box-shadow:
@@ -542,6 +553,19 @@
     height: auto;
     border-radius: 16px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.project-video-vertical {
+    width: auto;
+    height: 100%;
+    aspect-ratio: 9/16;
+    border-radius: 16px;
+    background: #000;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    min-height: 250px;
+    max-height: 350px;
+    margin: 0 auto;
+    display: block;
 }
 
 .vertical-video-placeholder {
