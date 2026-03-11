@@ -1,6 +1,7 @@
 /* Hero Section */
 .hero {
     height: 100vh;
+    min-height: 700px;
     position: relative;
     display: flex;
     align-items: center;
