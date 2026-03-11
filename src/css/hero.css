@@ -12,25 +12,59 @@
     text-align: center;
     color: white;
     z-index: 2;
-    max-width: 800px;
+    max-width: 820px;
     padding: 0 20px;
 }
 
+/* Hero title wraps both spans in a flex column with zero gap */
 .hero-title {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 14px;
     animation: fadeInUp 0.6s ease;
-    position: relative;
-    text-shadow: 0 2px 10px rgba(50, 50, 50, 0.8), 0 4px 20px rgba(50, 50, 50, 0.5);
+    line-height: 1;
+    /* tight overall */
+}
+
+/* Eyebrow — "Welcome to" (smaller, lighter weight) */
+.hero-eyebrow {
+    font-family: var(--font-ui);
+    font-size: clamp(0.9rem, 1.8vw, 1.4rem);
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.2;
+    margin-bottom: 0px;
+    display: block;
+}
+
+/* Main name — "Twikia Studios" (dominant display headline) */
+.hero-name {
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 5.5vw, 5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    display: block;
+    background: linear-gradient(135deg, #ffffff 0%, #c7d2ff 50%, #a5b4fc 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 24px rgba(100, 120, 255, 0.35));
 }
 
 .hero-subtitle {
-    font-size: 1.3rem;
-    margin-bottom: 10px;
-    opacity: 0.9;
+    font-family: var(--font-body);
+    font-size: clamp(0.95rem, 1.8vw, 1.3rem);
+    margin-bottom: 20px;
+    color: var(--text-secondary);
     animation: fadeInUp 0.6s ease 0.1s both;
-    text-shadow: 0 2px 10px rgba(50, 50, 50, 0.8), 0 4px 20px rgba(50, 50, 50, 0.5);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    font-weight: 400;
+    letter-spacing: 0.01em;
 }
 
 .cta-buttons {
@@ -126,25 +160,25 @@
 
 .card-container.top-left {
     top: 30%;
-    left: 30%;
+    left: 25%;
     transform: translate(-50%, -50%);
 }
 
 .card-container.top-right {
-    top: 30%;
-    right: 30%;
+    top: 31%;
+    right: 25%;
     transform: translate(50%, -50%);
 }
 
 .card-container.bottom-left {
-    bottom: 25%;
-    left: 30%;
+    bottom: 26%;
+    left: 25%;
     transform: translate(-50%, 50%);
 }
 
 .card-container.bottom-right {
-    bottom: 25%;
-    right: 30%;
+    bottom: 24%;
+    right: 25%;
     transform: translate(50%, 50%);
 }
 
@@ -152,20 +186,24 @@
     position: relative;
     width: 240px;
     height: 135px;
-    border-radius: 24px;
+    border-radius: 20px;
     cursor: pointer;
     overflow: hidden;
-    transition: transform 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* Disabled - was causing white overlay on videos */
-/* .quadrant-card::before removed to prevent video washout */
-
 .quadrant-card:hover {
-    transform: scale(1.05);
+    transform: scale(1.05) translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow:
-        0 12px 40px rgba(102, 80, 234, 0.6),
-        0 6px 20px rgba(80, 60, 180, 0.4);
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 50px rgba(102, 126, 234, 0.2);
 }
 
 /* Card Size Variations - Visual Hierarchy */
@@ -271,114 +309,119 @@
 }
 
 /* Mobile Responsive */
-@media (max-width: 768px) {
-    .hero-title {
-        font-size: 2.5rem;
+/* Laptop overlapping prevention */
+/* Laptop overlapping prevention */
+@media (max-width: 1200px) {
+    .card-container.top-left {
+        left: 8%;
+        top: 25%;
+        transform: translate(0, -50%);
     }
 
-    .hero-subtitle {
-        font-size: 1.1rem;
+    .card-container.top-right {
+        right: 8%;
+        top: 25%;
+        transform: translate(0, -50%);
     }
 
-    /* Adjust quadrant cards for tablets - maintain hierarchy */
+    .card-container.bottom-left {
+        left: 8%;
+        bottom: 25%;
+        transform: translate(0, 50%);
+    }
+
+    .card-container.bottom-right {
+        right: 8%;
+        bottom: 25%;
+        transform: translate(0, 50%);
+    }
+
     .quadrant-card.top-left {
+        width: 220px;
+        height: 125px;
+    }
+
+    .quadrant-card.top-right {
+        width: 200px;
+        height: 115px;
+    }
+
+    .quadrant-card.bottom-left {
         width: 180px;
         height: 105px;
     }
 
-    .quadrant-card.top-right {
-        width: 165px;
+    .quadrant-card.bottom-right {
+        width: 160px;
         height: 95px;
     }
 
-    .quadrant-card.bottom-left {
-        width: 155px;
-        height: 90px;
-    }
-
-    .quadrant-card.bottom-right {
-        width: 140px;
-        height: 85px;
-    }
-
-    .card-gif-placeholder {
-        font-size: 3rem;
-    }
-
-    .card-label {
-        font-size: 0.9rem;
-    }
-
-    .quadrant-card.top-left,
-    .quadrant-card.top-right {
-        top: 8%;
-    }
-
-    .quadrant-card.bottom-left,
-    .quadrant-card.bottom-right {
-        bottom: 12%;
+    /* Constrain center content to prevent overlap */
+    .hero-content {
+        max-width: 40vw;
     }
 }
 
-@media (max-width: 480px) {
-    .hero-title {
-        font-size: 2rem;
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .hero-name {
+        font-size: 2.8rem;
     }
 
-    /* Restore and adjust quadrant cards for mobile */
+    .hero-eyebrow {
+        font-size: 1rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    /* Change Layout for Tablet/Mobile to separate sections */
+    .hero {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 120px;
+        height: auto;
+        min-height: 100vh;
+        overflow-y: auto;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 5;
+        margin-bottom: 2rem;
+    }
+
+    /* Reset quadrant cards to flow normally or be positioned relative to a container */
     .hero-quadrant-cards {
-        display: block;
+        position: relative;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding-bottom: 100px;
     }
 
-    .connecting-lines {
-        display: none;
+    .card-container {
+        position: relative;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: none !important;
     }
 
-    /* Reset transforms and positions for mobile manual placement */
-    .card-container.top-left,
-    .card-container.top-right,
-    .card-container.bottom-left,
-    .card-container.bottom-right {
-        transform: none;
-    }
-
-    /* Top Row - positioned safely from edges */
-    .card-container.top-left {
-        top: 12%;
-        left: 5%;
-        right: auto;
-    }
-
-    .card-container.top-right {
-        top: 12%;
-        right: 5%;
-        left: auto;
-    }
-
-    /* Bottom Row - positioned safely from edges */
-    .card-container.bottom-left {
-        bottom: 12%;
-        left: 5%;
-        top: auto;
-    }
-
-    .card-container.bottom-right {
-        bottom: 12%;
-        right: 5%;
-        top: auto;
-    }
-
-    /* Uniform small size for all cards on mobile */
     .quadrant-card.top-left,
     .quadrant-card.top-right,
     .quadrant-card.bottom-left,
     .quadrant-card.bottom-right {
-        width: 140px;
-        height: 80px;
+        width: 160px;
+        height: 90px;
     }
 
     .card-label {
-        font-size: 0.8rem;
-        margin-top: 5px;
+        font-size: 0.9rem;
     }
 }

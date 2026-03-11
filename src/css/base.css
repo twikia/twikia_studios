@@ -12,13 +12,81 @@
     user-select: none;
 }
 
+:root {
+    /* Brand Colors */
+    --primary-color: #7b8ef7;
+    /* soft indigo */
+    --primary-dim: #d3d9ff;
+    --secondary-color: #d3d5fc;
+    /* violet */
+    --accent-color: #38bdf8;
+    /* sky blue */
+    --accent-warm: #f472b6;
+    /* pink accent */
+
+    /* Background */
+    --bg-color: #07080f;
+
+    /* Text palette */
+    --text-primary: #f0f2ff;
+    /* near-white, warm tinted */
+    --text-secondary: rgba(255, 255, 255, 1.0);
+    /* near-white body copy */
+    --text-tertiary: rgba(255, 255, 255, 1.0);
+    /* subdued labels */
+    --text-heading: #ffffff;
+    /* pure white headings */
+
+    /* Glass */
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.10);
+    --glass-shadow: 0 8px 32px 0 rgba(10, 15, 40, 0.5);
+
+    /* Typography */
+    --font-display: 'Space Grotesk', 'Outfit', sans-serif;
+    --font-ui: 'Outfit', 'Inter', sans-serif;
+    --font-body: 'Inter', 'Outfit', sans-serif;
+
+    /* Type scale — consistent across the whole site */
+    --text-xs: 0.75rem;
+    /* 12px */
+    --text-sm: 0.875rem;
+    /* 14px */
+    --text-base: 1rem;
+    /* 16px */
+    --text-lg: 1.125rem;
+    /* 18px */
+    --text-xl: 1.25rem;
+    /* 20px */
+    --text-2xl: 1.5rem;
+    /* 24px */
+    --text-3xl: 2rem;
+    /* 32px */
+    --text-4xl: 2.75rem;
+    /* 44px */
+    --text-5xl: 3.5rem;
+    /* 56px */
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #000;
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    line-height: 1.65;
+    color: var(--text-primary);
+    background-color: var(--bg-color);
     overflow-x: hidden;
     position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: var(--glass-shadow);
 }
 
 /* Full Screen 3D Background */
@@ -104,6 +172,6 @@ button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-    outline: 2px solid #667eea;
+    outline: 2px solid var(--primary-color);
     outline-offset: 2px;
 }
