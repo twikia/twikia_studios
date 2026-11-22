@@ -279,6 +279,27 @@
     transform: scale(1.01);
 }
 
+/* Crossfading screenshot preview for multi-product quadrant card */
+.card-preview-frame {
+    opacity: 1;
+}
+
+.card-preview-frame--alt {
+    animation: cardPreviewSwap 8s ease-in-out infinite;
+}
+
+@keyframes cardPreviewSwap {
+    0%, 42% {
+        opacity: 0;
+    }
+    50%, 92% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
 
 @keyframes fadeInScale {
     from {

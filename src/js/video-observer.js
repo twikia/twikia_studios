@@ -54,9 +54,27 @@ function initializeYouTubePlayers() {
                 'onReady': function (event) {
                     console.log(`YouTube player ${iframe.id} ready`);
 
+                    if (src.includes('mute=1') && typeof event.target.mute === 'function') {
+                        event.target.mute();
+                    }
+                    if (src.includes('cc_load_policy=0') && typeof event.target.unloadModule === 'function') {
+                        try {
+                            event.target.unloadModule('captions');
+                            event.target.unloadModule('cc');
+                        } catch (e) {}
+                    }
+
                     // Make all YouTube videos loop
                     event.target.setLoop(true);
                     console.log(`${iframe.id} set to loop`);
+                },
+                'onApiChange': function (event) {
+                    if (src.includes('cc_load_policy=0') && typeof event.target.unloadModule === 'function') {
+                        try {
+                            event.target.unloadModule('captions');
+                            event.target.unloadModule('cc');
+                        } catch (e) {}
+                    }
                 },
                 'onStateChange': function (event) {
                     // Loop all videos when they end

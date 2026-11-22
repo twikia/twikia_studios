@@ -2,6 +2,13 @@
 <html lang="en">
 
 <head>
+    <!-- Google tag -->
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NP45SB32"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Homepage for Twikia Studios.">
@@ -57,6 +64,7 @@
                 <li><a href="#contact" class="nav-link">Community</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#videos" class="nav-link">Videos</a></li>
+                <li><a href="products/" class="nav-link">Products</a></li>
             </ul>
             <div class="hamburger">
                 <span class="bar"></span>
@@ -76,15 +84,15 @@
     <section id="home" class="hero">
         <!-- Quadrant Cards -->
         <div class="hero-quadrant-cards">
-            <!-- Top Left - Steam -->
+            <!-- Top Left - Plugins -->
             <div class="card-container top-left">
-                <a href="https://store.steampowered.com/app/4298070/Dying_for_Parts/" target="_blank"
-                    rel="noopener noreferrer" class="quadrant-card top-left">
-                    <video autoplay muted loop playsinline preload="metadata" class="card-video">
-                        <source src="src/Vids/HomeScreen/DFP quick 360 20fp.webm" type="video/webm">
-                    </video>
+                <a href="products/" class="quadrant-card top-left" aria-label="View Plugins and Products">
+                    <img src="products/grapple/Docs/Images/demo_arena.png" alt="Grapple Unreal Engine Plugin"
+                        class="card-video card-preview-frame">
+                    <img src="products/wallrun/Docs/Images/demo_arena.png" alt="WallRun Unreal Engine Plugin"
+                        class="card-video card-preview-frame card-preview-frame--alt">
                 </a>
-                <div class="card-label">DFP on Steam</div>
+                <div class="card-label">Plugins</div>
             </div>
 
             <!-- Top Right - Projects -->
@@ -512,7 +520,7 @@
                 <div class="video-container">
                     <div class="video-wrapper">
                         <iframe id="first-video"
-                            src="https://www.youtube.com/embed/ve1ExeEt8FE?enablejsapi=1&mute=1&loop=1&playlist=ve1ExeEt8FE"
+                            src="https://www.youtube.com/embed/ve1ExeEt8FE?enablejsapi=1&mute=1&loop=1&playlist=ve1ExeEt8FE&cc_load_policy=0"
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen class="video-iframe" loading="lazy">
@@ -524,7 +532,7 @@
             <div class="videos-middle">
                 <div class="video-container">
                     <iframe id="second-video" width="315" height="560"
-                        src="https://www.youtube.com/embed/0eyda5ctrZU?enablejsapi=1&mute=0&loop=1&playlist=0eyda5ctrZU"
+                        src="https://www.youtube.com/embed/0eyda5ctrZU?enablejsapi=1&mute=1&loop=1&playlist=0eyda5ctrZU&cc_load_policy=0"
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen class="video-iframe-center" loading="lazy">
@@ -565,7 +573,7 @@
             <div class="video-container">
                 <div class="video-wrapper">
                     <iframe id="third-video"
-                        src="https://www.youtube.com/embed/sZV5MClaq-4?enablejsapi=1&mute=0&loop=1&playlist=sZV5MClaq-4"
+                        src="https://www.youtube.com/embed/sZV5MClaq-4?enablejsapi=1&mute=1&loop=1&playlist=sZV5MClaq-4&cc_load_policy=0"
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen class="video-iframe" loading="lazy">

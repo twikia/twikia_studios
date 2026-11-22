@@ -296,8 +296,11 @@ function onScroll() {
 	const windowHeight = window.innerHeight;
 	const documentHeight = document.documentElement.scrollHeight;
 
-	// Calculate scroll progress (0 to 1)
-	scrollProgress = Math.max(0, Math.min(1, scrollTop / (documentHeight - windowHeight)));
+	// Calculate scroll progress (0 to 1), guarding pages without vertical overflow
+	const scrollableHeight = documentHeight - windowHeight;
+	scrollProgress = scrollableHeight > 0
+		? Math.max(0, Math.min(1, scrollTop / scrollableHeight))
+		: 0;
 
 	// Calculate exact section position with fractional part for interpolation
 	const exactSectionPosition = scrollProgress * (sections.length - 1);

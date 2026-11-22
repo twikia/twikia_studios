@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag -->
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NP45SB32"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Unreal Engine plugins and user guides by Twikia Studios.">
+    <meta name="keywords" content="Unreal Engine, Plugins, Grapple, WallRun, Twikia Studios, User Guide">
+    <meta name="author" content="Tai Polanowski">
+
+    <title>Products &amp; Plugins — Twikia Studios</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="../src/icons/T-small.webp">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Modular CSS -->
+    <link rel="stylesheet" href="../src/css/base.css">
+    <link rel="stylesheet" href="../src/css/header.css">
+    <link rel="stylesheet" href="../src/css/products.css">
+    <link rel="stylesheet" href="../src/css/footer.css">
+
+    <!-- ES Module Shims for better browser compatibility -->
+    <script async src="https://unpkg.com/es-module-shims@1.10.0"></script>
+
+    <!-- Import map for Three.js ES modules -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.167.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.167.0/examples/jsm/"
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../" class="logo-link">
+                    <img src="../src/icons/stuidos logo reuce size.webp" alt="Twikia Studios Logo" class="logo-image">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../#games" class="nav-link">Games</a></li>
+                <li><a href="../#about" class="nav-link">About</a></li>
+                <li><a href="../#contact" class="nav-link">Community</a></li>
+                <li><a href="../#projects" class="nav-link">Projects</a></li>
+                <li><a href="../#videos" class="nav-link">Videos</a></li>
+                <li><a href="./" class="nav-link active" data-current-page="true">Products</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Full Screen 3D Background Canvas -->
+    <div id="threejs-background"></div>
+
+    <!-- Dark Overlay for Better Text Readability -->
+    <div id="background-overlay"></div>
+
+    <!-- Products Section -->
+    <section id="products" class="products-hero">
+        <div class="container">
+            <div class="products-header">
+                <span class="products-eyebrow">Unreal Engine 5 Plugins</span>
+                <h1 class="products-title">Products &amp; User Guides</h1>
+                <p class="products-subtitle">Blueprint and C++ friendly movement plugins built for Unreal Engine 5.6&ndash;5.8. Select a plugin below to open its full user guide.</p>
+            </div>
+
+            <div class="plugins-grid">
+                <a href="grapple/" class="plugin-button-card" aria-label="Open Grapple v1.2.0 User Guide">
+                    <div class="plugin-shot-wrap">
+                        <img src="grapple/Docs/Images/demo_arena.png" alt="Grapple UE5 Demo Screenshot" class="plugin-shot-img">
+                        <span class="plugin-version-pill">v1.2.0</span>
+                    </div>
+                    <div class="plugin-button-body">
+                        <div class="plugin-button-top">
+                            <span class="plugin-button-title">Grapple</span>
+                            <span class="plugin-button-tag">UE 5.6&ndash;5.8</span>
+                        </div>
+                        <p class="plugin-button-desc">Framerate-independent grappling hook physics, WASD swing steering, and live procedural rope tether.</p>
+                        <span class="plugin-button-cta">Open User Guide &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="wallrun/" class="plugin-button-card" aria-label="Open WallRun v1.3.0 User Guide">
+                    <div class="plugin-shot-wrap">
+                        <img src="wallrun/Docs/Images/demo_arena.png" alt="WallRun UE5 Demo Screenshot" class="plugin-shot-img">
+                        <span class="plugin-version-pill">v1.3.0</span>
+                    </div>
+                    <div class="plugin-button-body">
+                        <div class="plugin-button-top">
+                            <span class="plugin-button-title">WallRun</span>
+                            <span class="plugin-button-tag">UE 5.6&ndash;5.8</span>
+                        </div>
+                        <p class="plugin-button-desc">First-person wall running, directional wall leaps, and smooth camera tilt &amp; FOV feedback.</p>
+                        <span class="plugin-button-cta">Open User Guide &rarr;</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links-row">
+                    <div class="footer-section">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="https://www.instagram.com/twikia_studios/" target="_blank"
+                                    rel="noopener noreferrer">Studios IG</a></li>
+                            <li><a href="https://www.tiktok.com/@twikia_studios" target="_blank"
+                                    rel="noopener noreferrer">TikTok</a></li>
+                            <li><a href="https://github.com/twikia" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            </li>
+                            <li><a href="https://www.instagram.com/twikia_drones_on?igsh=MXRkcWowN3p0Ym1pdQ=="
+                                    target="_blank" rel="noopener noreferrer">Videography IG</a></li>
+                            <li><a href="https://drive.google.com/file/d/1r5RqI-H6Y-gTCT_XFo1NpUTQvu6Kasj0/view"
+                                    target="_blank" rel="noopener noreferrer">Download
+                                    Resume</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Support The Community!</h4>
+                        <p>Enjoying the content? I believe in creating free content, with little to no ads, and no
+                            paywalls.
+                            Your support makes that possible and helps me dedicate more time to new projects.
+                            If you had some fun, consider donating a coffee!
+                            <br>☕ <a href="https://ko-fi.com/twikia_studios" class="footer-support-link" target="_blank"
+                                rel="noopener noreferrer">Support on Ko-fi</a><span>&nbsp;&nbsp;</span><a
+                                href="https://buymeacoffee.com/twikia_studios" class="footer-support-link"
+                                target="_blank" rel="noopener noreferrer">Buy me a coffee</a>
+                        </p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Get Involved!</h4>
+                        <ul>
+                            <li><a href="https://www.instagram.com/twikia_studios/" target="_blank"
+                                    rel="noopener noreferrer">Contact</a></li>
+                            <li><a href="https://discord.gg/vQdEHdub3A" target="_blank"
+                                    rel="noopener noreferrer">Discord Community</a></li>
+                            <li><a href="../#games">Play Free Games</a></li>
+                            <li><a href="../#contact">Join the Community</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Twikia Studios. All rights reserved. | <a href="../privacy_policy.html">Privacy Policy</a> |
+                    <a href="../disclaimer.html">Disclaimer</a> | <a href="../curious-commuter/">Curious Commuter Support</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../src/js/main.js"></script>
+    <script type="module" src="../src/js/three-scene.js"></script>
+    <script src="../src/js/ui.js"></script>
+</body>
+
+</html>

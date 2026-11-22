@@ -243,8 +243,13 @@ function addAriaLabels() {
     // Add ARIA labels to navigation
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
-        const section = link.getAttribute('href').substring(1);
-        link.setAttribute('aria-label', `Navigate to ${section} section`);
+        const href = link.getAttribute('href') || '';
+        if (href.startsWith('#')) {
+            const section = href.substring(1);
+            link.setAttribute('aria-label', `Navigate to ${section} section`);
+        } else {
+            link.setAttribute('aria-label', `Navigate to ${link.textContent.trim()}`);
+        }
     });
 }
 
@@ -287,6 +292,10 @@ function updateActiveNavigation(sectionId) {
     const navLinks = document.querySelectorAll('.nav-link');
     
     navLinks.forEach(link => {
+        if (link.hasAttribute('data-current-page')) {
+            link.classList.add('active');
+            return;
+        }
         link.classList.remove('active');
         // Only add active class if we're not on the home section
         if (sectionId !== 'home' && link.getAttribute('href') === `#${sectionId}`) {

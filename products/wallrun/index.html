@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NP45SB32"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WallRun v1.3.0 - User Guide</title>
+  <style>
+:root {
+  --bg: #0f141a;
+  --surface: #161d26;
+  --surface-2: #1c2530;
+  --border: #2a3542;
+  --text: #e7edf4;
+  --muted: #9aa7b8;
+  --accent: #58a6ff;
+  --green: #3fb950;
+  --amber: #f0a830;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.62 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 36px 24px 72px;
+}
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+.title-row h1 { font-size: 34px; margin: 0 0 4px; letter-spacing: -0.02em; }
+.byline { font-size: 13px; color: var(--muted); margin: 0; }
+.byline strong { color: var(--text); }
+img.brand-icon-lg {
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+img.brand-icon-sm {
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  border-radius: 5px;
+  flex-shrink: 0;
+}
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.pitch { font-size: 17px; color: var(--muted); margin: 0 0 22px; }
+h2 {
+  font-size: 22px;
+  margin: 40px 0 14px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+h3 { font-size: 17px; margin: 18px 0 6px; color: #f4f8fc; }
+p { margin: 8px 0 12px; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code {
+  background: rgba(110, 118, 129, 0.22);
+  padding: 2px 6px;
+  border-radius: 5px;
+  font-family: Consolas, "Cascadia Mono", monospace;
+  font-size: 13px;
+  color: #f0f6fc;
+}
+pre {
+  background: #121820;
+  padding: 14px 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 13px;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 8px 0 12px;
+}
+img.hero { width: 100%; margin: 14px 0 10px; }
+img.folder-shot { width: 100%; max-width: 720px; margin: 10px 0 6px; }
+.folder-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 10px 0 14px;
+}
+.folder-row img.folder-shot {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+}
+@media (max-width: 820px) {
+  .folder-row { grid-template-columns: 1fr; }
+}
+.demo-highlight {
+  margin: 12px 0 16px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgba(63, 185, 80, 0.16), rgba(88, 166, 255, 0.12));
+  border: 1px solid rgba(63, 185, 80, 0.38);
+  color: var(--text);
+}
+.demo-highlight strong { color: #7ee787; }
+.folder-caption {
+  color: var(--muted);
+  font-size: 13.5px;
+  margin: 0 0 14px;
+}
+.caption {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0 0 18px;
+}
+.toc {
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 18px 0 28px;
+}
+.toc strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.toc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.toc a { display: block; font-size: 14px; }
+.boundary {
+  margin: 42px 0 32px;
+  padding: 18px 22px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgba(240, 168, 48, 0.16), rgba(88, 166, 255, 0.08));
+}
+.boundary h2 { border: 0; margin: 0 0 6px; padding: 0; color: #ffd480; }
+.boundary p { margin: 0; color: var(--text); }
+.step { margin: 22px 0 30px; }
+.setup-visuals {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.setup-visuals.stacked {
+  flex-direction: column;
+}
+.setup-visuals > img {
+  margin: 0;
+  flex: 0 1 auto;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 16px;
+  grid-auto-flow: dense;
+  margin: 14px 0 26px;
+}
+.card {
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+}
+.card.small { grid-column: span 2; }
+.card.medium { grid-column: span 3; }
+.card.large { grid-column: span 6; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.card img { margin: 0 0 10px; max-width: 100%; align-self: flex-start; }
+.card p { margin: 0; font-size: 13.5px; color: var(--muted); }
+.card ul { margin: 8px 0 0; padding-left: 18px; font-size: 13px; color: var(--text); }
+.card li { margin: 4px 0; }
+@media (max-width: 820px) {
+  .grid .small, .grid .medium, .grid .large { grid-column: span 6; }
+}
+.media-links {
+  margin: 10px 0 20px;
+  color: var(--muted);
+  font-size: 14px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 24px;
+  background: var(--surface);
+  border-radius: 8px;
+  overflow: hidden;
+}
+th, td {
+  padding: 10px 14px;
+  text-align: left;
+  vertical-align: top;
+  font-size: 14px;
+  border-bottom: 1px solid var(--border);
+}
+th { background: var(--surface-2); color: #fff; }
+tr:last-child td { border-bottom: 0; }
+.footer {
+  margin-top: 48px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+img:not(.brand-icon-lg):not(.brand-icon-sm) {
+  cursor: zoom-in;
+  transition: opacity 0.15s ease;
+}
+img:not(.brand-icon-lg):not(.brand-icon-sm):hover {
+  opacity: 0.92;
+}
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(8, 11, 15, 0.88);
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  cursor: zoom-out;
+}
+.lightbox.open {
+  display: flex;
+}
+.lightbox img {
+  max-width: 94vw;
+  max-height: 92vh;
+  width: auto;
+  height: auto;
+  margin: 0;
+  border-radius: 10px;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.65);
+  cursor: default;
+}
+.site-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.site-breadcrumb a {
+  color: var(--accent);
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="site-breadcrumb" aria-label="Breadcrumb">
+      <a href="../">&larr; Back to Products</a>
+      <span>&middot;</span>
+      <a href="../../">Twikia Studios Home</a>
+    </nav>
+    <div class="title-row">
+      <img class="brand-icon-lg" src="Docs/Images/twikia-studios-logo.png" alt="Twikia Studios" />
+      <div>
+        <h1>WallRun (v1.3.0) - User Guide</h1>
+        <p class="byline">By <strong>Twikia Studios</strong> &middot; &copy; 2026 Twikia Studios</p>
+      </div>
+    </div>
+    <p class="pitch">Blueprint and C++ friendly first-person wall running with options exposed cleanly in the Details panel, and everything tunable across C++, Blueprints, and Details panels. Drop in one component for responsive wall runs, directional wall leaps, and cinematic camera tilt.</p>
+
+    <div class="toc">
+      <strong>Quick Navigation</strong>
+      <div class="toc-list">
+        <a href="#setup">Setup</a><a href="#extras-wiring">Extras A - Tuning Feel &amp; Custom Blueprint Wiring</a><a href="#extras-callbacks">Extras B - Event Callbacks</a><a href="#extras-triggers">Extras C - Blueprint Nodes &amp; State Queries</a><a href="#api-reference">Appendix - API Reference</a>
+      </div>
+    </div>
+
+    <h2 id="demo">Immediate First-Person Demo Map</h2>
+    <div class="demo-highlight"><strong>No setup needed:</strong> Open <code>/WallRun/Examples/Maps/L_WallRunDemo</code> and press <strong>Play (PIE)</strong>. All functionality will work out of the box in the demo for testing.</div>
+    <img class="hero" src="Docs/Images/demo_arena.png" alt="WallRun Demo" />
+    <div class="folder-row"><img class="folder-shot" src="Docs/Images/demo_folder.png" alt="Content Browser: Blueprints" /><img class="folder-shot" src="Docs/Images/demo_map_folder.png" alt="Content Browser: Demo Map" /></div>
+    
+    <table><thead><tr><th>Input</th><th>Action</th></tr></thead><tbody><tr><td><code>WASD / Mouse</code></td><td>Move and look around</td></tr><tr><td><code>SpaceBar</code></td><td>Jump off the ground</td></tr><tr><td><code>SpaceBar, then hold WASD near a wall</code></td><td>Attach to the wall and wall run while holding Left Shift (hold-key mode) or automatically when auto-detect is enabled</td></tr><tr><td><code>Left Shift (optional hold-key mode)</code></td><td>Engage wall running only while held and detach cleanly on release</td></tr><tr><td><code>SpaceBar (while on or near a wall)</code></td><td>Leap off the wall: steer forward, wide away, tight hop, or reverse with <code>WASD</code></td></tr></tbody></table>
+    
+
+    <h2 id="setup">Setup</h2>
+    <div class="step"><h3>Step 1: Add Wall Run to Your Character</h3><p>Copy <code>WallRun</code> into <code>Plugins/</code>, enable it, and drag <strong>Wall Run</strong> onto your <code>ACharacter</code>, then assign your own <code>InputMappingContext</code>, <code>IA_WallRun</code>, and <code>IA_WallJump</code> assets in Details (or check <strong>Auto Detect Walls</strong>).</p><div class="setup-visuals"><img src="Docs/Images/Nodes/node_add_wallrun_component.png" alt="Add Wall Run to Your Character" /><img src="Docs/Images/Nodes/details_wallrun_setup.png" alt="Add Wall Run to Your Character Details" /></div></div><div class="step"><h3>Step 2: Add Camera FX (Optional)</h3><p>Drag in <strong>Wall Run Camera FX</strong> and set <strong>Target Spring Arm</strong> and <strong>Target Camera</strong> to your character&#x27;s components to drive camera tilt and FOV while wall running.</p><div class="setup-visuals"><img src="Docs/Images/Nodes/node_add_wallrun_camerafx.png" alt="Add Camera FX (Optional)" /><img src="Docs/Images/Nodes/details_wallrun_camerafx.png" alt="Add Camera FX (Optional) Details" /></div></div><div class="step"><h3>Step 3: Combine Ground Jump &amp; Wall Jump (Optional)</h3><p>Because Unreal&#x27;s built-in <code>Jump</code> only fires on solid ground, share a single Jump key by wiring it into <strong>Try Wall Jump</strong> (mid-air wall launch on <code>True</code>) with normal <strong>Jump</strong> on <code>False</code>.</p><div class="setup-visuals"><img src="Docs/Images/Nodes/node_wire_wallrun_input_jump.png" alt="Combine Ground Jump &amp; Wall Jump (Optional)" /></div></div>
+
+    <div class="boundary" id="end-setup">
+      <h2>End of Setup</h2>
+      <p>Your character now catches walls cleanly, launches with crisp directional control, and tilts through turns automatically. Everything below helps you dial in the exact game feel and drive audio, VFX, or custom stamina gates.</p>
+    </div>
+
+    <h2 id="extras-wiring">Extras A - Tuning Feel &amp; Custom Blueprint Wiring</h2>
+<div class="grid">
+<div class="card medium"><h3>Directional Wall Jump Tuning</h3><img src="Docs/Images/Nodes/details_wallrun_jump_tuning.png" alt="Directional Wall Jump Tuning" /><ul><li><strong>Wall Push Off &amp; Up Force</strong>: base outward kick and vertical lift on launch</li><li><strong>Inward Input Push Scale</strong>: holding toward the wall tightens into a quick upward hop</li><li><strong>Outward Input Push Scale</strong>: holding away widens into a fast cross-corridor leap</li><li><strong>Strip Inward / Clear Opposing Velocity</strong>: keeps existing momentum from fighting the jump</li></ul></div>
+<div class="card medium"><h3>Wall Detection, Speed &amp; Corner Filtering</h3><img src="Docs/Images/Nodes/details_wallrun_tunables.png" alt="Wall Detection, Speed &amp; Corner Filtering" /><ul><li><strong>Wall Run Speed &amp; Z Dampening</strong>: forward carry velocity and vertical fall glide</li><li><strong>Detection Radius &amp; Max Normal Z</strong>: keeps walls responsive while rejecting floors and slopes</li><li><strong>Corner Normal Dot Threshold</strong>: detaches smoothly instead of snagging around sharp edges</li></ul></div>
+<div class="card large"><h3>Bind External Camera Rig on BeginPlay</h3><img src="Docs/Images/Nodes/node_wire_bind_camerafx.png" alt="Bind External Camera Rig on BeginPlay" /><p>Use <code>BindCameraTargets</code> and <code>BindCameraFX</code> when your camera lives on a separate actor or spawns at runtime.</p></div>
+<div class="card medium"><h3>Manual Hold-Key Blueprint Wiring</h3><img src="Docs/Images/Nodes/node_wire_wallrun_hold_key.png" alt="Manual Hold-Key Blueprint Wiring" /><p>Prefer Blueprint Enhanced Input events over Details bindings? Drive <code>Try Enter Wall Run</code> (<code>Triggered</code>) and <code>Exit Wall Run</code> (<code>Completed</code>).</p></div>
+<div class="card large"><h3>Gate Wall Runs with Set Wall Run Allowed</h3><img src="Docs/Images/Nodes/node_wire_wallrun_auto_enter.png" alt="Gate Wall Runs with Set Wall Run Allowed" /><p>Plug stamina checks or state machines into <code>Set Wall Run Allowed</code> so players drop smoothly when blocked without removing input bindings.</p></div>
+</div><h2 id="extras-callbacks">Extras B - Event Callbacks</h2>
+<div class="grid">
+<div class="card small"><h3>OnWallRunEntered</h3><img src="Docs/Images/Nodes/node_cb_on_wallrun_entered.png" alt="OnWallRunEntered" /><p>Fires with <code>WallNormal</code> when wall running attaches.</p></div>
+<div class="card small"><h3>OnWallRunExited</h3><img src="Docs/Images/Nodes/node_cb_on_wallrun_exited.png" alt="OnWallRunExited" /><p>Fires cleanly on landing, corner detach, release, or wall jump.</p></div>
+<div class="card small"><h3>OnWallJumpLaunched</h3><img src="Docs/Images/Nodes/node_cb_on_wall_jump_launched.png" alt="OnWallJumpLaunched" /><p>Fires with <code>WallNormal</code> and computed <code>LaunchVelocity</code>.</p></div>
+</div><h2 id="extras-triggers">Extras C - Blueprint Nodes &amp; State Queries</h2>
+<div class="grid">
+<div class="card small"><h3>TryEnterWallRun</h3><img src="Docs/Images/Nodes/node_trig_try_enter_wallrun.png" alt="TryEnterWallRun" /><p>Attaches to a nearby valid wall on demand.</p></div>
+<div class="card small"><h3>ExitWallRun</h3><img src="Docs/Images/Nodes/node_trig_exit_wallrun.png" alt="ExitWallRun" /><p>Detaches cleanly and optionally starts cooldown.</p></div>
+<div class="card small"><h3>TryWallJump</h3><img src="Docs/Images/Nodes/node_trig_try_wall_jump.png" alt="TryWallJump" /><p>Performs directional mid-air launch off the active wall.</p></div>
+<div class="card small"><h3>IsAllowedToEnter</h3><img src="Docs/Images/Nodes/node_pure_is_allowed_to_enter.png" alt="IsAllowedToEnter" /><p>Checks eligibility and nearby vertical wall normal.</p></div>
+<div class="card small"><h3>IsWallRunning</h3><img src="Docs/Images/Nodes/node_pure_is_wall_running.png" alt="IsWallRunning" /><p>Returns true while the character is riding a wall.</p></div>
+<div class="card small"><h3>GetCurrentWallNormal</h3><img src="Docs/Images/Nodes/node_pure_get_wall_normal.png" alt="GetCurrentWallNormal" /><p>Returns the active wall surface normal for sparks or FX.</p></div>
+<div class="card small"><h3>GetCurrentRollDegrees</h3><img src="Docs/Images/Nodes/node_pure_get_roll_degrees.png" alt="GetCurrentRollDegrees" /><p>Reads smoothed camera tilt angle for HUD or animations.</p></div>
+<div class="card small"><h3>IWallRunCharacterContract</h3><img src="Docs/Images/Nodes/node_iface_wallrun_contract.png" alt="IWallRunCharacterContract" /><p>Supply custom 2D movement input or jump gates.</p></div>
+</div>
+    
+
+    <h2 id="api-reference">Appendix - API Reference</h2>
+    <p class="caption">This table highlights the primary entry points. Additional properties, helper functions, Blueprint nodes, and native C++ APIs are available in Unreal Editor Details panels, Blueprint context menus, and the plugin C++ headers.</p>
+    <table><thead><tr><th>Name</th><th>Type</th><th>Inputs / Outputs</th><th>Functionality</th></tr></thead><tbody><tr><td><code>UWallRunComponent</code></td><td>Component</td><td>In: Owner <code>ACharacter</code><br />In: <code>IA_WallRun</code> / <code>IA_WallJump</code></td><td>Detects vertical walls, projects wall-run velocity, handles directional jumps, and drives cooldowns</td></tr><tr><td><code>UWallRunCameraFXComponent</code></td><td>Component</td><td>In: <code>SpringArm</code><br />In: <code>Camera</code></td><td>Auto-discovers your rig (or binds custom targets) for smooth roll tilt and FOV punch</td></tr><tr><td><code>TryEnterWallRun</code> / <code>ExitWallRun</code></td><td>Callable</td><td>In: <code>bStartCooldown</code><br />Return: <code>bool</code></td><td>Start or end a wall run cleanly on demand from input or Blueprint logic</td></tr><tr><td><code>TryWallJump</code></td><td>Callable</td><td>Out: <code>OutLaunchVelocity</code><br />Return: <code>bool</code></td><td>Launches the player off the wall with <code>WASD</code>-steered force and inward clamping</td></tr><tr><td><code>IsAllowedToEnter</code> / <code>CheckIfNearWall</code></td><td>Callable</td><td>Out: <code>OutWallNormal</code><br />Return: <code>bool</code></td><td>Checks cooldowns, airborne eligibility, and nearby wall orientation</td></tr><tr><td><code>SetWallRunAllowed</code> / <code>SetAutoDetectWalls</code> / <code>SetMoveInputOverride</code> / <code>BindCameraFX</code></td><td>Callable</td><td>In: <code>bool</code> / <code>FVector2D</code><br />In: <code>CameraFX</code></td><td>Switch entry modes, gate wall runs from stamina/state, or feed AI/custom movement input</td></tr><tr><td><code>IsWallRunning</code> / <code>IsWallRunInputHeld</code> / Cooldowns / Normal &amp; Roll Getters</td><td>Pure</td><td>Return: <code>bool</code> / <code>FVector</code> / <code>float</code></td><td>Read live wall state, active normal, cooldowns, roll angle, and FOV for HUD or AnimBPs</td></tr><tr><td><code>OnWallRunEntered</code> / <code>OnWallRunExited</code></td><td>Event</td><td>Out: <code>WallNormal</code></td><td>Trigger footsteps, scrape particles, and animation transitions when runs start or stop</td></tr><tr><td><code>OnWallJumpLaunched</code></td><td>Event</td><td>Out: <code>WallNormal</code><br />Out: <code>LaunchVelocity</code></td><td>React to every wall leap with directional jump audio or camera kick</td></tr><tr><td><code>IWallRunCharacterContract</code> / <code>IWallRunListener</code></td><td>Interface</td><td>Return: <code>MoveInput</code><br />Return: <code>CanJump</code></td><td>Optional contracts for custom pawns supplying non-standard input or external listeners</td></tr></tbody></table>
+
+    <div class="footer">
+      <span class="footer-brand"><img class="brand-icon-sm" src="Docs/Images/twikia-studios-logo.png" alt="Twikia Studios" /><span>WallRun v1.3.0 - Twikia Studios</span></span>
+      <span>&copy; 2026 Twikia Studios. All rights reserved.</span>
+    </div>
+  </div>
+  <div class="lightbox" id="img-lightbox" aria-hidden="true">
+    <img id="img-lightbox-target" src="" alt="" />
+  </div>
+  <script>
+    (function () {
+      var box = document.getElementById('img-lightbox');
+      var target = document.getElementById('img-lightbox-target');
+      document.querySelectorAll('img:not(.brand-icon-lg):not(.brand-icon-sm)').forEach(function (img) {
+        img.addEventListener('click', function () {
+          target.src = img.src;
+          target.alt = img.alt || '';
+          box.classList.add('open');
+          box.setAttribute('aria-hidden', 'false');
+        });
+      });
+      box.addEventListener('click', function (e) {
+        if (e.target === box) {
+          box.classList.remove('open');
+          box.setAttribute('aria-hidden', 'true');
+        }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && box.classList.contains('open')) {
+          box.classList.remove('open');
+          box.setAttribute('aria-hidden', 'true');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
