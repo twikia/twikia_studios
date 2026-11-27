@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NP45SB32"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grapple v1.2.0 - Detailed Documentation</title>
+  <style>
+:root {
+  --bg: #0f141a;
+  --surface: #161d26;
+  --surface-2: #1c2530;
+  --border: #2a3542;
+  --text: #e7edf4;
+  --muted: #9aa7b8;
+  --accent: #58a6ff;
+  --green: #3fb950;
+  --amber: #f0a830;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.62 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+.wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 36px 24px 72px;
+}
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+.title-row h1 { font-size: 32px; margin: 0 0 4px; letter-spacing: -0.02em; }
+.byline { font-size: 13px; color: var(--muted); margin: 0; }
+.byline strong { color: var(--text); }
+.brand-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1f6feb, #58a6ff);
+  color: #fff;
+  font-weight: 800;
+  font-size: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.brand-badge-sm {
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #1f6feb, #58a6ff);
+  color: #fff;
+  font-weight: 800;
+  font-size: 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.footer-brand { display: inline-flex; align-items: center; gap: 8px; }
+.pitch { font-size: 16.5px; color: var(--muted); margin: 0 0 22px; }
+h2 {
+  font-size: 22px;
+  margin: 40px 0 14px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+h3 { font-size: 17px; margin: 22px 0 8px; color: #f4f8fc; }
+p { margin: 8px 0 12px; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code {
+  background: rgba(110, 118, 129, 0.22);
+  padding: 2px 6px;
+  border-radius: 5px;
+  font-family: Consolas, "Cascadia Mono", monospace;
+  font-size: 13px;
+  color: #f0f6fc;
+}
+.toc {
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 18px 0 28px;
+}
+.toc strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.toc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.toc a { display: block; font-size: 14px; }
+.note-box {
+  margin: 14px 0 22px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgba(88, 166, 255, 0.14), rgba(63, 185, 80, 0.08));
+  border: 1px solid rgba(88, 166, 255, 0.35);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0 26px;
+  background: var(--surface);
+  border-radius: 8px;
+  overflow: hidden;
+}
+th, td {
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+  font-size: 13.5px;
+  border-bottom: 1px solid var(--border);
+}
+th { background: var(--surface-2); color: #fff; font-weight: 600; }
+tr:last-child td { border-bottom: 0; }
+.footer {
+  margin-top: 48px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.site-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 13.5px;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.site-breadcrumb a {
+  color: var(--accent);
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="site-breadcrumb" aria-label="Breadcrumb"><a href="./">&larr; Back to Grapple User Guide</a><span>&middot;</span><a href="../">All Products</a><span>&middot;</span><a href="../../">Twikia Studios Home</a></nav>
+    <div class="title-row">
+      <span class="brand-badge" aria-hidden="true">TS</span>
+      <div>
+        <h1>Grapple (v1.2.0) - Detailed Documentation</h1>
+        <p class="byline">By <strong>Twikia Studios</strong> &middot; &copy; 2026 Twikia Studios &middot; <a href="https://twikiastudios.com/products/grapple/">Visual User Guide</a></p>
+      </div>
+    </div>
+    <p class="pitch">Complete technical reference for UGrappleComponent, UGrappleCameraFXComponent, AGrappleSplineActor, framerate-independent pull and swing math, Enhanced Input auto-binding, and blueprint/C++ contracts.</p>
+
+    <div class="note-box">
+      <strong>Complete Text &amp; API Reference:</strong> This page documents every public class, component, subsystem, Details panel property, Blueprint/C++ method, delegate, interface, struct, and enum shipped in <strong>Grapple v1.2.0</strong>. For visual setup steps and editor screenshots, open the <a href="https://twikiastudios.com/products/grapple/">User Guide</a> (or local <code>UserGuide.html</code>).
+    </div>
+
+    <div class="toc">
+      <strong>Quick Navigation</strong>
+      <div class="toc-list">
+        <a href="#features">1. Architecture &amp; Feature Breakdown</a>
+        <a href="#classes">2. Classes, Components &amp; Subsystems (3)</a>
+        <a href="#properties">3. Complete Details Panel Configuration &amp; Properties (30)</a>
+        <a href="#methods">4. Complete Methods &amp; Functions Reference (13)</a>
+        <a href="#delegates">5. Complete Event Delegates &amp; Callbacks (3)</a>
+        <a href="#types">6. Interfaces, Structs &amp; Enums (10)</a>
+      </div>
+    </div>
+
+    <h2 id="features">1. Architecture &amp; Feature Breakdown</h2>
+    <h3>Architecture &amp; Core Systems</h3><p>Grapple is split into three focused runtime building blocks: UGrappleComponent (state machine, aim raycasts, exponential pull and WASD perpendicular swing forces, auto-release distance, duration timer, and cooldown timer), UGrappleCameraFXComponent (smooth FOV widening and lateral camera roll toward the tether), and AGrappleSplineActor (procedural sagging rope spline and hook mesh).</p><p>Every tunable is exposed on the Details panel and editable at runtime from Blueprint or C++. Enhanced Input bindings are optional: assign InputMappingContext and IA_Grapple on UGrappleComponent for zero-graph input handling, or leave IA_Grapple unset and drive TryEnterGrapple() and ExitGrapple() directly from custom Blueprint or C++ input handlers.</p><h3>Physics, Framing &amp; Contracts</h3><p>All pull and swing impulses pass through VectorFrameRateCorrection(BaseImpulse, DeltaTime), normalizing movement to a 60 FPS reference step so swing arcs and pull distances remain consistent across 30, 60, 120, and 240 FPS.</p><p>Custom pawns or rope actors can implement IGrappleCharacterContract, IGrappleSplineContract, and IGrappleListener to override view origin, aim direction, anchor socket location, or react to attach/detach events without subclassing.</p>
+
+    <h2 id="classes">2. Classes, Components &amp; Subsystems</h2>
+    <table><thead><tr><th>Class</th><th>Inherits From</th><th>Header</th><th>Description</th></tr></thead><tbody><tr><td><code>UGrappleCameraFXComponent</code></td><td><code>public UActorComponent, public IGrappleListener</code></td><td>GrappleCameraFXComponent.h</td><td>Smoothly tilts camera roll toward the grapple tether and widens FOV while swinging.</td></tr><tr><td><code>UGrappleComponent</code></td><td><code>public UActorComponent</code></td><td>GrappleComponent.h</td><td>Standalone first-person grapple state, physics-inspired pull/swing, auto-release, and cooldown component for ACharacter owners.</td></tr><tr><td><code>AGrappleSplineActor</code></td><td><code>public AActor, public IGrappleSplineContract</code></td><td>GrappleSplineActor.h</td><td>Procedural sagging rope tether and hook actor implementing IGrappleSplineContract for UGrappleComponent.</td></tr></tbody></table>
+
+    <h2 id="properties">3. Complete Details Panel Configuration &amp; Properties</h2>
+    <table><thead><tr><th>Owner</th><th>Property</th><th>Type</th><th>Category</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>UGrappleCameraFXComponent</code></td><td><code>GrappleFOVOffset</code></td><td>float</td><td>Configs</td><td>10.0f</td><td>Additional field-of-view offset in degrees added on top of OriginalFOV while grappling.</td></tr><tr><td><code>UGrappleCameraFXComponent</code></td><td><code>FOVEnterSpeed</code></td><td>float</td><td>Configs</td><td>8.0f</td><td>Interpolation speed used to blend camera FOV toward the widened grapple FOV on attach.</td></tr><tr><td><code>UGrappleCameraFXComponent</code></td><td><code>FOVExitSpeed</code></td><td>float</td><td>Configs</td><td>6.0f</td><td>Interpolation speed used to restore camera FOV back to OriginalFOV after detaching.</td></tr><tr><td><code>UGrappleCameraFXComponent</code></td><td><code>MaxCameraRollDegrees</code></td><td>float</td><td>Configs</td><td>12.0f</td><td>Maximum camera roll angle in degrees applied when swinging laterally relative to the grapple anchor.</td></tr><tr><td><code>UGrappleCameraFXComponent</code></td><td><code>RollInterpSpeed</code></td><td>float</td><td>Configs</td><td>8.0f</td><td>Interpolation speed used to smooth camera roll transitions during and after a grapple swing.</td></tr><tr><td><code>UGrappleCameraFXComponent</code></td><td><code>OriginalFOV</code></td><td>float</td><td>State</td><td>90.0f</td><td>Baseline camera FOV in degrees captured from the bound UCameraComponent on BeginPlay.</td></tr><tr><td><code>UGrappleCameraFXComponent</code></td><td><code>TargetFOV</code></td><td>float</td><td>State</td><td>90.0f</td><td>Current target FOV in degrees that the camera is interpolating toward.</td></tr><tr><td><code>UGrappleCameraFXComponent</code></td><td><code>CurrentGrappleRoll</code></td><td>float</td><td>State</td><td>0.0f</td><td>Current camera roll offset in degrees applied by the grapple camera FX.</td></tr><tr><td><code>UGrappleComponent</code></td><td><code>GrappleLength</code></td><td>float</td><td>Configs</td><td>7000.0f</td><td>Maximum raycast distance in centimeters (cm) that the grapple can reach and latch onto geometry.</td></tr><tr><td><code>UGrappleComponent</code></td><td><code>GrappleDuration</code></td><td>float</td><td>Configs</td><td>2.0f</td><td>Maximum time in seconds that a single grapple tether can remain active before automatically detaching.</td></tr><tr><td><code>UGrappleComponent</code></td><td><code>GrappleStrengthMultiplier</code></td><td>float</td><td>Configs</td><td>1.0f</td><td>Global multiplier applied to both radial pull and pendulum swing forces (1.0 = default baseline strength).</td></tr><tr><td><code>UGrappleComponent</code></td><td><code>SwingingStrength</code></td><td>float</td><td>Configs|Tuning</td><td>15.0f</td><td>Lateral acceleration strength applied when steering mid-air with WASD perpendicular to the tether line.</td></tr><tr><td><code>UGrappleComponent</code></td><td><code>PullStrength</code></td><td>float</td><td>Configs|Tuning</td><td>8.0f</td><td>Radial pull acceleration strength applied toward the anchor point while tethered.</td></tr><tr><td><code>UGrappleComponent</code></td><td><code>Cooldown</code></td><td>float</td><td>Configs</td><td>2.5f</td><td>Cooldown duration in seconds after detaching before the grapple can be fired again.</td></tr><tr><td><code>UGrappleComponent</code></td><td><code>StopDistance</code></td><td>float</td><td>Configs</td><td>250.0f</td><td>Distance threshold in centimeters (cm) from the anchor point at which the grapple automatically detaches on arrival.</td></tr><tr><td><code>UGrappleComponent</code></td><td><code>TraceChannel</code></td><td>TEnumAsByte&lt;ECollisionChannel&gt;</td><td>Configs</td><td>ECC_Visibility</td><td>Collision trace channel used by TrySetGrapple when raycasting for valid anchor surfaces.</td></tr><tr><td><code>UGrappleComponent</code></td><td><code>InputMappingContext</code></td><td>TObjectPtr&lt;UInputMappingContext&gt;</td><td>Configs|Input</td><td>-</td><td>Enhanced Input Mapping Context automatically registered on the local player when IA_Grapple is assigned.</td></tr><tr><td><code>UGrappleComponent</code></td><td><code>IA_Grapple</code></td><td>TObjectPtr&lt;UInputAction&gt;</td><td>Configs|Input</td><td>-</td><td>Enhanced Input Action bound automatically for hold-to-grapple (Triggered/Started enters, Completed/Canceled exits). Leave unset to drive TryEnterGrapple/ExitGrapple manually.</td></tr><tr><td><code>UGrappleComponent</code></td><td><code>InputMappingPriority</code></td><td>int32</td><td>Configs|Input</td><td>1</td><td>Priority level used when adding InputMappingContext to UEnhancedInputLocalPlayerSubsystem.</td></tr><tr><td><code>AGrappleSplineActor</code></td><td><code>AnchorOrigin</code></td><td>TObjectPtr&lt;USceneComponent&gt;</td><td>Components</td><td>-</td><td>Root scene component representing the character-side rope attachment origin.</td></tr><tr><td><code>AGrappleSplineActor</code></td><td><code>SplineMesh</code></td><td>TObjectPtr&lt;USplineMeshComponent&gt;</td><td>Components</td><td>-</td><td>Spline mesh component stretched from the character anchor to the grapple target point.</td></tr><tr><td><code>AGrappleSplineActor</code></td><td><code>HookMesh</code></td><td>TObjectPtr&lt;UStaticMeshComponent&gt;</td><td>Components</td><td>-</td><td>Hook static mesh positioned at the world-space grapple impact point.</td></tr><tr><td><code>AGrappleSplineActor</code></td><td><code>ChainMeshAsset</code></td><td>TSoftObjectPtr&lt;UStaticMesh&gt;</td><td>Configs</td><td>-</td><td>Soft reference to the static mesh used along the rope spline body.</td></tr><tr><td><code>AGrappleSplineActor</code></td><td><code>HookMeshAsset</code></td><td>TSoftObjectPtr&lt;UStaticMesh&gt;</td><td>Configs</td><td>-</td><td>Soft reference to the static mesh placed at the anchor end of the rope.</td></tr><tr><td><code>AGrappleSplineActor</code></td><td><code>Thickness</code></td><td>FVector2D</td><td>Configs</td><td>FVector2D(0.075f, 0.075f)</td><td>Cross-section scale (width, height) applied to the spline mesh segments.</td></tr><tr><td><code>AGrappleSplineActor</code></td><td><code>VelocityStiffness</code></td><td>float</td><td>Configs</td><td>-0.0006f</td><td>Multiplier controlling how much player velocity pulls the rope taut and reduces mid-air slack.</td></tr><tr><td><code>AGrappleSplineActor</code></td><td><code>Gravity</code></td><td>FVector</td><td>Configs</td><td>FVector(0.0f, 0.0f, -2.0f)</td><td>Gravity direction vector applied to the rope midpoint sag calculation.</td></tr><tr><td><code>AGrappleSplineActor</code></td><td><code>Heaviness</code></td><td>float</td><td>Configs</td><td>150.0f</td><td>Rope weight multiplier controlling the vertical sag magnitude along the tether.</td></tr><tr><td><code>AGrappleSplineActor</code></td><td><code>bSplineVisible</code></td><td>bool</td><td>State</td><td>false</td><td>True while the grapple spline and hook meshes are visible during an active grapple.</td></tr><tr><td><code>AGrappleSplineActor</code></td><td><code>CurrentTargetWorld</code></td><td>FVector</td><td>State</td><td>FVector::ZeroVector</td><td>Current world-space target location of the grapple hook tip.</td></tr></tbody></table>
+
+    <h2 id="methods">4. Complete Methods &amp; Functions Reference</h2>
+    <table><thead><tr><th>Owner</th><th>Method</th><th>Specifiers</th><th>Inputs / Outputs</th><th>Functionality</th></tr></thead><tbody><tr><td><code>UGrappleCameraFXComponent</code></td><td><code>BindCameraReferences</code></td><td>BlueprintCallable</td><td>In: UCameraComponent* InCamera<br />In: USceneComponent* InRotationTarget = nullptr</td><td>Explicitly binds a camera component and optional rotation target when the owner uses multiple cameras or non-standard rigs.</td></tr><tr><td><code>UGrappleComponent</code></td><td><code>TrySetGrapple</code></td><td>BlueprintCallable</td><td>Out: FVector &amp;OutImpactPoint<br />Return: bool</td><td>Performs a single line trace along the owner&#x27;s view direction up to GrappleLength (cm) and outputs the world hit location if valid geometry is found.</td></tr><tr><td><code>UGrappleComponent</code></td><td><code>TryEnterGrapple</code></td><td>BlueprintCallable</td><td>Return: bool</td><td>Attempts to fire the grapple along the view ray, attach to the hit point, show the registered spline tether, and start the max duration timer.</td></tr><tr><td><code>UGrappleComponent</code></td><td><code>ExitGrapple</code></td><td>BlueprintCallable</td><td>None</td><td>Detaches the active grapple tether, hides the spline actor, broadcasts OnGrappleExited / OnGrappleStateChanged, and starts the cooldown timer.</td></tr><tr><td><code>UGrappleComponent</code></td><td><code>ComputeGrappleForceSwing</code></td><td>BlueprintCallable</td><td>Out: FVector &amp;OutNormalizedSwing<br />Return: FVector</td><td>Computes the perpendicular pendulum swing force vector from the player&#x27;s WASD input relative to the anchor vector and outputs the normalized swing direction.</td></tr><tr><td><code>UGrappleComponent</code></td><td><code>ComputeGrappleForceTowardAnchor</code></td><td>BlueprintCallable</td><td>Return: FVector</td><td>Computes the radial pull force vector directed toward the active grapple anchor point scaled by PullStrength and GrappleStrengthMultiplier.</td></tr><tr><td><code>UGrappleComponent</code></td><td><code>VectorFrameRateCorrection</code></td><td>BlueprintPure</td><td>In: const FVector &amp;BaseImpulse<br />In: float DeltaTime<br />Return: FVector</td><td>Scales a base impulse vector by DeltaTime relative to a 60 FPS reference step so grapple pull and swing distances stay consistent across framerates.</td></tr><tr><td><code>UGrappleComponent</code></td><td><code>SetSplineActor</code></td><td>BlueprintCallable</td><td>In: AActor *InSplineActor</td><td>Registers an AGrappleSplineActor (or any actor implementing IGrappleSplineContract) to render and update the procedural rope tether during active grapples.</td></tr><tr><td><code>UGrappleComponent</code></td><td><code>IsGrappling</code></td><td>BlueprintPure</td><td>Return: bool</td><td>Returns true while the player is actively tethered to a grapple point.</td></tr><tr><td><code>UGrappleComponent</code></td><td><code>IsOnCooldown</code></td><td>BlueprintPure</td><td>Return: bool</td><td>Returns true while the grapple is on cooldown after detaching and cannot be re-entered.</td></tr><tr><td><code>UGrappleComponent</code></td><td><code>GetCooldownRemainingRatio</code></td><td>BlueprintPure</td><td>Return: float</td><td>Returns the normalized [0..1] cooldown remaining ratio (1.0 when just exited, 0.0 when ready to fire) for HUD meters and crosshair feedback.</td></tr><tr><td><code>UGrappleComponent</code></td><td><code>GetGrapplePoint</code></td><td>BlueprintPure</td><td>Return: FVector</td><td>Returns the world-space coordinates of the current (or most recent) grapple anchor point.</td></tr><tr><td><code>AGrappleSplineActor</code></td><td><code>CalculateSpline</code></td><td>BlueprintCallable</td><td>In: const FVector&amp; TargetLocationInLocalSpace<br />In: const FVector&amp; PlayerVelocityLocal</td><td>Recomputes spline start/end tangents and hook orientation in local space using the target offset and player velocity.</td></tr></tbody></table>
+
+    <h2 id="delegates">5. Complete Event Delegates &amp; Callbacks</h2>
+    <table><thead><tr><th>Owner</th><th>Delegate</th><th>Signature / Parameters</th><th>Description</th></tr></thead><tbody><tr><td><code>UGrappleComponent</code></td><td><code>OnGrappleStateChanged</code></td><td>bool, bIsGrappling</td><td>Broadcasts true when a grapple attaches and false when it detaches.</td></tr><tr><td><code>UGrappleComponent</code></td><td><code>OnGrappleEntered</code></td><td>const FVector &amp;, GrapplePoint</td><td>Broadcasts the world-space anchor point immediately when a grapple attaches.</td></tr><tr><td><code>UGrappleComponent</code></td><td><code>OnGrappleExited</code></td><td>float, CooldownDuration</td><td>Broadcasts the active Cooldown duration in seconds when a grapple detaches.</td></tr></tbody></table>
+
+    <h2 id="types">6. Interfaces, Structs &amp; Enums</h2>
+    <h3>Blueprint &amp; C++ Interfaces</h3>
+    <table><thead><tr><th>Interface</th><th>Method</th><th>Specifiers</th><th>Inputs / Outputs</th><th>Functionality</th></tr></thead><tbody><tr><td><code>IGrappleCharacterContract</code></td><td><code>GetGrappleViewLocation</code></td><td>BlueprintCallable, BlueprintNativeEvent</td><td>Return: FVector</td><td>Returns the world-space eye/camera origin from which grapple traces are cast.</td></tr><tr><td><code>IGrappleCharacterContract</code></td><td><code>GetGrappleViewForward</code></td><td>BlueprintCallable, BlueprintNativeEvent</td><td>Return: FVector</td><td>Returns the normalized world-space forward aim vector for grapple traces.</td></tr><tr><td><code>IGrappleCharacterContract</code></td><td><code>GetGrappleRightVector</code></td><td>BlueprintCallable, BlueprintNativeEvent</td><td>Return: FVector</td><td>Returns the normalized world-space right vector used to compute perpendicular swing forces.</td></tr><tr><td><code>IGrappleCharacterContract</code></td><td><code>GetGrappleMoveInput</code></td><td>BlueprintCallable, BlueprintNativeEvent</td><td>Return: FVector2D</td><td>Returns the 2D horizontal movement input (X = right, Y = forward) used for mid-air swing steering.</td></tr><tr><td><code>IGrappleCharacterContract</code></td><td><code>GetGrappleAnchorOrigin</code></td><td>BlueprintCallable, BlueprintNativeEvent</td><td>Return: FVector</td><td>Returns the world-space origin where the grapple tether attaches on the character (e.g., hand or launcher socket).</td></tr><tr><td><code>IGrappleSplineContract</code></td><td><code>ShowSpline</code></td><td>BlueprintCallable, BlueprintNativeEvent</td><td>In: const FVector &amp;HitLocation</td><td>Shows the grapple rope/spline and snaps its endpoint to the world hit location.</td></tr><tr><td><code>IGrappleSplineContract</code></td><td><code>HideSpline</code></td><td>BlueprintCallable, BlueprintNativeEvent</td><td>None</td><td>Hides the grapple rope/spline when the grapple detaches.</td></tr><tr><td><code>IGrappleSplineContract</code></td><td><code>UpdateSplineTarget</code></td><td>BlueprintCallable, BlueprintNativeEvent</td><td>In: const FVector &amp;TargetPositionWorld<br />In: const FVector &amp;PlayerVelocity</td><td>Updates the spline endpoint and mid-air sag curvature each tick using the target world position and player velocity.</td></tr><tr><td><code>IGrappleListener</code></td><td><code>OnGrappleEntered</code></td><td>BlueprintCallable, BlueprintNativeEvent</td><td>In: const FVector &amp;GrapplePoint</td><td>Called when a grapple attaches to the specified world-space anchor point.</td></tr><tr><td><code>IGrappleListener</code></td><td><code>OnGrappleExited</code></td><td>BlueprintCallable, BlueprintNativeEvent</td><td>In: float CooldownDuration</td><td>Called when a grapple detaches and begins its cooldown period.</td></tr></tbody></table>
+    <h3>Structs</h3>
+    <p><em>None defined in this module.</em></p>
+    <h3>Enums</h3>
+    <p><em>None defined in this module.</em></p>
+
+    <div class="footer">
+      <span class="footer-brand"><span class="brand-badge-sm" aria-hidden="true">TS</span><span>Grapple v1.2.0 - Twikia Studios</span></span>
+      <span><a href="https://twikiastudios.com/products/grapple/">User Guide</a> &middot; &copy; 2026 Twikia Studios. All rights reserved.</span>
+    </div>
+  </div>
+</body>
+</html>

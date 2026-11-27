@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NP45SB32"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wall Run v1.3.0 - Detailed Documentation</title>
+  <style>
+:root {
+  --bg: #0f141a;
+  --surface: #161d26;
+  --surface-2: #1c2530;
+  --border: #2a3542;
+  --text: #e7edf4;
+  --muted: #9aa7b8;
+  --accent: #58a6ff;
+  --green: #3fb950;
+  --amber: #f0a830;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.62 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+.wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 36px 24px 72px;
+}
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+.title-row h1 { font-size: 32px; margin: 0 0 4px; letter-spacing: -0.02em; }
+.byline { font-size: 13px; color: var(--muted); margin: 0; }
+.byline strong { color: var(--text); }
+.brand-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1f6feb, #58a6ff);
+  color: #fff;
+  font-weight: 800;
+  font-size: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.brand-badge-sm {
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #1f6feb, #58a6ff);
+  color: #fff;
+  font-weight: 800;
+  font-size: 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.footer-brand { display: inline-flex; align-items: center; gap: 8px; }
+.pitch { font-size: 16.5px; color: var(--muted); margin: 0 0 22px; }
+h2 {
+  font-size: 22px;
+  margin: 40px 0 14px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+h3 { font-size: 17px; margin: 22px 0 8px; color: #f4f8fc; }
+p { margin: 8px 0 12px; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code {
+  background: rgba(110, 118, 129, 0.22);
+  padding: 2px 6px;
+  border-radius: 5px;
+  font-family: Consolas, "Cascadia Mono", monospace;
+  font-size: 13px;
+  color: #f0f6fc;
+}
+.toc {
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 18px 0 28px;
+}
+.toc strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.toc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.toc a { display: block; font-size: 14px; }
+.note-box {
+  margin: 14px 0 22px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgba(88, 166, 255, 0.14), rgba(63, 185, 80, 0.08));
+  border: 1px solid rgba(88, 166, 255, 0.35);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0 26px;
+  background: var(--surface);
+  border-radius: 8px;
+  overflow: hidden;
+}
+th, td {
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+  font-size: 13.5px;
+  border-bottom: 1px solid var(--border);
+}
+th { background: var(--surface-2); color: #fff; font-weight: 600; }
+tr:last-child td { border-bottom: 0; }
+.footer {
+  margin-top: 48px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.site-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 13.5px;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.site-breadcrumb a {
+  color: var(--accent);
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="site-breadcrumb" aria-label="Breadcrumb"><a href="./">&larr; Back to WallRun User Guide</a><span>&middot;</span><a href="../">All Products</a><span>&middot;</span><a href="../../">Twikia Studios Home</a></nav>
+    <div class="title-row">
+      <span class="brand-badge" aria-hidden="true">TS</span>
+      <div>
+        <h1>Wall Run (v1.3.0) - Detailed Documentation</h1>
+        <p class="byline">By <strong>Twikia Studios</strong> &middot; &copy; 2026 Twikia Studios &middot; <a href="https://twikiastudios.com/products/wallrun/">Visual User Guide</a></p>
+      </div>
+    </div>
+    <p class="pitch">Complete technical reference for UWallRunComponent, UWallRunCameraFXComponent, wall detection and corner checks, directional wall-jump launch math, Enhanced Input binding, and character/listener contracts.</p>
+
+    <div class="note-box">
+      <strong>Complete Text &amp; API Reference:</strong> This page documents every public class, component, subsystem, Details panel property, Blueprint/C++ method, delegate, interface, struct, and enum shipped in <strong>Wall Run v1.3.0</strong>. For visual setup steps and editor screenshots, open the <a href="https://twikiastudios.com/products/wallrun/">User Guide</a> (or local <code>UserGuide.html</code>).
+    </div>
+
+    <div class="toc">
+      <strong>Quick Navigation</strong>
+      <div class="toc-list">
+        <a href="#features">1. Architecture &amp; Feature Breakdown</a>
+        <a href="#classes">2. Classes, Components &amp; Subsystems (2)</a>
+        <a href="#properties">3. Complete Details Panel Configuration &amp; Properties (30)</a>
+        <a href="#methods">4. Complete Methods &amp; Functions Reference (25)</a>
+        <a href="#delegates">5. Complete Event Delegates &amp; Callbacks (3)</a>
+        <a href="#types">6. Interfaces, Structs &amp; Enums (5)</a>
+      </div>
+    </div>
+
+    <h2 id="features">1. Architecture &amp; Feature Breakdown</h2>
+    <h3>Architecture &amp; Core Systems</h3><p>WallRun provides UWallRunComponent for wall detection, along-wall velocity projection, corner-angle transitions, vertical velocity dampening, cooldown management, and directional wall jumps, paired with UWallRunCameraFXComponent for smooth camera roll tilt and FOV widening.</p><p>Entry supports two modes: automatic airborne wall detection (bAutoDetectWalls = true) or hold-to-wall-run via IA_WallRun. Wall jumping can be triggered automatically via IA_WallJump or manually through TryWallJump().</p><h3>Wall Jump Launch Math &amp; Contracts</h3><p>ComputeWallJumpVelocity blends WallPushOffForce along the wall normal, WallUpForce vertically, and ForwardMaintainFactor along the player&#x27;s directional input, scaled proportionally to the character&#x27;s JumpZVelocity relative to JumpHeight. Optional inward/outward push scaling and inward velocity stripping prevent awkward wall-clipping or weak hops.</p><p>Implement IWallRunCharacterContract on custom characters to supply movement input and jump eligibility, or IWallRunListener to react to wall-run enter, exit, and launch events.</p>
+
+    <h2 id="classes">2. Classes, Components &amp; Subsystems</h2>
+    <table><thead><tr><th>Class</th><th>Inherits From</th><th>Header</th><th>Description</th></tr></thead><tbody><tr><td><code>UWallRunCameraFXComponent</code></td><td><code>public UActorComponent</code></td><td>WallRunCameraFXComponent.h</td><td>Smoothly rolls and shifts camera FOV while wall running.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>public UActorComponent</code></td><td>WallRunComponent.h</td><td>Standalone wall-running and wall-jumping state/ability component for ACharacter owners.</td></tr></tbody></table>
+
+    <h2 id="properties">3. Complete Details Panel Configuration &amp; Properties</h2>
+    <table><thead><tr><th>Owner</th><th>Property</th><th>Type</th><th>Category</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>UWallRunCameraFXComponent</code></td><td><code>BaseFOV</code></td><td>float</td><td>WallRun|CameraFX</td><td>90.0f</td><td>Baseline camera field-of-view in degrees restored when wall running ends.</td></tr><tr><td><code>UWallRunCameraFXComponent</code></td><td><code>WallRunFOV</code></td><td>float</td><td>WallRun|CameraFX</td><td>105.0f</td><td>Target camera field-of-view in degrees blended in while actively wall running.</td></tr><tr><td><code>UWallRunCameraFXComponent</code></td><td><code>MaxTiltDegrees</code></td><td>float</td><td>WallRun|CameraFX</td><td>15.0f</td><td>Maximum camera roll tilt angle in degrees away from the active wall surface.</td></tr><tr><td><code>UWallRunCameraFXComponent</code></td><td><code>BlendSpeed</code></td><td>float</td><td>WallRun|CameraFX</td><td>10.0f</td><td>Interpolation speed used to smooth camera roll and FOV transitions when entering or exiting a wall run.</td></tr><tr><td><code>UWallRunCameraFXComponent</code></td><td><code>TargetSpringArm</code></td><td>FComponentReference</td><td>WallRun|CameraFX</td><td>-</td><td>Optional custom SpringArm target in Details (leave unset to auto-bind the character&#x27;s default SpringArm on BeginPlay).</td></tr><tr><td><code>UWallRunCameraFXComponent</code></td><td><code>TargetCamera</code></td><td>FComponentReference</td><td>WallRun|CameraFX</td><td>-</td><td>Optional custom Camera target in Details (leave unset to auto-bind the character&#x27;s default Camera on BeginPlay).</td></tr><tr><td><code>UWallRunCameraFXComponent</code></td><td><code>SpringArm</code></td><td>TWeakObjectPtr&lt;USpringArmComponent&gt;</td><td>General</td><td>-</td><td></td></tr><tr><td><code>UWallRunCameraFXComponent</code></td><td><code>Camera</code></td><td>TWeakObjectPtr&lt;UCameraComponent&gt;</td><td>General</td><td>-</td><td></td></tr><tr><td><code>UWallRunComponent</code></td><td><code>bAutoDetectWalls</code></td><td>bool</td><td>WallRun|Setup</td><td>false</td><td>Detect walls automatically while airborne with movement input (toggleable in Details -&gt; WallRun|Setup; no C++ needed). Disable to require a hold key or Blueprint logic.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>bWallRunAllowed</code></td><td>bool</td><td>WallRun|Setup</td><td>true</td><td>Gates whether wall running is allowed to enter or continue. Toggle from state machines, stamina logic, or Details without Tick entry.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>WallRunSpeed</code></td><td>float</td><td>WallRun|Config</td><td>1000.0f</td><td>Target horizontal movement speed in cm/s along the wall surface while wall running.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>ZDampening</code></td><td>float</td><td>WallRun|Config</td><td>0.2f</td><td>Vertical velocity dampening factor [0..1] applied to Z velocity while wall running (lower values reduce downward gravity drop).</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>WallDetectionRadius</code></td><td>float</td><td>WallRun|Config</td><td>120.0f</td><td>Lateral sphere/line trace reach in centimeters (cm) from the character capsule used to detect runnable walls.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>MaxWallNormalZ</code></td><td>float</td><td>WallRun|Config</td><td>0.3f</td><td>Maximum absolute Z component allowed on a surface normal to qualify as a runnable vertical wall (e.g. 0.3 rejects floors and steep ramps).</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>CornerNormalDotThreshold</code></td><td>float</td><td>WallRun|Config</td><td>0.9999f</td><td>Dot-product threshold between the active wall normal and a newly detected wall normal below which a corner transition is detected.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>WallRunCooldown</code></td><td>float</td><td>WallRun|Config</td><td>0.3f</td><td>Cooldown duration in seconds after exiting a wall run before wall running can re-engage.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>InputMappingContext</code></td><td>TObjectPtr&lt;UInputMappingContext&gt;</td><td>WallRun|Input</td><td>-</td><td>Enhanced Input Mapping Context automatically registered on the local player when IA_WallRun or IA_WallJump is assigned.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>IA_WallRun</code></td><td>TObjectPtr&lt;UInputAction&gt;</td><td>WallRun|Input</td><td>-</td><td>Optional hold-to-wall-run Enhanced Input action (e.g. Left Shift). When assigned, wall run only engages while held and exits on release.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>IA_WallJump</code></td><td>TObjectPtr&lt;UInputAction&gt;</td><td>WallRun|Input</td><td>-</td><td>Optional Enhanced Input action bound automatically to TryWallJump when triggered while airborne near a wall.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>InputMappingPriority</code></td><td>int32</td><td>WallRun|Input</td><td>1</td><td>Priority level used when adding InputMappingContext to UEnhancedInputLocalPlayerSubsystem.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>WallPushOffForce</code></td><td>float</td><td>WallRun|Jump</td><td>700.0f</td><td>Base outward impulse force in cm/s applied along the wall normal when executing a wall jump.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>WallUpForce</code></td><td>float</td><td>WallRun|Jump</td><td>600.0f</td><td>Upward Z velocity impulse in cm/s applied when launching off a wall during a wall jump.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>JumpHeight</code></td><td>float</td><td>WallRun|Jump</td><td>600.0f</td><td>Reference jump height in cm/s used to scale WallPushOffForce and WallUpForce proportionally to the character&#x27;s JumpZVelocity.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>ForwardMaintainFactor</code></td><td>float</td><td>WallRun|Jump</td><td>650.0f</td><td>Directional momentum factor in cm/s blended with player WASD input when computing the wall-jump launch vector.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>InwardInputPushScale</code></td><td>float</td><td>WallRun|Jump</td><td>0.5f</td><td>Scales how much holding toward the wall (e.g. D into a right wall) reduces push-off via ForwardMaintainFactor. 0.0 = clamped (same push-off as neutral), 0.5 = balanced tighter wall hop (-375), 1.0 = full original reduction (-50).</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>OutwardInputPushScale</code></td><td>float</td><td>WallRun|Jump</td><td>1.0f</td><td>Scales extra push-off from ForwardMaintainFactor when holding away from the wall (e.g. A from a right wall).</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>bStripInwardVelocityOnWallJump</code></td><td>bool</td><td>WallRun|Jump</td><td>true</td><td>When true, pre-existing velocity pointing into the wall is cleared before applying the wall-jump launch.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>bClearOpposingVelocityOnWallJump</code></td><td>bool</td><td>WallRun|Jump</td><td>true</td><td>When true, holding a key opposing current along-wall travel (e.g. S while wall running forward) clears opposing tangent velocity so you jump backward cleanly.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>WallJumpCooldown</code></td><td>float</td><td>WallRun|Jump</td><td>0.5f</td><td>Cooldown duration in seconds after a wall jump before another wall jump can be triggered.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>CameraFX</code></td><td>TWeakObjectPtr&lt;UWallRunCameraFXComponent&gt;</td><td>General</td><td>-</td><td></td></tr></tbody></table>
+
+    <h2 id="methods">4. Complete Methods &amp; Functions Reference</h2>
+    <table><thead><tr><th>Owner</th><th>Method</th><th>Specifiers</th><th>Inputs / Outputs</th><th>Functionality</th></tr></thead><tbody><tr><td><code>UWallRunCameraFXComponent</code></td><td><code>BindCameraTargets</code></td><td>BlueprintCallable</td><td>In: USpringArmComponent* InSpringArm<br />In: UCameraComponent* InCamera</td><td>Resolves the SpringArm and Camera components to drive with roll and FOV FX.</td></tr><tr><td><code>UWallRunCameraFXComponent</code></td><td><code>UpdateWallTilt</code></td><td>BlueprintCallable</td><td>In: const FVector&amp; WallNormal<br />In: bool bWallRunning</td><td>Enters or updates active wall-run camera roll and FOV from the current wall normal.</td></tr><tr><td><code>UWallRunCameraFXComponent</code></td><td><code>GetCurrentRollDegrees</code></td><td>BlueprintPure</td><td>Return: float</td><td>Returns the current camera roll offset in degrees.</td></tr><tr><td><code>UWallRunCameraFXComponent</code></td><td><code>GetCurrentFOV</code></td><td>BlueprintPure</td><td>Return: float</td><td>Returns the current interpolated camera FOV in degrees.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>CheckIfNearWall</code></td><td>BlueprintCallable</td><td>Out: FVector &amp;OutWallNormal<br />Return: bool</td><td>Tests whether a nearby vertical surface satisfies the wall-normal filter and returns its normal.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>CheckWallNormal</code></td><td>BlueprintPure</td><td>In: const FVector &amp;WallNormal<br />Return: bool</td><td>Returns true when the given impact normal is vertical enough for wall running (|Normal.Z| &lt;= MaxWallNormalZ).</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>CheckIfCorner</code></td><td>BlueprintPure</td><td>In: const FVector &amp;CandidateNormal<br />Return: bool</td><td>Returns true when the detected wall normal differs sufficiently from the active wall normal to indicate a corner.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>IsAllowedToEnter</code></td><td>BlueprintCallable</td><td>Out: FVector &amp;OutWallNormal<br />Return: bool</td><td>Returns true if cooldown has elapsed, the owner is falling, and a valid wall is within detection radius.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>TryEnterWallRun</code></td><td>BlueprintCallable</td><td>Return: bool</td><td>Attempts to enter the wall-run state against the nearest valid wall.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>ExitWallRun</code></td><td>BlueprintCallable</td><td>In: bool bStartCooldown = true</td><td>Exits the active wall-run state and optionally starts the wall-run cooldown timer.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>UpdateWallRunStep</code></td><td>BlueprintCallable</td><td>In: float DeltaTime</td><td>Updates velocity along the active wall plane for the current movement input; exposes public testing of a step.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>TryWallJump</code></td><td>BlueprintCallable</td><td>Out: FVector &amp;OutLaunchVelocity<br />Return: bool</td><td>Executes a wall jump from the detected wall if falling and off cooldown; outputs the launch velocity (cm/s).</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>ComputeWallJumpVelocity</code></td><td>BlueprintPure</td><td>In: const FVector &amp;WallNormal<br />In: const FVector &amp;InputDirection<br />Return: FVector</td><td>Computes the pure wall-jump launch velocity (cm/s) from a wall normal and normalized input direction.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>ComputeWallRunVelocity</code></td><td>BlueprintPure</td><td>In: const FVector &amp;WallNormal<br />In: const FVector2D &amp;MoveInput<br />Return: FVector</td><td>Computes the projected wall-run velocity (cm/s) from the wall normal and horizontal 2D movement input.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>BindCameraFX</code></td><td>BlueprintCallable</td><td>In: UWallRunCameraFXComponent *InCameraFX</td><td>Links a UWallRunCameraFXComponent to drive tilt/FOV (auto-discovered on the same actor on BeginPlay; call manually for external or runtime-added CameraFX).</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>SetAutoDetectWalls</code></td><td>BlueprintCallable</td><td>In: bool bEnabled</td><td>Enables or disables automatic wall detection at runtime (mirrors the Auto Detect Walls toggle in Details).</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>SetWallRunAllowed</code></td><td>BlueprintCallable</td><td>In: bool bAllowed</td><td>Enables or disables wall-run permission at runtime; exits an active wall run when set to false.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>IsWallRunAllowed</code></td><td>BlueprintPure</td><td>Return: bool</td><td>Returns true when wall running is currently permitted by the bWallRunAllowed flag.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>ShouldAutoDetectEntry</code></td><td>BlueprintPure</td><td>Return: bool</td><td>Returns true when automatic timer-based wall entry is enabled (bAutoDetectWalls).</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>IsWallRunInputHeld</code></td><td>BlueprintPure</td><td>Return: bool</td><td>Returns true while the optional IA_WallRun hold input is currently pressed.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>IsWallRunning</code></td><td>BlueprintPure</td><td>Return: bool</td><td>Returns whether wall running is currently active.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>IsOnWallRunCooldown</code></td><td>BlueprintPure</td><td>Return: bool</td><td>Returns whether wall-run entry is currently on cooldown.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>IsOnWallJumpCooldown</code></td><td>BlueprintPure</td><td>Return: bool</td><td>Returns whether wall jumping is currently on cooldown.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>GetCurrentWallNormal</code></td><td>BlueprintPure</td><td>Return: FVector</td><td>Returns the world impact normal of the active or most recently detected wall.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>SetMoveInputOverride</code></td><td>BlueprintCallable</td><td>In: const FVector2D &amp;InMoveInput</td><td>Overrides the 2D movement input used when owner does not implement IWallRunCharacterContract.</td></tr></tbody></table>
+
+    <h2 id="delegates">5. Complete Event Delegates &amp; Callbacks</h2>
+    <table><thead><tr><th>Owner</th><th>Delegate</th><th>Signature / Parameters</th><th>Description</th></tr></thead><tbody><tr><td><code>UWallRunComponent</code></td><td><code>OnWallRunEntered</code></td><td>const FVector &amp;, WallNormal</td><td>Broadcasts the wall surface normal immediately when the character enters a wall run.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>OnWallRunExited</code></td><td>void</td><td>Broadcasts immediately when the character exits an active wall run.</td></tr><tr><td><code>UWallRunComponent</code></td><td><code>OnWallJumpLaunched</code></td><td>const FVector &amp;, WallNormal, const FVector &amp;, LaunchVelocity</td><td>Broadcasts the wall normal and launch velocity (cm/s) immediately when a wall jump is executed.</td></tr></tbody></table>
+
+    <h2 id="types">6. Interfaces, Structs &amp; Enums</h2>
+    <h3>Blueprint &amp; C++ Interfaces</h3>
+    <table><thead><tr><th>Interface</th><th>Method</th><th>Specifiers</th><th>Inputs / Outputs</th><th>Functionality</th></tr></thead><tbody><tr><td><code>IWallRunCharacterContract</code></td><td><code>GetWallRunMoveInput</code></td><td>BlueprintCallable, BlueprintNativeEvent</td><td>Return: FVector2D</td><td>Returns the horizontal 2D movement input vector (X = right, Y = forward).</td></tr><tr><td><code>IWallRunCharacterContract</code></td><td><code>CanExecuteWallJump</code></td><td>BlueprintCallable, BlueprintNativeEvent</td><td>Return: bool</td><td>Returns whether a wall jump is currently allowed.</td></tr><tr><td><code>IWallRunListener</code></td><td><code>OnWallRunEntered</code></td><td>BlueprintCallable, BlueprintNativeEvent</td><td>In: const FVector &amp;WallNormal</td><td>Called when wall running begins against a surface with the given world normal.</td></tr><tr><td><code>IWallRunListener</code></td><td><code>OnWallRunExited</code></td><td>BlueprintCallable, BlueprintNativeEvent</td><td>None</td><td>Called when wall running stops.</td></tr><tr><td><code>IWallRunListener</code></td><td><code>OnWallJumpLaunched</code></td><td>BlueprintCallable, BlueprintNativeEvent</td><td>In: const FVector &amp;WallNormal<br />In: const FVector &amp;LaunchVelocity</td><td>Called after a wall jump launches the character with the computed launch velocity (cm/s).</td></tr></tbody></table>
+    <h3>Structs</h3>
+    <p><em>None defined in this module.</em></p>
+    <h3>Enums</h3>
+    <p><em>None defined in this module.</em></p>
+
+    <div class="footer">
+      <span class="footer-brand"><span class="brand-badge-sm" aria-hidden="true">TS</span><span>Wall Run v1.3.0 - Twikia Studios</span></span>
+      <span><a href="https://twikiastudios.com/products/wallrun/">User Guide</a> &middot; &copy; 2026 Twikia Studios. All rights reserved.</span>
+    </div>
+  </div>
+</body>
+</html>

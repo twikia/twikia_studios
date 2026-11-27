@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NP45SB32"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Flying Enemy Combat v1.0.0 - User Guide</title>
+  <style>
+:root {
+  --bg: #0f141a;
+  --surface: #161d26;
+  --surface-2: #1c2530;
+  --border: #2a3542;
+  --text: #e7edf4;
+  --muted: #9aa7b8;
+  --accent: #58a6ff;
+  --green: #3fb950;
+  --amber: #f0a830;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.62 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 36px 24px 72px;
+}
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+.title-row h1 { font-size: 34px; margin: 0 0 4px; letter-spacing: -0.02em; }
+.byline { font-size: 13px; color: var(--muted); margin: 0; }
+.byline strong { color: var(--text); }
+img.brand-icon-lg {
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+img.brand-icon-sm {
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  border-radius: 5px;
+  flex-shrink: 0;
+}
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.pitch { font-size: 17px; color: var(--muted); margin: 0 0 22px; }
+h2 {
+  font-size: 22px;
+  margin: 40px 0 14px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+h3 { font-size: 17px; margin: 18px 0 6px; color: #f4f8fc; }
+p { margin: 8px 0 12px; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code {
+  background: rgba(110, 118, 129, 0.22);
+  padding: 2px 6px;
+  border-radius: 5px;
+  font-family: Consolas, "Cascadia Mono", monospace;
+  font-size: 13px;
+  color: #f0f6fc;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 8px 0 12px;
+}
+img.hero { width: 100%; margin: 14px 0 10px; }
+img.folder-shot { width: 100%; max-width: 720px; margin: 10px 0 6px; }
+.folder-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 10px 0 14px;
+}
+.folder-row img.folder-shot {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+}
+@media (max-width: 820px) {
+  .folder-row { grid-template-columns: 1fr; }
+}
+.demo-highlight {
+  margin: 12px 0 16px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgba(63, 185, 80, 0.16), rgba(88, 166, 255, 0.12));
+  border: 1px solid rgba(63, 185, 80, 0.38);
+  color: var(--text);
+}
+.demo-highlight strong { color: #7ee787; }
+.folder-caption {
+  color: var(--muted);
+  font-size: 13.5px;
+  margin: 0 0 14px;
+}
+.caption {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0 0 18px;
+}
+.toc {
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 18px 0 28px;
+}
+.toc strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.toc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.toc a { display: block; font-size: 14px; }
+.toc a.toc-ext-link { display: inline-flex; align-items: center; gap: 6px; }
+.ext-icon { display: inline-block; vertical-align: middle; flex-shrink: 0; opacity: 0.85; }
+.detailed-docs-cta {
+  margin: 22px 0 32px;
+  padding: 16px 20px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgba(88, 166, 255, 0.14), rgba(63, 185, 80, 0.08));
+  border: 1px solid rgba(88, 166, 255, 0.32);
+}
+.detailed-docs-cta a { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; }
+.tabs-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 22px;
+}
+.tab-btn {
+  appearance: none;
+  border: none;
+  outline: none;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--text);
+  padding: 8px 15px;
+  font: 600 13.5px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.tab-btn:hover { background: #263241; }
+.tab-btn.active { background: var(--accent); color: #08121d; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+.tab-jump {
+  appearance: none;
+  border: none;
+  outline: none;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--accent);
+  padding: 6px 13px;
+  font: 600 12.5px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  cursor: pointer;
+  align-self: flex-start;
+  margin-top: 10px;
+}
+.tab-jump:hover { background: #263241; }
+.boundary {
+  margin: 42px 0 32px;
+  padding: 18px 22px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgba(240, 168, 48, 0.16), rgba(88, 166, 255, 0.08));
+}
+.boundary h2 { border: 0; margin: 0 0 6px; padding: 0; color: #ffd480; }
+.boundary p { margin: 0; color: var(--text); }
+.step { margin: 22px 0 30px; }
+.setup-visuals {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.setup-visuals.stacked {
+  flex-direction: column;
+}
+.setup-visuals > img {
+  margin: 0;
+  flex: 0 1 auto;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 16px;
+  grid-auto-flow: dense;
+  margin: 14px 0 26px;
+}
+.card {
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+}
+.card.small { grid-column: span 2; }
+.card.medium { grid-column: span 3; }
+.card.large { grid-column: span 6; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.card img { margin: 0 0 10px; max-width: 100%; align-self: flex-start; }
+.card p { margin: 0; font-size: 13.5px; color: var(--muted); }
+.card ul { margin: 8px 0 0; padding-left: 18px; font-size: 13px; color: var(--text); }
+.card li { margin: 4px 0; }
+@media (max-width: 820px) {
+  .grid .small, .grid .medium, .grid .large { grid-column: span 6; }
+}
+.media-links {
+  margin: 10px 0 20px;
+  color: var(--muted);
+  font-size: 14px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 24px;
+  background: var(--surface);
+  border-radius: 8px;
+  overflow: hidden;
+}
+th, td {
+  padding: 10px 14px;
+  text-align: left;
+  vertical-align: top;
+  font-size: 14px;
+  border-bottom: 1px solid var(--border);
+}
+th { background: var(--surface-2); color: #fff; }
+tr:last-child td { border-bottom: 0; }
+.footer {
+  margin-top: 48px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+img:not(.brand-icon-lg):not(.brand-icon-sm) {
+  cursor: zoom-in;
+  transition: opacity 0.15s ease;
+}
+img:not(.brand-icon-lg):not(.brand-icon-sm):hover {
+  opacity: 0.92;
+}
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(8, 11, 15, 0.88);
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  cursor: zoom-out;
+}
+.lightbox.open { display: flex; }
+.lightbox img {
+  max-width: 94vw;
+  max-height: 92vh;
+  width: auto;
+  height: auto;
+  margin: 0;
+  border-radius: 10px;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.65);
+  cursor: default;
+}
+.site-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 13.5px;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.site-breadcrumb a {
+  color: var(--accent);
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="site-breadcrumb" aria-label="Breadcrumb"><a href="../">&larr; Back to Products</a><span>&middot;</span><a href="detailed-docs/" target="_blank" rel="noopener noreferrer">Detailed Documentation &#8599;</a><span>&middot;</span><a href="../../">Twikia Studios Home</a></nav>
+    <div class="title-row">
+      <img class="brand-icon-lg" src="Docs/Images/twikia-studios-logo.png" alt="Twikia Studios" />
+      <div>
+        <h1>Simple Flying Enemy Combat (v1.0.0) - User Guide</h1>
+        <p class="byline">By <strong>Twikia Studios</strong> &middot; &copy; 2026 Twikia Studios &middot; <a href="https://twikiastudios.com/products/simple-flying-enemy-combat/">Online User Guide</a></p>
+      </div>
+    </div>
+    <p class="pitch">Blueprint and C++ friendly complete flying enemy and first-person combat system for Unreal Engine 5.6 - 5.8, with options exposed cleanly in Details panels and full tuning across C++, Blueprints, and Details panels. Browse the Overview for a quick start, or select dedicated tabs for the Combat System, UI &amp; Popups, and every flying enemy archetype.</p>
+
+    <div class="tabs-nav" role="tablist" aria-label="Documentation Sections">
+      <button type="button" class="tab-btn active" id="tab-overview" role="tab" aria-selected="true" data-tab="overview">Overview</button>
+      <button type="button" class="tab-btn" id="tab-combat" role="tab" aria-selected="false" data-tab="combat">Combat System</button>
+      <button type="button" class="tab-btn" id="tab-ui" role="tab" aria-selected="false" data-tab="ui">UI &amp; Popups</button>
+      <button type="button" class="tab-btn" id="tab-persistor" role="tab" aria-selected="false" data-tab="persistor">Persistor</button>
+      <button type="button" class="tab-btn" id="tab-bombbot" role="tab" aria-selected="false" data-tab="bombbot">Bomb Bot</button>
+      <button type="button" class="tab-btn" id="tab-machinegunner" role="tab" aria-selected="false" data-tab="machinegunner">Machine Gunner</button>
+      <button type="button" class="tab-btn" id="tab-nailgunner" role="tab" aria-selected="false" data-tab="nailgunner">Nail Gunner</button>
+      <button type="button" class="tab-btn" id="tab-stalker" role="tab" aria-selected="false" data-tab="stalker">Stalker</button>
+      <button type="button" class="tab-btn" id="tab-laserballbot" role="tab" aria-selected="false" data-tab="laserballbot">Laser Ball Bot</button>
+    </div>
+
+    <div class="tab-panel active" id="panel-overview" role="tabpanel" aria-labelledby="tab-overview">
+      <div class="toc">
+        <strong>Quick Navigation</strong>
+        <div class="toc-list"><a href="#demo">Playable Demo Arena</a><a href="#setup">Setup</a><a href="#directory">Systems & Enemies Directory</a><a href="#extras-overview">Blueprint Quick Entry Points</a><a href="#api-reference">Appendix - API Reference</a><a class="toc-ext-link" href="https://twikiastudios.com/products/simple-flying-enemy-combat/detailed-docs/" target="_blank" rel="noopener noreferrer">Detailed Documentation (Full API &amp; Features) <svg class="ext-icon" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"/></svg></a></div>
+      </div>
+
+      <h2 id="demo">Playable Demo Arena (SimpleFlyingEnemyCombatDemo)</h2>
+      <div class="demo-highlight"><strong>No setup needed:</strong> Open <code>/SimpleFlyingEnemyCombat/Examples/Maps/SimpleFlyingEnemyCombatDemo</code> and press Play (PIE). All functionality will work out of the box in the demo for testing.</div>
+      <img class="hero" src="Docs/Images/demo_arena.png" alt="SimpleFlyingEnemyCombat Demo" />
+      <div class="folder-row">
+        <img class="folder-shot" src="Docs/Images/demo_folder.png" alt="Content Browser: Demo Blueprints" />
+        <img class="folder-shot" src="Docs/Images/demo_map_folder.png" alt="Content Browser: Demo Map" />
+      </div>
+      <p class="folder-caption">Playable map, character, HUD, and 6 flying enemy Blueprints under <code>/SimpleFlyingEnemyCombat/</code>.</p>
+      <table><thead><tr><th>Input</th><th>Action</th></tr></thead><tbody><tr><td><code>W / A / S / D</code></td><td>Move your character across the desert combat arena</td></tr><tr><td><code>Mouse Move</code></td><td>Look and aim at hovering, swooping, and circling drones</td></tr><tr><td><code>Spacebar</code></td><td>Jump over cover blocks and incoming low-altitude projectiles</td></tr><tr><td><code>Left Mouse Button (LMB)</code></td><td>Fire the active weapon preset (rifle, shotgun, launcher, or saw shooter)</td></tr><tr><td><code>Keys 1 / 2 / 3 / 4</code></td><td>Switch live between [1] Standard Rifle, [2] Multi-Split Shotgun, [3] Explosive Launcher, and [4] Ricochet &amp; Pierce Saw</td></tr></tbody></table>
+      <p class="media-links"><strong>Showcase Recordings:</strong> Hero Combat: <a href="Docs/Videos/hero_combat.mp4">MP4</a> / <a href="Docs/Videos/hero_combat.gif">GIF</a> | Multi-Split Shotgun: <a href="Docs/Videos/splitshot.gif">GIF</a> | Explosive Launcher: <a href="Docs/Videos/explosive.mp4">MP4</a></p>
+
+      <h2 id="setup">Setup</h2>
+      <div class="step"><h3>Step 1: Enable Plugin &amp; Configure Player Combat Components</h3><p>Copy <code>SimpleFlyingEnemyCombat</code> into <code>Plugins/</code>, enable it alongside <code>EnhancedInput</code> and <code>Niagara</code>, attach <code>GunComponent</code>, <code>HealthComponent</code>, <code>ShootInputComponent</code>, <code>GunCosmeticComponent</code>, <code>BulletSpawnerComponent</code>, and <code>DamagePopupComponent</code> on your character, and assign <code>DA_Gun_*</code> presets in Details.</p><div class="setup-visuals"><img src="Docs/Images/Nodes/step1_player_components.png" alt="Enable Plugin &amp; Configure Player Combat Components" /><img src="Docs/Images/Nodes/step1_player_details.png" alt="Enable Plugin &amp; Configure Player Combat Components Details" /></div></div><div class="step"><h3>Step 2: Configure Player Health, Dodge, Armor &amp; Damage HUD</h3><p>Select <code>HealthComponent</code> on your character to assign <code>DA_PlayerHealth_Default</code> (or tune health, armor, dodge, and passive regeneration directly) while <code>WBP_DamageHUD</code> drives player HP bars and crimson screen feedback.</p><div class="setup-visuals"><img src="Docs/Images/Nodes/step2_health_details.png" alt="Configure Player Health, Dodge, Armor &amp; Damage HUD" /></div></div><div class="step"><h3>Step 3: Drop Any of the 6 Flying Enemy Archetypes Into Your Level</h3><p>Drag any <code>BP_*</code> enemy Blueprint (<code>BP_Persistor</code>, <code>BP_BombBot</code>, <code>BP_MachineGunner</code>, <code>BP_NailGunner</code>, <code>BP_Stalker</code>, or <code>BP_LaserBallBot</code>) into your level and tune <code>Enemy | Archetype</code>, <code>Weapon</code>, or <code>Laser</code> in Details.</p><div class="setup-visuals"><img src="Docs/Images/Nodes/step3_enemy_components.png" alt="Drop Any of the 6 Flying Enemy Archetypes Into Your Level" /><img src="Docs/Images/Nodes/step3_enemy_details.png" alt="Drop Any of the 6 Flying Enemy Archetypes Into Your Level Details" /></div></div>
+
+      <div class="boundary" id="end-setup">
+        <h2>End of Setup</h2>
+        <p>Your level now runs full two-way first-person combat out of the box: fire split, explosive, or ricochet projectiles, trigger hit flashes and floating CRIT popups on enemies, and absorb live bullet, blast, melee, and beam damage on the player.</p>
+      </div>
+
+      <h2 id="directory">Systems & Enemies Directory</h2><div class="grid"><div class="card medium"><h3>Combat System</h3><img src="Docs/Images/weapon_splitshot.png" alt="Combat System" /><p>Multi-preset player gun controller, split fans, TrashBomb blasts, and ricochet/pierce projectiles.</p><button type="button" class="tab-jump" data-jump="combat">Open Combat System Docs</button></div><div class="card medium"><h3>UI &amp; Popups</h3><img src="Docs/Images/player_damage_hud.png" alt="UI &amp; Popups" /><p>Screen damage HUD vignette, floating 3D world health bars, stylized CRIT popups, and emissive hit flashes.</p><button type="button" class="tab-jump" data-jump="ui">Open UI &amp; Popups Docs</button></div><div class="card small"><h3>Persistor</h3><img src="Docs/Images/enemy_persistor.png" alt="Persistor" /><p>Direct aerial chaser firing projectile bursts with 4 thruster exhaust emitters and melee contact pressure.</p><button type="button" class="tab-jump" data-jump="persistor">Open Persistor Docs</button></div><div class="card small"><h3>Bomb Bot</h3><img src="Docs/Images/enemy_bombbot.png" alt="Bomb Bot" /><p>Fast pursuit unit that winds up a spin warning inside AttackPlayerHitbox and triggers self-destruct AoE damage.</p><button type="button" class="tab-jump" data-jump="bombbot">Open Bomb Bot Docs</button></div><div class="card small"><h3>Machine Gunner</h3><img src="Docs/Images/enemy_machinegunner.png" alt="Machine Gunner" /><p>Alternating dual-barrel orbiter blending WeightedOffset tracking, repulsion, and continuous fire.</p><button type="button" class="tab-jump" data-jump="machinegunner">Open Machine Gunner Docs</button></div><div class="card small"><h3>Nail Gunner</h3><img src="Docs/Images/enemy_nailgunner.png" alt="Nail Gunner" /><p>Three-state burst shooter using lead-predicted targeting around Idle, Orbit, and Attacking cycles.</p><button type="button" class="tab-jump" data-jump="nailgunner">Open Nail Gunner Docs</button></div><div class="card small"><h3>Stalker</h3><img src="Docs/Images/enemy_stalker.png" alt="Stalker" /><p>Constricting-orbit assassin that spirals inward and executes high-speed claw dive dashes.</p><button type="button" class="tab-jump" data-jump="stalker">Open Stalker Docs</button></div><div class="card small"><h3>Laser Ball Bot</h3><img src="Docs/Images/enemy_laserballbot.png" alt="Laser Ball Bot" /><p>Rotating sphere emitter sweeping 4 live Niagara laser traces with periodic beam damage and impact flares.</p><button type="button" class="tab-jump" data-jump="laserballbot">Open Laser Ball Bot Docs</button></div></div>
+      <h2 id="extras-overview">Blueprint Quick Entry Points</h2><div class="grid"><div class="card medium"><h3>Character Input &amp; Keys Graph</h3><img src="Docs/Images/Nodes/extras_character_input_graph.png" alt="Character Input &amp; Keys Graph" /><p><code>BP_SimpleFlyingEnemyCombatDemoCharacter</code> binds movement, look, jump, and keys 1 through 4 cleanly in Blueprint.</p></div><div class="card large"><h3>Demo HUD Widget Binding</h3><img src="Docs/Images/Nodes/extras_hud_graph.png" alt="Demo HUD Widget Binding" /><p><code>BP_SimpleFlyingEnemyCombatDemoHUD</code> creates the overlay widget, binds to <code>APlayerShell</code>, and adds it to viewport.</p></div><div class="card small"><h3>Fire Single Shot Entry Node</h3><img src="Docs/Images/Nodes/extras_node_fire_single.png" alt="Fire Single Shot Entry Node" /><p>Trigger manual shots from any Blueprint or C++ input handler with <code>FireSingleShot</code> on <code>UGunComponent</code>.</p></div></div>
+
+      <h2 id="api-reference">Appendix - API Reference</h2>
+      <p class="caption">This table highlights the primary entry points. Additional properties, helper functions, Blueprint nodes, and native C++ APIs are available in Unreal Editor Details panels, Blueprint context menus, and the plugin C++ headers.</p>
+      <table><thead><tr><th>Name</th><th>Type</th><th>Inputs / Outputs</th><th>Functionality</th></tr></thead><tbody><tr><td><code>APlayerShell</code> (<code>BP_SimpleFlyingEnemyCombatDemoCharacter</code>)</td><td>Character</td><td>In: <code>GunComponent</code>, <code>HealthComponent</code><br />Out: <code>FireSingleShot()</code>, <code>SelectGunState()</code></td><td>Ready-to-play FPS character supporting multi-preset shooting, damage absorption, knockback, and HUD flash</td></tr><tr><td><code>AFlyingEnemyPawn</code> (<code>BP_Persistor</code> .. <code>BP_LaserBallBot</code>)</td><td>Pawn</td><td>In: <code>UEnemyCombatDataAsset</code><br />Out: <code>OnEnemyDied</code></td><td>Self-contained flying enemy pawn with regular/crit hitboxes, world HP bar, thrusters, hit-flash, and AI state logic</td></tr><tr><td><code>UGunComponent</code> (<code>SelectGunState</code>, <code>CycleGunPreset</code>, <code>FireSingleShot</code>)</td><td>Component</td><td>In: <code>FGameplayTag StateTag</code><br />Return: <code>bool</code> / <code>FGameplayTag</code></td><td>Manages weapon state tags, DataAsset presets, split-pellet spread, fire rate, and catchup loops</td></tr><tr><td><code>UBulletSpawnerComponent</code> (<code>Shoot</code>, <code>SpawnOneBullet</code>)</td><td>SceneComponent</td><td>In: <code>FGunAttributes</code>, YawOffset<br />Return: <code>int32</code> / <code>ABullet*</code></td><td>Spawns single or multi-split projectiles for player weapons and single/dual-barrel flying enemies</td></tr><tr><td><code>ABullet</code> (<code>BP_Bullet*</code>)</td><td>Actor</td><td>In: <code>FBulletAttributes</code><br />Out: <code>OnBulletHitTarget</code>, <code>OnBulletExploded</code></td><td>Handles direct projectile hits, radial AoE blast impulse, multi-target piercing, and wall ricochet</td></tr><tr><td><code>UHealthComponent</code> (<code>ApplyDamage</code>, <code>Heal</code>, <code>GetHealthStats</code>)</td><td>Component</td><td>In: Damage, Crit, Knockback<br />Out: <code>OnTookDamage</code>, <code>OnDeath</code></td><td>Processes armor mitigation, random dodge chance, passive HP regeneration, knockback, and death events</td></tr><tr><td><code>UDamageHUDWidget</code> (<code>TriggerPlayerDamageFlash</code>, <code>ComputePopupPlacement</code>)</td><td>UserWidget</td><td>In: DamageTaken, WorldLocation<br />Out: ScreenPos, DistanceScale</td><td>Renders 3D-projected floating damage numbers, stylized CRIT callouts, and player damage screen flash</td></tr><tr><td><code>UMeleeComponent</code></td><td>Component</td><td>In: <code>FMeleeAttributes</code><br />Out: Overlap damage / Self-explode</td><td>Applies contact cooldown damage and optional self-destruct detonation for BombBot and melee foes</td></tr><tr><td><code>UHitFlashComponent</code> (<code>TriggerHitFlash</code>, <code>SetupDynamicMaterials</code>)</td><td>Component</td><td>In: Mesh list, GlowDuration<br />Out: <code>OnHitFlashTriggered</code></td><td>Drives emissive hit-flash parameters cleanly when <code>UHealthComponent</code> reports incoming damage</td></tr><tr><td><code>UCombatBlueprintLibrary</code> (<code>ApplyCombatDamage</code>, <code>ComputeArmorMitigatedDamage</code>)</td><td>Function Library</td><td>In: TargetActor, DamageAmount, bIsCrit<br />Return: <code>bool</code> / <code>float</code></td><td>Blueprint and C++ helper nodes for armor math and direct interface damage application</td></tr></tbody></table>
+    </div>
+
+<div class="tab-panel" id="panel-combat" role="tabpanel" aria-labelledby="tab-combat">
+  <div class="toc"><strong>Quick Navigation</strong><div class="toc-list">
+    <a href="#tab=combat" data-subscroll="combat-demo">Combat System Showcase</a>
+    <a href="#tab=combat" data-subscroll="combat-setup">Configuration</a>
+    <a href="#tab=combat" data-subscroll="combat-mechanics">Weapon Modes &amp; Blueprint Entry Nodes</a>
+    <a href="#tab=combat" data-subscroll="combat-api">Appendix - Combat System API</a>
+    <a class="toc-ext-link" href="https://twikiastudios.com/products/simple-flying-enemy-combat/detailed-docs/" target="_blank" rel="noopener noreferrer">Detailed Documentation (Full API &amp; Features) <svg class="ext-icon" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"/></svg></a>
+  </div></div>
+  <h2 id="combat-demo">Combat System - Weapons, Projectiles &amp; Hit Detection</h2>
+  <p class="caption">Tag-driven weapon preset switching (<code>UGunComponent</code>), split/spread volley emission (<code>UBulletSpawnerComponent</code>), replicated projectile behavior (<code>ABullet</code>), and first-person recoil cosmetics (<code>UGunCosmeticComponent</code>).</p>
+  <div class="demo-highlight"><strong>Demo Highlight:</strong> Press Keys 1, 2, 3, or 4 in <code>SimpleFlyingEnemyCombatDemo</code> to switch live between Rifle, Multi-Split Shotgun, Explosive TrashBomb, and Ricochet &amp; Pierce Saw Blades.</div>
+  <img class="hero" src="Docs/Images/weapon_splitshot.png" alt="Combat System - Weapons, Projectiles &amp; Hit Detection" />
+<table><thead><tr><th>Preset Tag</th><th>DataAsset / Bullet Class</th><th>Projectile Behavior</th></tr></thead><tbody><tr><td><code>Combat.Gun.Default</code></td><td><code>DA_Gun_Default</code> / <code>BP_Bullet_Default</code></td><td>High-velocity single-shot rifle projectile with clean direct impact VFX</td></tr><tr><td><code>Combat.Gun.SplitShot</code></td><td><code>DA_Gun_SplitShot</code> / <code>BP_Bullet_Default</code></td><td>Multi-pellet fan (<code>Splits</code>, <code>SplitAngle</code>) evaluating crit hitboxes per pellet</td></tr><tr><td><code>Combat.Gun.Explosive</code></td><td><code>DA_Gun_Explosive</code> / <code>BP_Bullet_TrashBomb</code></td><td>Spinning TrashBomb triggering radial AoE damage and physics blast impulse</td></tr><tr><td><code>Combat.Gun.Ricochet</code></td><td><code>DA_Gun_Ricochet</code> / <code>BP_Bullet_SawBlade</code></td><td>Fast spinning saw blade bouncing off geometry (<code>NumBounces</code>) and piercing (<code>MaxPierceCount</code>)</td></tr></tbody></table>
+  <h2 id="combat-setup">Configuration</h2>
+<div class="step"><h3>Step 1: Assign Gun State Tags &amp; Presets in Details</h3><p>Configure <code>GunDataAssets</code> and <code>PresetCycleOrder</code> on <code>GunComponent</code> so <code>SelectGunState</code>, <code>CycleGunPreset</code>, and <code>FireSingleShot</code> resolve cleanly across C++ and Blueprints.</p><div class="setup-visuals"><img src="Docs/Images/Nodes/step1_player_components.png" alt="Assign Gun State Tags &amp; Presets in Details" /><img src="Docs/Images/Nodes/step1_player_details.png" alt="Assign Gun State Tags &amp; Presets in Details Details" /></div></div>
+<div class="step"><h3>Step 2: Tune First-Person Gun Model &amp; Camera Recoil</h3><p>Customize <code>GunClass</code>, <code>AttachOffset</code>, <code>ScreenRecoilPerShot</code>, and <code>RecoilInterpSpeed</code> on <code>GunCosmeticComponent</code> for punchy recoil recovery.</p><div class="setup-visuals"><img src="Docs/Images/Nodes/combat_cosmetic_details.png" alt="Tune First-Person Gun Model &amp; Camera Recoil" /></div></div>
+<div class="step"><h3>Step 3: Customize Explosive Blasts &amp; Ricochet Bounces</h3><p>Edit <code>Bullet Attributes</code>, <code>ExplosionImpulseStrength</code>, and <code>MeshSpinRate</code> directly on <code>BP_Bullet_TrashBomb</code> or <code>BP_Bullet_SawBlade</code> Class Defaults.</p><div class="setup-visuals"><img src="Docs/Images/Nodes/extras_bullet_explosive_details.png" alt="Customize Explosive Blasts &amp; Ricochet Bounces" /><img src="Docs/Images/Nodes/extras_bullet_ricochet_details.png" alt="Customize Explosive Blasts &amp; Ricochet Bounces Details" /></div></div>
+  <div class="boundary" id="combat-end-setup">
+    <h2>End of Combat System Configuration</h2>
+    <p>Weapons, spawners, cosmetic recoil, and specialized bullet projectiles are wired together through Gameplay Tags without hardcoded weapon switch branching.</p>
+  </div>
+<h3 id="combat-mechanics">Weapon Modes &amp; Blueprint Entry Nodes</h3>
+<div class="grid">
+<div class="card large"><h3>Explosive TrashBomb Detonation</h3>
+<img src="Docs/Images/weapon_explosive.png" alt="Explosive TrashBomb Detonation" />
+<p>Deals radial AoE damage, pushes physics bodies (<code>ExplosionImpulseStrength</code>), and triggers <code>OnBulletExploded</code>.</p></div>
+<div class="card large"><h3>Ricochet &amp; Pierce Saw Blade</h3>
+<img src="Docs/Images/weapon_ricochet.png" alt="Ricochet &amp; Pierce Saw Blade" />
+<p>Bounces across walls (<code>NumBounces</code>) and tears through multiple aerial enemies (<code>MaxPierceCount</code>).</p></div>
+<div class="card small"><h3>Fire Single Shot</h3>
+<img src="Docs/Images/Nodes/extras_node_fire_single.png" alt="Fire Single Shot" />
+<p>Manual shot trigger usable inside Enhanced Input <code>Started</code>/<code>Triggered</code> graphs.</p></div>
+<div class="card small"><h3>Cycle Gun Preset</h3>
+<img src="Docs/Images/Nodes/extras_node_cycle_gun.png" alt="Cycle Gun Preset" />
+<p>Steps cleanly through <code>PresetCycleOrder</code> Gameplay Tags.</p></div>
+<div class="card small"><h3>Select Gun State</h3>
+<img src="Docs/Images/Nodes/extras_node_select_gun.png" alt="Select Gun State" />
+<p>Switches immediately to any configured <code>Combat.Gun.*</code> Gameplay Tag.</p></div>
+<div class="card medium"><h3>Enhanced Input Character Graph</h3>
+<img src="Docs/Images/Nodes/extras_character_input_graph.png" alt="Enhanced Input Character Graph" />
+<p>Movement, look, jump, firing, and keys 1 through 4 wired on <code>BP_SimpleFlyingEnemyCombatDemoCharacter</code>.</p></div>
+</div>
+  <h2 id="combat-api">Appendix - Combat System API Reference</h2>
+  <p class="caption">Additional weapon, recoil, and bullet setters are exposed on `UGunComponent`, `UBulletSpawnerComponent`, `UGunCosmeticComponent`, and `ABullet`.</p>
+<table><thead><tr><th>Name</th><th>Type</th><th>Inputs / Outputs</th><th>Functionality</th></tr></thead><tbody><tr><td><code>UGunComponent::SelectGunState</code></td><td>Function</td><td>In: <code>FGameplayTag NewStateTag</code><br />Return: <code>bool</code></td><td>Switches active weapon attributes from <code>GunDataAssets</code> and broadcasts <code>OnWeaponStateChanged</code></td></tr><tr><td><code>UGunComponent::CycleGunPreset</code></td><td>Function</td><td>In: <code>int32 Step</code><br />Return: <code>FGameplayTag</code></td><td>Advances or steps back through <code>PresetCycleOrder</code> and returns the new active tag</td></tr><tr><td><code>UGunComponent::FireSingleShot</code></td><td>Function</td><td>In: none<br />Return: <code>bool</code></td><td>Respects fire rate cooldown and spawns one volley through the bound spawner</td></tr><tr><td><code>UBulletSpawnerComponent::Shoot</code></td><td>Function</td><td>In: <code>FGunAttributes</code><br />Return: <code>int32</code></td><td>Computes spread and split yaw angles and spawns all projectiles for a single shot</td></tr><tr><td><code>ABullet::TakeDamageDispatch</code></td><td>Function</td><td>In: <code>AActor*</code>, <code>FHitResult</code>, <code>bIsExplosion</code><br />Return: <code>bool</code></td><td>Dispatches damage to <code>ICombatTarget</code> and broadcasts <code>OnBulletHitTarget</code></td></tr><tr><td><code>UGunCosmeticComponent::HandlePlayerShot</code></td><td>Function</td><td>In: none<br />Out: Camera/Mesh Recoil</td><td>Applies additive camera recoil kick and triggers muzzle/gun recoil animation</td></tr></tbody></table>
+</div>
+
+<div class="tab-panel" id="panel-ui" role="tabpanel" aria-labelledby="tab-ui">
+  <div class="toc"><strong>Quick Navigation</strong><div class="toc-list">
+    <a href="#tab=ui" data-subscroll="ui-demo">UI &amp; Popups Showcase</a>
+    <a href="#tab=ui" data-subscroll="ui-setup">Configuration</a>
+    <a href="#tab=ui" data-subscroll="ui-mechanics">UI Wiring &amp; Event Graphs</a>
+    <a href="#tab=ui" data-subscroll="ui-api">Appendix - UI &amp; Popups API</a>
+    <a class="toc-ext-link" href="https://twikiastudios.com/products/simple-flying-enemy-combat/detailed-docs/" target="_blank" rel="noopener noreferrer">Detailed Documentation (Full API &amp; Features) <svg class="ext-icon" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"/></svg></a>
+  </div></div>
+  <h2 id="ui-demo">UI, World Health Bars, Damage Popups &amp; Hit Flash</h2>
+  <p class="caption">Event-driven UMG feedback built around <code>UDamageHUDWidget</code>, <code>UHealthBarWidget</code>, <code>UDamagePopupComponent</code>, and <code>UHitFlashComponent</code> with zero per-tick polling.</p>
+  <div class="demo-highlight"><strong>Demo Highlight:</strong> Shoot any drone or absorb incoming fire in <code>SimpleFlyingEnemyCombatDemo</code> to see live 3D floating numbers, <code>CRIT!</code> callouts, world HP curves, enemy white hit-flashes, and crimson screen flashes.</div>
+  <img class="hero" src="Docs/Images/player_damage_hud.png" alt="UI, World Health Bars, Damage Popups &amp; Hit Flash" />
+<table><thead><tr><th>UI / Feedback Element</th><th>Class / Component</th><th>How It Updates</th></tr></thead><tbody><tr><td>Player Damage Flash &amp; Numbers</td><td><code>UDamageHUDWidget</code> (<code>WBP_DamageHUD</code>)</td><td>Listens to damage broadcasts for screen vignette flash (<code>PlayerDamageFlashColor</code>) and projected numbers</td></tr><tr><td>World Enemy Health Bars</td><td><code>UHealthBarWidget</code> (<code>WBP_HealthBar</code>)</td><td>Attached to enemy <code>WorldHealthBarWidget</code> and bound cleanly to <code>UHealthComponent</code></td></tr><tr><td>Floating Damage Bridge</td><td><code>UDamagePopupComponent</code></td><td>Converts <code>UHealthComponent::OnTookDamage</code> payloads + hit location into HUD popup calls</td></tr><tr><td>Mesh Hit-Flash Material</td><td><code>UHitFlashComponent</code></td><td>Writes scalar <code>LastHitTime</code> + <code>HitGlowIntensity</code> onto dynamic material instances when damaged</td></tr></tbody></table>
+  <h2 id="ui-setup">Configuration</h2>
+<div class="step"><h3>Step 1: Assign Damage HUD Class &amp; Health Stats on Player</h3><p>Set <code>DamageHUDWidgetClass</code> (<code>WBP_DamageHUD</code>) in <code>Combat | Player | UI</code> on your player Blueprint and configure armor, dodge, and health on <code>HealthComponent</code>.</p><div class="setup-visuals"><img src="Docs/Images/Nodes/ui_damage_hud_details.png" alt="Assign Damage HUD Class &amp; Health Stats on Player" /><img src="Docs/Images/Nodes/step2_health_details.png" alt="Assign Damage HUD Class &amp; Health Stats on Player Details" /></div></div>
+<div class="step"><h3>Step 2: Configure Floating World Health Bars &amp; Popups</h3><p>Toggle <code>Show World Health Bar</code> in <code>Enemy | UI</code> on enemy Blueprints and tune <code>Show Zero Damage Popups</code>, <code>Notify on Dodge</code>, and <code>Fallback World Offset</code> on <code>DamagePopupComponent</code>.</p><div class="setup-visuals"><img src="Docs/Images/Nodes/ui_health_bar_details.png" alt="Configure Floating World Health Bars &amp; Popups" /><img src="Docs/Images/Nodes/ui_damage_popup_details.png" alt="Configure Floating World Health Bars &amp; Popups Details" /></div></div>
+<div class="step"><h3>Step 3: Tune Dynamic Emissive Hit-Flash Parameters</h3><p>Adjust <code>GlowDuration</code>, <code>HitGlowIntensity</code>, <code>HitGlowColor</code>, and optional <code>FlashCurve</code> on <code>HitFlashComponent</code> to match any stylized or PBR enemy material.</p><div class="setup-visuals"><img src="Docs/Images/Nodes/ui_hit_flash_details.png" alt="Tune Dynamic Emissive Hit-Flash Parameters" /></div></div>
+  <div class="boundary" id="ui-end-setup">
+    <h2>End of UI &amp; Popups Configuration</h2>
+    <p>Every damage event flows automatically from <code>UHealthComponent</code> to floating numbers, world health bars, emissive mesh flashes, and the player HUD flash.</p>
+  </div>
+<h3 id="ui-mechanics">UI Wiring &amp; Event Graphs</h3>
+<div class="grid">
+<div class="card large"><h3>Thin Demo HUD Blueprint Graph</h3>
+<img src="Docs/Images/Nodes/extras_hud_graph.png" alt="Thin Demo HUD Blueprint Graph" />
+<p><code>BP_SimpleFlyingEnemyCombatDemoHUD</code> creates the widget, calls <code>BindtoPlayerShell</code>, and adds it to viewport cleanly.</p></div>
+<div class="card small"><h3>On Took Damage Delegate Binding</h3>
+<img src="Docs/Images/Nodes/extras_event_took_damage.png" alt="On Took Damage Delegate Binding" />
+<p>Hook custom camera shakes, sound cues, or low-HP alarms cleanly via <code>OnTookDamage</code> on <code>UHealthComponent</code>.</p></div>
+</div>
+  <h2 id="ui-api">Appendix - UI &amp; Popups API Reference</h2>
+  <p class="caption">All widget colors, curves, and popup scaling parameters are editable in C++, Blueprint UMG designers, and Details panels.</p>
+<table><thead><tr><th>Name</th><th>Type</th><th>Inputs / Outputs</th><th>Functionality</th></tr></thead><tbody><tr><td><code>UHealthComponent::OnTookDamage</code></td><td>Delegate</td><td>Out: <code>DamageTaken</code>, <code>bDodged</code>, <code>bWasCrit</code><br />Out: <code>bHitArmor</code>, <code>NewHealth</code>, <code>MaxHealth</code></td><td>Primary combat feedback broadcast listened to by UI, popups, and hit-flash components</td></tr><tr><td><code>UDamageHUDWidget::TriggerPlayerDamageFlash</code></td><td>Function</td><td>In: <code>DamageTaken</code>, <code>bWasCrit</code></td><td>Pulses the crimson directional/vignette screen overlay when the player is hit</td></tr><tr><td><code>UDamageHUDWidget::ComputePopupPlacement</code></td><td>Function</td><td>In: <code>PC</code>, <code>WorldLocation</code><br />Out: <code>OutScreenPos</code>, <code>OutDistanceScale</code></td><td>Projects 3D world hit locations into resolution-independent screen popup coordinates</td></tr><tr><td><code>UHealthBarWidget::BindToHealthComponent</code></td><td>Function</td><td>In: <code>UHealthComponent*</code></td><td>Subscribes bar fill and numeric text automatically to health updates</td></tr><tr><td><code>UDamagePopupComponent::DispatchPopup</code></td><td>Function</td><td>In: <code>FTookDamagePopup</code><br />Return: <code>bool</code></td><td>Routes formatted damage, crit, and dodge payloads to HUD/world display receivers</td></tr><tr><td><code>UHitFlashComponent::TriggerHitFlash</code></td><td>Function</td><td>In: none</td><td>Resets <code>LastHitTime</code> to current world time on all dynamic material instances</td></tr></tbody></table>
+</div>
+
+<div class="tab-panel" id="panel-persistor" role="tabpanel" aria-labelledby="tab-persistor">
+  <div class="toc"><strong>Quick Navigation</strong><div class="toc-list">
+    <a href="#tab=persistor" data-subscroll="persistor-demo">Persistor Showcase</a>
+    <a href="#tab=persistor" data-subscroll="persistor-setup">Configuration</a>
+    <a href="#tab=persistor" data-subscroll="persistor-mechanics">Persistor Mechanics &amp; State Control</a>
+    <a href="#tab=persistor" data-subscroll="persistor-api">Appendix - Persistor API</a>
+    <a class="toc-ext-link" href="https://twikiastudios.com/products/simple-flying-enemy-combat/detailed-docs/" target="_blank" rel="noopener noreferrer">Detailed Documentation (Full API &amp; Features) <svg class="ext-icon" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"/></svg></a>
+  </div></div>
+  <h2 id="persistor-demo">BP_Persistor - Direct Pursuit Drone</h2>
+  <p class="caption">Relentless thruster-driven hunter powered by <code>UFlyingPersistorLogic</code> that zeroes vertical mismatch, locks onto player sightlines, and combines contact melee with enemy projectile bursts.</p>
+  <div class="demo-highlight"><strong>Demo Highlight:</strong> Drop <code>BP_Persistor</code> into any level or engage it right inside <code>SimpleFlyingEnemyCombatDemo</code> to see floor-safe pursuit steering and 4 active thruster exhausts.</div>
+  <img class="hero" src="Docs/Images/enemy_persistor.png" alt="BP_Persistor - Direct Pursuit Drone" />
+<table><thead><tr><th>Property / Module</th><th>Logic Class / Component</th><th>Default Showcase Role</th></tr></thead><tbody><tr><td>Logic Implementation</td><td><code>UFlyingPersistorLogic</code></td><td>Pursues directly while clearing <code>CapsuleRoot</code> scaled half-height above floor obstacles</td></tr><tr><td>Thruster Exhausts</td><td><code>NS_ThrusterFire</code> x 4 Sockets</td><td>Attached via <code>ThrusterAttachments</code> offsets with live movement</td></tr><tr><td>Damage &amp; Feedback</td><td><code>UHealthComponent</code>, <code>UMeleeComponent</code>, <code>UHitFlashComponent</code></td><td>40 HP showcase baseline, contact melee collision, crit visor hitbox, white hit-flash</td></tr></tbody></table>
+  <h2 id="persistor-setup">Configuration</h2>
+<div class="step"><h3>Step 1: Place BP_Persistor &amp; Inspect Enemy Hierarchy</h3><p>Drag <code>BP_Persistor</code> into your level; <code>CapsuleRoot</code>, <code>CritHitbox</code>, <code>AttackPlayerHitbox</code>, <code>BulletSpawnerComponent</code>, and <code>WorldHealthBarWidget</code> come pre-configured.</p><div class="setup-visuals"><img src="Docs/Images/Nodes/step3_enemy_components.png" alt="Place BP_Persistor &amp; Inspect Enemy Hierarchy" /><img src="Docs/Images/Nodes/step3_enemy_details.png" alt="Place BP_Persistor &amp; Inspect Enemy Hierarchy Details" /></div></div>
+<div class="step"><h3>Step 2: Customize Thruster FX &amp; Sockets in Details</h3><p>Adjust <code>Thruster Niagara Effect</code> and its 4 <code>Thruster Attachments</code> socket/offset transforms directly under <code>Enemy | FX</code>.</p><div class="setup-visuals"><img src="Docs/Images/Nodes/enemy_persistor_details.png" alt="Customize Thruster FX &amp; Sockets in Details" /><img src="Docs/Images/Nodes/enemy_state_machine_details.png" alt="Customize Thruster FX &amp; Sockets in Details Details" /></div></div>
+  <div class="boundary" id="persistor-end-setup">
+    <h2>End of Persistor Configuration</h2>
+    <p><code>BP_Persistor</code> chases continuously, keeps pressure on moving players, and scales damage/speed through its <code>DA_Enemy_Persistor</code> DataAsset.</p>
+  </div>
+<h3 id="persistor-mechanics">Persistor Mechanics &amp; State Control</h3>
+<div class="grid">
+<div class="card medium"><h3>Thruster Attachment Transforms</h3>
+<img src="Docs/Images/Nodes/enemy_persistor_details.png" alt="Thruster Attachment Transforms" />
+<p>Four configurable exhaust offsets attach cleanly to <code>BaseEnemyMesh</code> and scale proportionally with <code>EnemyScale</code>.</p></div>
+<div class="card medium"><h3>Enemy State Machine Driven</h3>
+<img src="Docs/Images/Nodes/enemy_state_machine_details.png" alt="Enemy State Machine Driven" />
+<p><code>UFlyingEnemyStateMachine</code> coordinates Idle/Chase/Attack transitions without heavy tick polling.</p></div>
+</div>
+  <h2 id="persistor-api">Appendix - Persistor API Reference</h2>
+  <p class="caption">Persistor inherits all common enemy delegates and DataAsset hooks from `AFlyingEnemyPawn` and `UFlyingEnemyBaseLogic`.</p>
+<table><thead><tr><th>Name</th><th>Type</th><th>Inputs / Outputs</th><th>Functionality</th></tr></thead><tbody><tr><td><code>UFlyingPersistorLogic</code></td><td>ActorComponent</td><td>In: <code>FFlyingMovementConfig</code></td><td>Drives direct target pursuit with ground clearance clamping along Z</td></tr><tr><td><code>AFlyingEnemyPawn::ApplyEnemyConfigDataAsset</code></td><td>Function</td><td>In: <code>UEnemyCombatDataAsset*</code></td><td>Applies stats, thruster attachments, scale, and weapon profile (<code>DA_Enemy_Persistor</code>)</td></tr><tr><td><code>AFlyingEnemyPawn::OnEnemyDied</code></td><td>Delegate</td><td>Out: <code>DeadEnemy</code>, <code>Killer</code></td><td>Broadcasts when health reaches zero so encounters or score systems can react</td></tr><tr><td><code>UFlyingEnemyStateMachine::EnterState</code></td><td>Function</td><td>In: <code>EFlyingEnemyState</code></td><td>Switches state cleanly and emits <code>OnStateEntered</code> / <code>OnNativeStateEntered</code></td></tr></tbody></table>
+</div>
+
+<div class="tab-panel" id="panel-bombbot" role="tabpanel" aria-labelledby="tab-bombbot">
+  <div class="toc"><strong>Quick Navigation</strong><div class="toc-list">
+    <a href="#tab=bombbot" data-subscroll="bombbot-demo">Bomb Bot Showcase</a>
+    <a href="#tab=bombbot" data-subscroll="bombbot-setup">Configuration</a>
+    <a href="#tab=bombbot" data-subscroll="bombbot-mechanics">Bomb Bot Explosion &amp; State Modules</a>
+    <a href="#tab=bombbot" data-subscroll="bombbot-api">Appendix - Bomb Bot API</a>
+    <a class="toc-ext-link" href="https://twikiastudios.com/products/simple-flying-enemy-combat/detailed-docs/" target="_blank" rel="noopener noreferrer">Detailed Documentation (Full API &amp; Features) <svg class="ext-icon" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"/></svg></a>
+  </div></div>
+  <h2 id="bombbot-demo">BP_BombBot - Power-Up Self-Destruct Bot</h2>
+  <p class="caption">Aggressive hovering demolition unit (<code>UFlyingBombBotLogic</code>) that closes distance and executes a rapid radial spin telegraph before triggering <code>MeleeComponent</code> self-destruction.</p>
+  <div class="demo-highlight"><strong>Demo Highlight:</strong> Let <code>BP_BombBot</code> enter <code>AttackPlayerHitbox</code> range to see its acceleration ramp, thruster plume, spin wind-up, and high-knockback player blast.</div>
+  <img class="hero" src="Docs/Images/enemy_bombbot.png" alt="BP_BombBot - Power-Up Self-Destruct Bot" />
+<table><thead><tr><th>Property / Module</th><th>Component / Logic</th><th>Behavior</th></tr></thead><tbody><tr><td>Logic Implementation</td><td><code>UFlyingBombBotLogic</code></td><td>Ramps acceleration toward player, locks into self-destruct power-up state on overlap</td></tr><tr><td>Detonation Melee</td><td><code>UMeleeComponent</code> (<code>bExplodeOwnerOnHit</code>)</td><td>Triggers radial explosion damage + player knockback impulse (<code>BombBot</code> blast)</td></tr><tr><td>Defense &amp; Crit Zone</td><td><code>CritHitbox</code>, <code>UHitFlashComponent</code></td><td>Front core triggers yellow <code>CRIT!</code> numbers and crisp emissive white hit-flash</td></tr></tbody></table>
+  <h2 id="bombbot-setup">Configuration</h2>
+<div class="step"><h3>Step 1: Assign DA_Enemy_BombBot &amp; Scale in Class Defaults</h3><p>Set <code>Archetype</code> to <code>BombBot</code> (<code>DA_Enemy_BombBot</code>) and verify <code>CapsuleRoot</code> and <code>AttackPlayerHitbox</code> bounds match your arena corridors.</p><div class="setup-visuals"><img src="Docs/Images/Nodes/step3_enemy_components.png" alt="Assign DA_Enemy_BombBot &amp; Scale in Class Defaults" /><img src="Docs/Images/Nodes/step3_enemy_details.png" alt="Assign DA_Enemy_BombBot &amp; Scale in Class Defaults Details" /></div></div>
+<div class="step"><h3>Step 2: Configure Self-Destruct Damage &amp; Knockback</h3><p>Select <code>MeleeComponent</code> and tune <code>DamageMultiplier</code> and <code>Explode Owner on Hit</code> under <code>Combat | Melee</code>.</p><div class="setup-visuals"><img src="Docs/Images/Nodes/enemy_bombbot_details.png" alt="Configure Self-Destruct Damage &amp; Knockback" /><img src="Docs/Images/Nodes/enemy_state_machine_details.png" alt="Configure Self-Destruct Damage &amp; Knockback Details" /></div></div>
+  <div class="boundary" id="bombbot-end-setup">
+    <h2>End of Bomb Bot Configuration</h2>
+    <p><code>BP_BombBot</code> pressures players out of cover by forcing immediate target prioritization before its power-up blast triggers.</p>
+  </div>
+<h3 id="bombbot-mechanics">Bomb Bot Explosion &amp; State Modules</h3>
+<div class="grid">
+<div class="card medium"><h3>Self-Destruct Melee Toggle</h3>
+<img src="Docs/Images/Nodes/enemy_bombbot_details.png" alt="Self-Destruct Melee Toggle" />
+<p><code>UMeleeComponent</code> handles both cooldown melee impacts and single-shot owner detonation via <code>bExplodeOwnerOnHit</code>.</p></div>
+<div class="card medium"><h3>Power-Up Spin Telegraph</h3>
+<img src="Docs/Images/Nodes/enemy_state_machine_details.png" alt="Power-Up Spin Telegraph" />
+<p><code>UFlyingBombBotLogic</code> spins the mesh cleanly along yaw during power-up to warn the player before detonation.</p></div>
+</div>
+  <h2 id="bombbot-api">Appendix - Bomb Bot API Reference</h2>
+  <p class="caption">Bomb Bot exposes all state timing and blast multipliers across `DA_Enemy_BombBot` and `UMeleeComponent`.</p>
+<table><thead><tr><th>Name</th><th>Type</th><th>Inputs / Outputs</th><th>Functionality</th></tr></thead><tbody><tr><td><code>UFlyingBombBotLogic</code></td><td>ActorComponent</td><td>In: Target actor, <code>StateMachine</code></td><td>Manages aerial pursuit, <code>Attacking</code> power-up spin, and detonation timing</td></tr><tr><td><code>UMeleeComponent</code> (<code>bExplodeOwnerOnHit</code>)</td><td>ActorComponent</td><td>In: <code>FMeleeAttributes</code><br />Out: Overlap damage / Self-destruct</td><td>Applies knockback and damage when <code>AttackPlayerHitbox</code> overlaps targets</td></tr><tr><td><code>UFlyingEnemyBaseLogic::InitializeEnemyLogic</code></td><td>Function</td><td>In: <code>AFlyingEnemyPawn*</code></td><td>Wires logic component to pawn movement, state machine, and data asset config</td></tr></tbody></table>
+</div>
+
+<div class="tab-panel" id="panel-machinegunner" role="tabpanel" aria-labelledby="tab-machinegunner">
+  <div class="toc"><strong>Quick Navigation</strong><div class="toc-list">
+    <a href="#tab=machinegunner" data-subscroll="machinegunner-demo">Machine Gunner Showcase</a>
+    <a href="#tab=machinegunner" data-subscroll="machinegunner-setup">Configuration</a>
+    <a href="#tab=machinegunner" data-subscroll="machinegunner-mechanics">Machine Gunner Orbiting &amp; Dual Barrels</a>
+    <a href="#tab=machinegunner" data-subscroll="machinegunner-api">Appendix - Machine Gunner API</a>
+    <a class="toc-ext-link" href="https://twikiastudios.com/products/simple-flying-enemy-combat/detailed-docs/" target="_blank" rel="noopener noreferrer">Detailed Documentation (Full API &amp; Features) <svg class="ext-icon" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"/></svg></a>
+  </div></div>
+  <h2 id="machinegunner-demo">BP_MachineGunner - Dual-Barrel Hovering Gunner</h2>
+  <p class="caption">Heavy orbital gunship (<code>UFlyingMachineGunnerLogic</code>) blending repulsion from nearby drones, player sightline orbiting (<code>WeightedOffset</code>), and alternating dual <code>BulletSpawnerComponent</code> barrels.</p>
+  <div class="demo-highlight"><strong>Demo Highlight:</strong> Watch <code>BP_MachineGunner</code> strafe across cover blocks in <code>SimpleFlyingEnemyCombatDemo</code> while alternating left and right rotary barrels at the player.</div>
+  <img class="hero" src="Docs/Images/enemy_machinegunner.png" alt="BP_MachineGunner - Dual-Barrel Hovering Gunner" />
+<table><thead><tr><th>Property / Module</th><th>Component / Logic</th><th>Behavior</th></tr></thead><tbody><tr><td>Logic Implementation</td><td><code>UFlyingMachineGunnerLogic</code> (<code>UFlyingAirBaseLogic</code>)</td><td>Combines drone-to-drone separation, obstacle avoidance, and orbit weights</td></tr><tr><td>Dual Gun Spawners</td><td><code>BulletSpawnerComponent</code> + <code>SecondaryBulletSpawnerComponent</code></td><td>Alternates muzzles every shot when <code>Alternate Dual Spawners</code> is enabled</td></tr><tr><td>Profile Asset</td><td><code>DA_Enemy_MachineGunner</code></td><td>Sets enemy scale (<code>10.0</code>), sustained bullet speed, and dual-orbiter preset</td></tr></tbody></table>
+  <h2 id="machinegunner-setup">Configuration</h2>
+<div class="step"><h3>Step 1: Enable Alternate Dual Spawners in Class Defaults</h3><p>Ensure <code>Archetype</code> is set to <code>Machine Gunner (Dual Orbiter)</code> and enable <code>Alternate Dual Spawners</code> under <code>Enemy | Weapon</code>.</p><div class="setup-visuals"><img src="Docs/Images/Nodes/enemy_machinegunner_details.png" alt="Enable Alternate Dual Spawners in Class Defaults" /><img src="Docs/Images/Nodes/step3_enemy_components.png" alt="Enable Alternate Dual Spawners in Class Defaults Details" /></div></div>
+<div class="step"><h3>Step 2: Tune Health Bar UI &amp; State Machine Transitions</h3><p>Adjust <code>Show World Health Bar</code> in <code>Enemy | UI</code> or override transition timings inside <code>StateMachine</code>.</p><div class="setup-visuals"><img src="Docs/Images/Nodes/ui_health_bar_details.png" alt="Tune Health Bar UI &amp; State Machine Transitions" /><img src="Docs/Images/Nodes/enemy_state_machine_details.png" alt="Tune Health Bar UI &amp; State Machine Transitions Details" /></div></div>
+  <div class="boundary" id="machinegunner-end-setup">
+    <h2>End of Machine Gunner Configuration</h2>
+    <p><code>BP_MachineGunner</code> delivers suppressive dual-barrel fire while keeping clean spatial separation from other aerial allies.</p>
+  </div>
+<h3 id="machinegunner-mechanics">Machine Gunner Orbiting &amp; Dual Barrels</h3>
+<div class="grid">
+<div class="card medium"><h3>Dual Spawner Alternation</h3>
+<img src="Docs/Images/Nodes/enemy_machinegunner_details.png" alt="Dual Spawner Alternation" />
+<p>Cycles shots cleanly between primary and secondary spawner transforms without duplicating weapon code.</p></div>
+<div class="card medium"><h3>Air Base Steering Weights</h3>
+<img src="Docs/Images/Nodes/step3_enemy_details.png" alt="Air Base Steering Weights" />
+<p>Inherits <code>UFlyingAirBaseLogic</code> repulsion and obstacle avoidance rays (<code>AirObstacleAvoidance</code>).</p></div>
+</div>
+  <h2 id="machinegunner-api">Appendix - Machine Gunner API Reference</h2>
+  <p class="caption">Both player and MachineGunner reuse `UBulletSpawnerComponent`, making projectile swaps effortless.</p>
+<table><thead><tr><th>Name</th><th>Type</th><th>Inputs / Outputs</th><th>Functionality</th></tr></thead><tbody><tr><td><code>UFlyingMachineGunnerLogic</code></td><td>ActorComponent</td><td>In: Orbit &amp; repulsion weights</td><td>Coordinates heavy air-base hovering and alternating dual-barrel firing</td></tr><tr><td><code>UFlyingAirBaseLogic</code></td><td>ActorComponent</td><td>In: Separation, Sightline weights</td><td>Provides shared obstacle avoidance and group separation steering</td></tr><tr><td><code>UFlyingEnemyFunctionLibrary::AirObstacleAvoidance</code></td><td>Blueprint Function</td><td>In: Context, Origin, TraceParams<br />Return: <code>FVector</code></td><td>Computes open steering vector clear of cover blocks and walls</td></tr></tbody></table>
+</div>
+
+<div class="tab-panel" id="panel-nailgunner" role="tabpanel" aria-labelledby="tab-nailgunner">
+  <div class="toc"><strong>Quick Navigation</strong><div class="toc-list">
+    <a href="#tab=nailgunner" data-subscroll="nailgunner-demo">Nail Gunner Showcase</a>
+    <a href="#tab=nailgunner" data-subscroll="nailgunner-setup">Configuration</a>
+    <a href="#tab=nailgunner" data-subscroll="nailgunner-mechanics">Nail Gunner Predictive Targeting &amp; States</a>
+    <a href="#tab=nailgunner" data-subscroll="nailgunner-api">Appendix - Nail Gunner API</a>
+    <a class="toc-ext-link" href="https://twikiastudios.com/products/simple-flying-enemy-combat/detailed-docs/" target="_blank" rel="noopener noreferrer">Detailed Documentation (Full API &amp; Features) <svg class="ext-icon" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"/></svg></a>
+  </div></div>
+  <h2 id="nailgunner-demo">BP_NailGunner - Lead-Aiming Burst Shooter</h2>
+  <p class="caption">Agility-focused CRT drone (<code>UFlyingNailGunnerLogic</code>) cycling <code>Idle</code>, <code>Wandering</code>, and <code>Attacking</code> states while computing predictive lead rotations from projectile speed.</p>
+  <div class="demo-highlight"><strong>Demo Highlight:</strong> Engage <code>BP_NailGunner</code> while strafing in <code>SimpleFlyingEnemyCombatDemo</code> to see predictive lead-aiming spark bursts track your lateral velocity.</div>
+  <img class="hero" src="Docs/Images/enemy_nailgunner.png" alt="BP_NailGunner - Lead-Aiming Burst Shooter" />
+<table><thead><tr><th>Property / Module</th><th>Component / Logic</th><th>Behavior</th></tr></thead><tbody><tr><td>Logic Implementation</td><td><code>UFlyingNailGunnerLogic</code> (<code>UFlyingAirBaseLogic</code>)</td><td>3-state state-machine cadence pausing drift during precision bursts</td></tr><tr><td>Predictive Targeting</td><td><code>CalculateLeadRotationByProjectileSpeed</code></td><td>Leads moving targets based on bullet velocity before firing each round</td></tr><tr><td>Weapon Tuning</td><td><code>EnemyGunAttributes</code> / <code>BulletSpawnerComponent</code></td><td>Rapid burst fire rate and spread configurable right on Class Defaults</td></tr></tbody></table>
+  <h2 id="nailgunner-setup">Configuration</h2>
+<div class="step"><h3>Step 1: Set Archetype &amp; Tune Enemy Gun Attributes</h3><p>Assign <code>DA_Enemy_NailGunner</code> and tune <code>Fire Rate</code>, <code>Spread</code>, and <code>Bullet Attributes</code> under <code>Spawner</code> / <code>Enemy | Weapon</code>.</p><div class="setup-visuals"><img src="Docs/Images/Nodes/enemy_nailgunner_details.png" alt="Set Archetype &amp; Tune Enemy Gun Attributes" /><img src="Docs/Images/Nodes/step3_enemy_details.png" alt="Set Archetype &amp; Tune Enemy Gun Attributes Details" /></div></div>
+<div class="step"><h3>Step 2: Customize State Machine Idle / Burst Durations</h3><p>Select <code>StateMachine</code> on <code>BP_NailGunner</code> to inspect state transitions and adjust per-state burst dwell times.</p><div class="setup-visuals"><img src="Docs/Images/Nodes/enemy_state_machine_details.png" alt="Customize State Machine Idle / Burst Durations" /></div></div>
+  <div class="boundary" id="nailgunner-end-setup">
+    <h2>End of Nail Gunner Configuration</h2>
+    <p><code>BP_NailGunner</code> forces constant player movement by predicting strafe velocity cleanly inside its attack state.</p>
+  </div>
+<h3 id="nailgunner-mechanics">Nail Gunner Predictive Targeting &amp; States</h3>
+<div class="grid">
+<div class="card medium"><h3>Lead Rotation Helper</h3>
+<img src="Docs/Images/Nodes/enemy_nailgunner_details.png" alt="Lead Rotation Helper" />
+<p><code>CalculateLeadRotationByProjectileSpeed</code> aims ahead of moving targets cleanly without tick blueprints.</p></div>
+<div class="card medium"><h3>Hit Flash &amp; Crit Box Ready</h3>
+<img src="Docs/Images/Nodes/ui_hit_flash_details.png" alt="Hit Flash &amp; Crit Box Ready" />
+<p>Supports directional crit hits and full emissive flash feedback during burst pauses.</p></div>
+</div>
+  <h2 id="nailgunner-api">Appendix - Nail Gunner API Reference</h2>
+  <p class="caption">Nail Gunner reuses `UFlyingEnemyFunctionLibrary` math helpers that you can also call from custom Blueprint turrets.</p>
+<table><thead><tr><th>Name</th><th>Type</th><th>Inputs / Outputs</th><th>Functionality</th></tr></thead><tbody><tr><td><code>UFlyingNailGunnerLogic</code></td><td>ActorComponent</td><td>In: Burst state durations</td><td>Manages Wandering/Idle/Attacking cadence and predictive lead bursts</td></tr><tr><td><code>UFlyingEnemyFunctionLibrary::CalculateLeadRotationByProjectileSpeed</code></td><td>Blueprint Pure</td><td>In: ShooterLoc, TargetActor, Speed<br />Return: <code>FRotator</code></td><td>Computes intercept aim direction based on target velocity and projectile speed</td></tr><tr><td><code>UFlyingEnemyFunctionLibrary::CalculateLeadRotationByTime</code></td><td>Blueprint Pure</td><td>In: ShooterLoc, TargetActor, LeadTime<br />Return: <code>FRotator</code></td><td>Projects fixed lead-time aim vector ahead of target trajectory</td></tr></tbody></table>
+</div>
+
+<div class="tab-panel" id="panel-stalker" role="tabpanel" aria-labelledby="tab-stalker">
+  <div class="toc"><strong>Quick Navigation</strong><div class="toc-list">
+    <a href="#tab=stalker" data-subscroll="stalker-demo">Stalker Showcase</a>
+    <a href="#tab=stalker" data-subscroll="stalker-setup">Configuration</a>
+    <a href="#tab=stalker" data-subscroll="stalker-mechanics">Stalker Constricting Spiral &amp; Dive</a>
+    <a href="#tab=stalker" data-subscroll="stalker-api">Appendix - Stalker API</a>
+    <a class="toc-ext-link" href="https://twikiastudios.com/products/simple-flying-enemy-combat/detailed-docs/" target="_blank" rel="noopener noreferrer">Detailed Documentation (Full API &amp; Features) <svg class="ext-icon" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"/></svg></a>
+  </div></div>
+  <h2 id="stalker-demo">BP_Stalker - Constricting Orbit &amp; Dash Assassin</h2>
+  <p class="caption">Large predatory winged bot (<code>UFlyingStalkerLogic</code>, scale <code>25.0</code>) that tightens an inward spiral (<code>CalculateConstrictingOrbit</code>) before launching blinding claw dive-dashes.</p>
+  <div class="demo-highlight"><strong>Demo Highlight:</strong> Track <code>BP_Stalker</code> across the open desert sky in <code>SimpleFlyingEnemyCombatDemo</code> as it tightens its orbit radius and dives into melee range.</div>
+  <img class="hero" src="Docs/Images/enemy_stalker.png" alt="BP_Stalker - Constricting Orbit &amp; Dash Assassin" />
+<table><thead><tr><th>Property / Module</th><th>Component / Logic</th><th>Behavior</th></tr></thead><tbody><tr><td>Logic Implementation</td><td><code>UFlyingStalkerLogic</code></td><td>Executes <code>CalculateConstrictingOrbit</code> spiral approach transitioning to <code>Attacking</code> dash</td></tr><tr><td>Physical Footprint</td><td><code>EnemyScale = 25.0</code></td><td>Clamps minimum hover altitude safely using scaled <code>CapsuleRoot</code> half-height</td></tr><tr><td>Close-Range Pressure</td><td><code>UMeleeComponent</code> + <code>AttackPlayerHitbox</code></td><td>Delivers heavy claw strike damage and knockback on dash contact</td></tr></tbody></table>
+  <h2 id="stalker-setup">Configuration</h2>
+<div class="step"><h3>Step 1: Set Archetype to Stalker (Dash Orbiter)</h3><p>Verify <code>BP_Stalker</code> references <code>DA_Enemy_Stalker</code> and <code>Enemy Scale = 25.0</code> under <code>Enemy | Archetype</code>.</p><div class="setup-visuals"><img src="Docs/Images/Nodes/enemy_stalker_details.png" alt="Set Archetype to Stalker (Dash Orbiter)" /><img src="Docs/Images/Nodes/step3_enemy_components.png" alt="Set Archetype to Stalker (Dash Orbiter) Details" /></div></div>
+<div class="step"><h3>Step 2: Tune Orbit &amp; Dash State Machine Timings</h3><p>Inspect <code>StateMachine</code> and <code>MeleeComponent</code> on <code>BP_Stalker</code> to control spiral duration and claw strike multiplier.</p><div class="setup-visuals"><img src="Docs/Images/Nodes/enemy_state_machine_details.png" alt="Tune Orbit &amp; Dash State Machine Timings" /><img src="Docs/Images/Nodes/enemy_bombbot_details.png" alt="Tune Orbit &amp; Dash State Machine Timings Details" /></div></div>
+  <div class="boundary" id="stalker-end-setup">
+    <h2>End of Stalker Configuration</h2>
+    <p><code>BP_Stalker</code> adds towering vertical threat silhouettes and forces spatial awareness above the player&#x27;s horizontal sightline.</p>
+  </div>
+<h3 id="stalker-mechanics">Stalker Constricting Spiral &amp; Dive</h3>
+<div class="grid">
+<div class="card medium"><h3>Constricting Orbit Navigation</h3>
+<img src="Docs/Images/Nodes/enemy_stalker_details.png" alt="Constricting Orbit Navigation" />
+<p><code>CalculateConstrictingOrbit</code> traces clear air lanes while steadily collapsing orbital radius onto the player.</p></div>
+<div class="card medium"><h3>Safe Tall-Capsule Ground Clearance</h3>
+<img src="Docs/Images/Nodes/enemy_state_machine_details.png" alt="Safe Tall-Capsule Ground Clearance" />
+<p>Maintains scaled vertical clearance above <code>ArenaFloor</code> so tall claws sweep cleanly at chest height.</p></div>
+</div>
+  <h2 id="stalker-api">Appendix - Stalker API Reference</h2>
+  <p class="caption">Stalker movement speed and orbit contraction can be tuned directly in C++ or `DA_Enemy_Stalker`.</p>
+<table><thead><tr><th>Name</th><th>Type</th><th>Inputs / Outputs</th><th>Functionality</th></tr></thead><tbody><tr><td><code>UFlyingStalkerLogic</code></td><td>ActorComponent</td><td>In: Target actor, State durations</td><td>Orchestrates spiraling orbit chase and high-speed dive dashes</td></tr><tr><td><code>UFlyingEnemyFunctionLibrary::CalculateConstrictingOrbit</code></td><td>Blueprint Callable</td><td>In: Center, Origin, Radius, Offset<br />Return: <code>FVector</code></td><td>Computes inward-spiraling orbit waypoints clear of nearby static geometry</td></tr><tr><td><code>UMeleeComponent</code></td><td>ActorComponent</td><td>In: <code>FMeleeAttributes</code></td><td>Applies claw strike damage on <code>AttackPlayerHitbox</code> contact</td></tr></tbody></table>
+</div>
+
+<div class="tab-panel" id="panel-laserballbot" role="tabpanel" aria-labelledby="tab-laserballbot">
+  <div class="toc"><strong>Quick Navigation</strong><div class="toc-list">
+    <a href="#tab=laserballbot" data-subscroll="laserballbot-demo">Laser Ball Bot Showcase</a>
+    <a href="#tab=laserballbot" data-subscroll="laserballbot-setup">Configuration</a>
+    <a href="#tab=laserballbot" data-subscroll="laserballbot-mechanics">Laser Ball Bot Tracing &amp; FX</a>
+    <a href="#tab=laserballbot" data-subscroll="laserballbot-api">Appendix - Laser Ball Bot API</a>
+    <a class="toc-ext-link" href="https://twikiastudios.com/products/simple-flying-enemy-combat/detailed-docs/" target="_blank" rel="noopener noreferrer">Detailed Documentation (Full API &amp; Features) <svg class="ext-icon" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"/></svg></a>
+  </div></div>
+  <h2 id="laserballbot-demo">BP_LaserBallBot - Quad Niagara Beam Sweeper</h2>
+  <p class="caption">Heavy rotating orb (<code>UFlyingLaserBallBotLogic</code>) tracking player altitude while sweeping 4 live <code>NS_LaserBeam</code> traces that spawn <code>NS_LaserHit</code> sparks and apply cooldown beam damage.</p>
+  <div class="demo-highlight"><strong>Demo Highlight:</strong> Enter combat with <code>BP_LaserBallBot</code> in <code>SimpleFlyingEnemyCombatDemo</code> to see 4 rotating red-core Niagara laser beams carving across walls and damaging the player.</div>
+  <img class="hero" src="Docs/Images/enemy_laserballbot.png" alt="BP_LaserBallBot - Quad Niagara Beam Sweeper" />
+<table><thead><tr><th>Property / Module</th><th>Component / Logic</th><th>Behavior</th></tr></thead><tbody><tr><td>Logic Implementation</td><td><code>UFlyingLaserBallBotLogic</code></td><td>Rotates <code>BaseEnemyMesh</code> and calls <code>TraceSingleBeam</code> per beam every attack tick</td></tr><tr><td>Laser Tracing &amp; Damage</td><td><code>BeamDamage</code>, <code>BeamDamageCooldown</code>, <code>LaserBeamLocalOrigin</code></td><td>Damages <code>ICombatTarget</code> actors along the trace on per-target cooldown intervals</td></tr><tr><td>Niagara Systems</td><td><code>NS_LaserBeam</code>, <code>NS_LaserHit</code></td><td>Quad continuous beams anchored at origin sockets with wall/target impact flares</td></tr></tbody></table>
+  <h2 id="laserballbot-setup">Configuration</h2>
+<div class="step"><h3>Step 1: Configure Beam Damage, Cooldown &amp; Origin in Details</h3><p>Expand <code>Enemy | Laser</code> on <code>BP_LaserBallBot</code> to tune <code>Beam Damage</code>, <code>Beam Damage Cooldown</code>, <code>Laser Beam Local Origin</code>, and Niagara effects.</p><div class="setup-visuals"><img src="Docs/Images/Nodes/extras_laser_details.png" alt="Configure Beam Damage, Cooldown &amp; Origin in Details" /></div></div>
+<div class="step"><h3>Step 2: Inspect Quad Niagara Beam Endpoints &amp; State Transitions</h3><p>Use <code>StateMachine</code> (<code>Wandering</code> to <code>Attacking</code> spin cycles) and customize hit-flash parameters for glowing armor plates.</p><div class="setup-visuals"><img src="Docs/Images/Nodes/enemy_state_machine_details.png" alt="Inspect Quad Niagara Beam Endpoints &amp; State Transitions" /><img src="Docs/Images/Nodes/ui_hit_flash_details.png" alt="Inspect Quad Niagara Beam Endpoints &amp; State Transitions Details" /></div></div>
+  <div class="boundary" id="laserballbot-end-setup">
+    <h2>End of Laser Ball Bot Configuration</h2>
+    <p><code>BP_LaserBallBot</code> anchors multi-enemy arenas with rhythmic hazard beams that reward dodging, jumping, and focus fire.</p>
+  </div>
+<h3 id="laserballbot-mechanics">Laser Ball Bot Tracing &amp; FX</h3>
+<div class="grid">
+<div class="card medium"><h3>Quad-Beam Niagara Setup</h3>
+<img src="Docs/Images/Nodes/extras_laser_details.png" alt="Quad-Beam Niagara Setup" />
+<p><code>BeamDamage</code>, <code>BeamDamageCooldown</code>, and <code>LaserBeamNiagaraEffect</code> exposed right inside <code>Enemy | Laser</code>.</p></div>
+<div class="card medium"><h3>Beam Update Delegate</h3>
+<img src="Docs/Images/Nodes/ui_hit_flash_details.png" alt="Beam Update Delegate" />
+<p>Listen to <code>OnBeamUpdated</code> in Blueprint to attach scorch decals, audio loops, or camera rumble at beam hit points.</p></div>
+</div>
+  <h2 id="laserballbot-api">Appendix - Laser Ball Bot API Reference</h2>
+  <p class="caption">Laser origin, endpoints, damage interval, and Niagara assets are all overridable per Blueprint instance.</p>
+<table><thead><tr><th>Name</th><th>Type</th><th>Inputs / Outputs</th><th>Functionality</th></tr></thead><tbody><tr><td><code>UFlyingLaserBallBotLogic::InitLaserBeams</code></td><td>Function</td><td>In: Beam-to-Endpoint Map</td><td>Registers the 4 emitter-to-endpoint scene component pairs</td></tr><tr><td><code>UFlyingLaserBallBotLogic::UpdateBeams</code></td><td>Function</td><td>In: none<br />Out: <code>OnBeamUpdated</code></td><td>Runs <code>TraceSingleBeam</code> for every beam, places <code>NS_LaserHit</code>, and applies beam cooldown damage</td></tr><tr><td><code>UFlyingLaserBallBotLogic::TraceSingleBeam</code></td><td>Function</td><td>In: LookVector, Start<br />Out: EndLocation, BeamLength</td><td>Performs multi-channel line trace and scales beam length parameters cleanly</td></tr><tr><td><code>UFlyingLaserBallBotLogic::OnBeamUpdated</code></td><td>Delegate</td><td>Out: Component, Start, End, Length</td><td>Fires per beam frame update for optional custom VFX or audio cues</td></tr></tbody></table>
+</div>
+
+    <div class="detailed-docs-cta">
+      <strong>Need the complete method, property, delegate, and struct reference?</strong>
+      <p>Read the screenshot-free <a href="https://twikiastudios.com/products/simple-flying-enemy-combat/detailed-docs/" target="_blank" rel="noopener noreferrer">Detailed Documentation <svg class="ext-icon" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"/></svg></a> (also bundled offline in <code>DetailedDocs.html</code> next to this User Guide).</p>
+    </div>
+
+    <div class="footer">
+      <span class="footer-brand"><img class="brand-icon-sm" src="Docs/Images/twikia-studios-logo.png" alt="Twikia Studios" /><span>Simple Flying Enemy Combat v1.0.0 - Twikia Studios</span></span>
+      <span><a href="https://twikiastudios.com/products/simple-flying-enemy-combat/">https://twikiastudios.com/products/simple-flying-enemy-combat/</a> &middot; &copy; 2026 Twikia Studios. All rights reserved.</span>
+    </div>
+  </div>
+  <div class="lightbox" id="img-lightbox" aria-hidden="true">
+    <img id="img-lightbox-target" src="" alt="" />
+  </div>
+  <script>
+    (function () {
+      var box = document.getElementById('img-lightbox');
+      var target = document.getElementById('img-lightbox-target');
+      document.querySelectorAll('img:not(.brand-icon-lg):not(.brand-icon-sm)').forEach(function (img) {
+        img.addEventListener('click', function () {
+          target.src = img.src;
+          target.alt = img.alt || '';
+          box.classList.add('open');
+          box.setAttribute('aria-hidden', 'false');
+        });
+      });
+      box.addEventListener('click', function (e) {
+        if (e.target === box) {
+          box.classList.remove('open');
+          box.setAttribute('aria-hidden', 'true');
+        }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && box.classList.contains('open')) {
+          box.classList.remove('open');
+          box.setAttribute('aria-hidden', 'true');
+        }
+      });
+
+      function switchTab(tabId, scrollTarget) {
+        var btn = document.getElementById('tab-' + tabId);
+        var pnl = document.getElementById('panel-' + tabId);
+        if (!btn || !pnl) return;
+        document.querySelectorAll('.tab-btn').forEach(function (b) {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        document.querySelectorAll('.tab-panel').forEach(function (p) {
+          p.classList.remove('active');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        pnl.classList.add('active');
+        if (window.history && window.history.replaceState) {
+          window.history.replaceState(null, '', '#tab=' + tabId);
+        }
+        if (scrollTarget) {
+          var el = document.getElementById(scrollTarget);
+          if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      document.querySelectorAll('.tab-btn').forEach(function (b) {
+        b.addEventListener('click', function () { switchTab(b.getAttribute('data-tab')); });
+      });
+      document.querySelectorAll('[data-jump]').forEach(function (b) {
+        b.addEventListener('click', function () { switchTab(b.getAttribute('data-jump')); });
+      });
+      document.querySelectorAll('[data-subscroll]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          var targetId = a.getAttribute('data-subscroll');
+          var el = document.getElementById(targetId);
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      function syncFromHash() {
+        var h = (window.location.hash || '').replace(/^#/, '');
+        if (h.indexOf('tab=') === 0) {
+          switchTab(h.slice(4));
+        } else if (h) {
+          var el = document.getElementById(h);
+          if (el) {
+            var ownerPanel = el.closest('.tab-panel');
+            if (ownerPanel) {
+              switchTab(ownerPanel.id.replace('panel-', ''), h);
+            }
+          }
+        }
+      }
+      window.addEventListener('hashchange', syncFromHash);
+      syncFromHash();
+    })();
+  </script>
+</body>
+</html>

@@ -151,6 +151,16 @@ img.folder-shot { width: 100%; max-width: 720px; margin: 10px 0 6px; }
   gap: 6px;
 }
 .toc a { display: block; font-size: 14px; }
+.toc a.toc-ext-link { display: inline-flex; align-items: center; gap: 6px; }
+.ext-icon { display: inline-block; vertical-align: middle; flex-shrink: 0; opacity: 0.85; }
+.detailed-docs-cta {
+  margin: 22px 0 32px;
+  padding: 16px 20px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgba(88, 166, 255, 0.14), rgba(63, 185, 80, 0.08));
+  border: 1px solid rgba(88, 166, 255, 0.32);
+}
+.detailed-docs-cta a { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; }
 .boundary {
   margin: 42px 0 32px;
   padding: 18px 22px;
@@ -266,6 +276,7 @@ img:not(.brand-icon-lg):not(.brand-icon-sm):hover {
 .site-breadcrumb {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 10px;
   font-size: 13.5px;
   color: var(--muted);
@@ -278,16 +289,12 @@ img:not(.brand-icon-lg):not(.brand-icon-sm):hover {
 </head>
 <body>
   <div class="wrap">
-    <nav class="site-breadcrumb" aria-label="Breadcrumb">
-      <a href="../">&larr; Back to Products</a>
-      <span>&middot;</span>
-      <a href="../../">Twikia Studios Home</a>
-    </nav>
+    <nav class="site-breadcrumb" aria-label="Breadcrumb"><a href="../">&larr; Back to Products</a><span>&middot;</span><a href="detailed-docs/" target="_blank" rel="noopener noreferrer">Detailed Documentation &#8599;</a><span>&middot;</span><a href="../../">Twikia Studios Home</a></nav>
     <div class="title-row">
       <img class="brand-icon-lg" src="Docs/Images/twikia-studios-logo.png" alt="Twikia Studios" />
       <div>
         <h1>WallRun (v1.3.0) - User Guide</h1>
-        <p class="byline">By <strong>Twikia Studios</strong> &middot; &copy; 2026 Twikia Studios</p>
+        <p class="byline">By <strong>Twikia Studios</strong> &middot; &copy; 2026 Twikia Studios &middot; <a href="https://twikiastudios.com/products/wallrun/">Online User Guide</a></p>
       </div>
     </div>
     <p class="pitch">Blueprint and C++ friendly first-person wall running with options exposed cleanly in the Details panel, and everything tunable across C++, Blueprints, and Details panels. Drop in one component for responsive wall runs, directional wall leaps, and cinematic camera tilt.</p>
@@ -295,12 +302,12 @@ img:not(.brand-icon-lg):not(.brand-icon-sm):hover {
     <div class="toc">
       <strong>Quick Navigation</strong>
       <div class="toc-list">
-        <a href="#setup">Setup</a><a href="#extras-wiring">Extras A - Tuning Feel &amp; Custom Blueprint Wiring</a><a href="#extras-callbacks">Extras B - Event Callbacks</a><a href="#extras-triggers">Extras C - Blueprint Nodes &amp; State Queries</a><a href="#api-reference">Appendix - API Reference</a>
+        <a href="#setup">Setup</a><a href="#extras-wiring">Extras A - Tuning Feel &amp; Custom Blueprint Wiring</a><a href="#extras-callbacks">Extras B - Event Callbacks</a><a href="#extras-triggers">Extras C - Blueprint Nodes &amp; State Queries</a><a href="#api-reference">Appendix - API Reference</a><a class="toc-ext-link" href="https://twikiastudios.com/products/wallrun/detailed-docs/" target="_blank" rel="noopener noreferrer">Detailed Documentation (Full API &amp; Features) <svg class="ext-icon" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"/></svg></a>
       </div>
     </div>
 
     <h2 id="demo">Immediate First-Person Demo Map</h2>
-    <div class="demo-highlight"><strong>No setup needed:</strong> Open <code>/WallRun/Examples/Maps/L_WallRunDemo</code> and press <strong>Play (PIE)</strong>. All functionality will work out of the box in the demo for testing.</div>
+    <div class="demo-highlight"><strong>No setup needed:</strong> Open <code>/WallRun/Examples/Maps/WallRunDemo</code> and press <strong>Play (PIE)</strong>. All functionality will work out of the box in the demo for testing.</div>
     <img class="hero" src="Docs/Images/demo_arena.png" alt="WallRun Demo" />
     <div class="folder-row"><img class="folder-shot" src="Docs/Images/demo_folder.png" alt="Content Browser: Blueprints" /><img class="folder-shot" src="Docs/Images/demo_map_folder.png" alt="Content Browser: Demo Map" /></div>
     
@@ -344,9 +351,14 @@ img:not(.brand-icon-lg):not(.brand-icon-sm):hover {
     <p class="caption">This table highlights the primary entry points. Additional properties, helper functions, Blueprint nodes, and native C++ APIs are available in Unreal Editor Details panels, Blueprint context menus, and the plugin C++ headers.</p>
     <table><thead><tr><th>Name</th><th>Type</th><th>Inputs / Outputs</th><th>Functionality</th></tr></thead><tbody><tr><td><code>UWallRunComponent</code></td><td>Component</td><td>In: Owner <code>ACharacter</code><br />In: <code>IA_WallRun</code> / <code>IA_WallJump</code></td><td>Detects vertical walls, projects wall-run velocity, handles directional jumps, and drives cooldowns</td></tr><tr><td><code>UWallRunCameraFXComponent</code></td><td>Component</td><td>In: <code>SpringArm</code><br />In: <code>Camera</code></td><td>Auto-discovers your rig (or binds custom targets) for smooth roll tilt and FOV punch</td></tr><tr><td><code>TryEnterWallRun</code> / <code>ExitWallRun</code></td><td>Callable</td><td>In: <code>bStartCooldown</code><br />Return: <code>bool</code></td><td>Start or end a wall run cleanly on demand from input or Blueprint logic</td></tr><tr><td><code>TryWallJump</code></td><td>Callable</td><td>Out: <code>OutLaunchVelocity</code><br />Return: <code>bool</code></td><td>Launches the player off the wall with <code>WASD</code>-steered force and inward clamping</td></tr><tr><td><code>IsAllowedToEnter</code> / <code>CheckIfNearWall</code></td><td>Callable</td><td>Out: <code>OutWallNormal</code><br />Return: <code>bool</code></td><td>Checks cooldowns, airborne eligibility, and nearby wall orientation</td></tr><tr><td><code>SetWallRunAllowed</code> / <code>SetAutoDetectWalls</code> / <code>SetMoveInputOverride</code> / <code>BindCameraFX</code></td><td>Callable</td><td>In: <code>bool</code> / <code>FVector2D</code><br />In: <code>CameraFX</code></td><td>Switch entry modes, gate wall runs from stamina/state, or feed AI/custom movement input</td></tr><tr><td><code>IsWallRunning</code> / <code>IsWallRunInputHeld</code> / Cooldowns / Normal &amp; Roll Getters</td><td>Pure</td><td>Return: <code>bool</code> / <code>FVector</code> / <code>float</code></td><td>Read live wall state, active normal, cooldowns, roll angle, and FOV for HUD or AnimBPs</td></tr><tr><td><code>OnWallRunEntered</code> / <code>OnWallRunExited</code></td><td>Event</td><td>Out: <code>WallNormal</code></td><td>Trigger footsteps, scrape particles, and animation transitions when runs start or stop</td></tr><tr><td><code>OnWallJumpLaunched</code></td><td>Event</td><td>Out: <code>WallNormal</code><br />Out: <code>LaunchVelocity</code></td><td>React to every wall leap with directional jump audio or camera kick</td></tr><tr><td><code>IWallRunCharacterContract</code> / <code>IWallRunListener</code></td><td>Interface</td><td>Return: <code>MoveInput</code><br />Return: <code>CanJump</code></td><td>Optional contracts for custom pawns supplying non-standard input or external listeners</td></tr></tbody></table>
 
+    <div class="detailed-docs-cta">
+      <strong>Need the complete method, property, delegate, and struct reference?</strong>
+      <p>Read the screenshot-free <a href="https://twikiastudios.com/products/wallrun/detailed-docs/" target="_blank" rel="noopener noreferrer">Detailed Documentation <svg class="ext-icon" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"/></svg></a> (also bundled offline in <code>DetailedDocs.html</code> next to this User Guide).</p>
+    </div>
+
     <div class="footer">
       <span class="footer-brand"><img class="brand-icon-sm" src="Docs/Images/twikia-studios-logo.png" alt="Twikia Studios" /><span>WallRun v1.3.0 - Twikia Studios</span></span>
-      <span>&copy; 2026 Twikia Studios. All rights reserved.</span>
+      <span><a href="https://twikiastudios.com/products/wallrun/">https://twikiastudios.com/products/wallrun/</a> &middot; &copy; 2026 Twikia Studios. All rights reserved.</span>
     </div>
   </div>
   <div class="lightbox" id="img-lightbox" aria-hidden="true">

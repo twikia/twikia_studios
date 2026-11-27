@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NP45SB32"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MobileOSCore v1.0.0 - User Guide</title>
+  <style>
+:root {
+  --bg: #0f141a;
+  --surface: #161d26;
+  --surface-2: #1c2530;
+  --border: #2a3542;
+  --text: #e7edf4;
+  --muted: #9aa7b8;
+  --accent: #58a6ff;
+  --green: #3fb950;
+  --amber: #f0a830;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.62 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 36px 24px 72px;
+}
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+.title-row h1 { font-size: 34px; margin: 0 0 4px; letter-spacing: -0.02em; }
+.byline { font-size: 13px; color: var(--muted); margin: 0; }
+.byline strong { color: var(--text); }
+img.brand-icon-lg {
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+img.brand-icon-sm {
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  border-radius: 5px;
+  flex-shrink: 0;
+}
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.pitch { font-size: 17px; color: var(--muted); margin: 0 0 22px; }
+h2 {
+  font-size: 22px;
+  margin: 40px 0 14px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+h3 { font-size: 17px; margin: 18px 0 6px; color: #f4f8fc; }
+p { margin: 8px 0 12px; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code {
+  background: rgba(110, 118, 129, 0.22);
+  padding: 2px 6px;
+  border-radius: 5px;
+  font-family: Consolas, "Cascadia Mono", monospace;
+  font-size: 13px;
+  color: #f0f6fc;
+}
+pre {
+  background: #121820;
+  padding: 14px 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 13px;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 8px 0 12px;
+}
+img.hero { width: 100%; margin: 14px 0 10px; }
+img.folder-shot { width: 100%; max-width: 720px; margin: 10px 0 6px; }
+.folder-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 10px 0 14px;
+}
+.folder-row img.folder-shot {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+}
+@media (max-width: 820px) {
+  .folder-row { grid-template-columns: 1fr; }
+}
+.demo-highlight {
+  margin: 12px 0 16px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgba(63, 185, 80, 0.16), rgba(88, 166, 255, 0.12));
+  border: 1px solid rgba(63, 185, 80, 0.38);
+  color: var(--text);
+}
+.demo-highlight strong { color: #7ee787; }
+.folder-caption {
+  color: var(--muted);
+  font-size: 13.5px;
+  margin: 0 0 14px;
+}
+.caption {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0 0 18px;
+}
+.toc {
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 18px 0 28px;
+}
+.toc strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.toc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.toc a { display: block; font-size: 14px; }
+.toc a.toc-ext-link { display: inline-flex; align-items: center; gap: 6px; }
+.ext-icon { display: inline-block; vertical-align: middle; flex-shrink: 0; opacity: 0.85; }
+.detailed-docs-cta {
+  margin: 22px 0 32px;
+  padding: 16px 20px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgba(88, 166, 255, 0.14), rgba(63, 185, 80, 0.08));
+  border: 1px solid rgba(88, 166, 255, 0.32);
+}
+.detailed-docs-cta a { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; }
+.boundary {
+  margin: 42px 0 32px;
+  padding: 18px 22px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgba(240, 168, 48, 0.16), rgba(88, 166, 255, 0.08));
+}
+.boundary h2 { border: 0; margin: 0 0 6px; padding: 0; color: #ffd480; }
+.boundary p { margin: 0; color: var(--text); }
+.step { margin: 22px 0 30px; }
+.setup-visuals {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.setup-visuals.stacked {
+  flex-direction: column;
+}
+.setup-visuals > img {
+  margin: 0;
+  flex: 0 1 auto;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 16px;
+  grid-auto-flow: dense;
+  margin: 14px 0 26px;
+}
+.card {
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+}
+.card.small { grid-column: span 2; }
+.card.medium { grid-column: span 3; }
+.card.large { grid-column: span 6; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.card img { margin: 0 0 10px; max-width: 100%; align-self: flex-start; }
+.card p { margin: 0; font-size: 13.5px; color: var(--muted); }
+.card ul { margin: 8px 0 0; padding-left: 18px; font-size: 13px; color: var(--text); }
+.card li { margin: 4px 0; }
+@media (max-width: 820px) {
+  .grid .small, .grid .medium, .grid .large { grid-column: span 6; }
+}
+.media-links {
+  margin: 10px 0 20px;
+  color: var(--muted);
+  font-size: 14px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 24px;
+  background: var(--surface);
+  border-radius: 8px;
+  overflow: hidden;
+}
+th, td {
+  padding: 10px 14px;
+  text-align: left;
+  vertical-align: top;
+  font-size: 14px;
+  border-bottom: 1px solid var(--border);
+}
+th { background: var(--surface-2); color: #fff; }
+tr:last-child td { border-bottom: 0; }
+.footer {
+  margin-top: 48px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+img:not(.brand-icon-lg):not(.brand-icon-sm) {
+  cursor: zoom-in;
+  transition: opacity 0.15s ease;
+}
+img:not(.brand-icon-lg):not(.brand-icon-sm):hover {
+  opacity: 0.92;
+}
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(8, 11, 15, 0.88);
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  cursor: zoom-out;
+}
+.lightbox.open {
+  display: flex;
+}
+.lightbox img {
+  max-width: 94vw;
+  max-height: 92vh;
+  width: auto;
+  height: auto;
+  margin: 0;
+  border-radius: 10px;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.65);
+  cursor: default;
+}
+.site-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 13.5px;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.site-breadcrumb a {
+  color: var(--accent);
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="site-breadcrumb" aria-label="Breadcrumb"><a href="../">&larr; Back to Products</a><span>&middot;</span><a href="detailed-docs/" target="_blank" rel="noopener noreferrer">Detailed Documentation &#8599;</a><span>&middot;</span><a href="../../">Twikia Studios Home</a></nav>
+    <div class="title-row">
+      <img class="brand-icon-lg" src="Docs/Images/twikia-studios-logo.png" alt="Twikia Studios" />
+      <div>
+        <h1>MobileOSCore (v1.0.0) - User Guide</h1>
+        <p class="byline">By <strong>Twikia Studios</strong> &middot; &copy; 2026 Twikia Studios &middot; <a href="https://twikiastudios.com/products/mobileoscore/">Online User Guide</a></p>
+      </div>
+    </div>
+    <p class="pitch">Blueprint and C++ friendly Android OS integration with options exposed cleanly in the Details panel, and everything tunable across C++, Blueprints, and Details panels. Ship persistent local notifications, app icon badges, cold/warm deep links, native share/alert/toast UI, and battery temperature alerts without JNI headaches.</p>
+
+    <div class="toc">
+      <strong>Quick Navigation</strong>
+      <div class="toc-list">
+        <a href="#setup">Setup</a><a href="#extras-callbacks">Extras A - OS Event Callbacks</a><a href="#extras-ui">Extras B - Native UI, Deep Links &amp; Android Intent Filter</a><a href="#extras-platforms">Extras C - Cross-Platform Iteration Safety</a><a href="#api-reference">Appendix - API Reference</a><a class="toc-ext-link" href="https://twikiastudios.com/products/mobileoscore/detailed-docs/" target="_blank" rel="noopener noreferrer">Detailed Documentation (Full API &amp; Features) <svg class="ext-icon" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"/></svg></a>
+      </div>
+    </div>
+
+    <h2 id="demo">Demo Console Commands &amp; Deep-Link Harness</h2>
+    <div class="demo-highlight"><strong>No setup needed:</strong> Open <code>CPP/MobileOSCoreDemo.uproject</code> on desktop or Android and run <code>mosc.*</code> console commands (with scheme <code>mobileoscoredemo://</code>). All functionality will work out of the box in the demo for testing.</div>
+    
+    
+    
+    <table><thead><tr><th>Console Command</th><th>Action</th></tr></thead><tbody><tr><td><code>mosc.perm / mosc.exact / mosc.settings</code></td><td>Check or request notification permissions and exact-alarm settings</td></tr><tr><td><code>mosc.schedule ... / mosc.cancel / mosc.cancelall</code></td><td>Schedule or cancel persistent local notifications with optional deep links</td></tr><tr><td><code>mosc.badge / mosc.clear</code></td><td>Update app launcher badges or clear active notifications</td></tr><tr><td><code>mosc.consume</code></td><td>Consume cached cold-start deep links and trigger your navigation event</td></tr><tr><td><code>mosc.alert / mosc.share / mosc.toast</code></td><td>Open native OS modal dialogs, share sheets, or toast banners</td></tr><tr><td><code>mosc.battery / mosc.thresholds</code></td><td>Read live battery charge/temperature telemetry or set thermal warning thresholds</td></tr></tbody></table>
+    
+
+    <h2 id="setup">Setup</h2>
+    <div class="step"><h3>Step 1: Enable Plugin &amp; Resolve Mobile OSCore Subsystem</h3><p>Copy <code>MobileOSCore</code> into <code>Plugins/</code>, enable <strong>MobileOSCore</strong> (and <strong>AndroidPermission</strong>), set Android Min SDK <code>26+</code>, and fetch <strong>Mobile OSCore Subsystem</strong> in Blueprint.</p><div class="setup-visuals"><img src="Docs/Images/Nodes/node_get_mobile_os_subsystem.png" alt="Enable Plugin &amp; Resolve Mobile OSCore Subsystem" /></div></div><div class="step"><h3>Step 2: Request Runtime Notification Permissions</h3><p>Bind <strong>On Notification Permission Result</strong> and call <strong>Request Notification Permission</strong> before scheduling notifications.</p><div class="setup-visuals"><img src="Docs/Images/Nodes/node_trig_permissions.png" alt="Request Runtime Notification Permissions" /></div></div><div class="step"><h3>Step 3: Schedule Notifications &amp; Consume Deep Links</h3><p>Call <strong>Schedule Local Notification</strong> for delayed reminders and call <strong>Consume Cold Start Deep Link</strong> when your startup menu initializes.</p><div class="setup-visuals"><img src="Docs/Images/Nodes/node_trig_schedule_notification.png" alt="Schedule Notifications &amp; Consume Deep Links" /></div></div>
+
+    <div class="boundary" id="end-setup">
+      <h2>End of Setup</h2>
+      <p>Your mobile project now schedules reboot-safe reminders, handles deep links reliably from cold start, and reads thermal/battery state natively in Blueprint. Everything below explains native UI helpers, delegate hooks, and Android manifest setup.</p>
+    </div>
+
+    <h2 id="extras-callbacks">Extras A - OS Event Callbacks</h2>
+<div class="grid">
+<div class="card small"><h3>OnNotificationPermissionResult</h3><img src="Docs/Images/Nodes/node_cb_on_permission_result.png" alt="OnNotificationPermissionResult" /><p>Fires after permission prompt or settings flow completes.</p></div>
+<div class="card small"><h3>OnDeepLinkReceived</h3><img src="Docs/Images/Nodes/node_cb_on_deeplink_received.png" alt="OnDeepLinkReceived" /><p>Fires on cold-start consume, warm link, or notification tap.</p></div>
+<div class="card small"><h3>OnAlertButtonClicked</h3><img src="Docs/Images/Nodes/node_cb_on_alert_clicked.png" alt="OnAlertButtonClicked" /><p>Returns which native alert button index the player tapped.</p></div>
+<div class="card small"><h3>OnBatteryStateChanged</h3><img src="Docs/Images/Nodes/node_cb_on_battery_changed.png" alt="OnBatteryStateChanged" /><p>Broadcasts battery charge level, Celsius temp, and alerts.</p></div>
+</div><h2 id="extras-ui">Extras B - Native UI, Deep Links &amp; Android Intent Filter</h2>
+<div class="grid">
+<div class="card small"><h3>ShowNativeAlertDialog / ShareSheet / Toast</h3><img src="Docs/Images/Nodes/node_trig_native_ui.png" alt="ShowNativeAlertDialog / ShareSheet / Toast" /><p>Invoke native Android UI dialogs, shares, and toasts safely.</p></div>
+<div class="card small"><h3>ConsumeColdStartDeepLink &amp; ParseURIQueryParameters</h3><img src="Docs/Images/Nodes/node_trig_deeplink_battery.png" alt="ConsumeColdStartDeepLink &amp; ParseURIQueryParameters" /><p>Decode deep-link parameters and inspect battery telemetry.</p></div>
+<div class="card small"><h3>Optional Custom URI Scheme (Project Settings)</h3><p>Add this intent filter inside <strong>Project Settings -&gt; Platforms -&gt; Android -&gt; Extra Activity Settings</strong> to route custom <code>mygame://</code> links directly into your app:</p><pre><code>ExtraActivitySettings=&quot;&lt;intent-filter&gt;\n&lt;action android:name=\&quot;android.intent.action.VIEW\&quot;/&gt;\n&lt;category android:name=\&quot;android.intent.category.DEFAULT\&quot;/&gt;\n&lt;category android:name=\&quot;android.intent.category.BROWSABLE\&quot;/&gt;\n&lt;data android:scheme=\&quot;mygame\&quot;/&gt;\n&lt;/intent-filter&gt;&quot;</code></pre></div>
+</div><h2 id="extras-platforms">Extras C - Cross-Platform Iteration Safety</h2>
+<table><thead><tr><th>Platform</th><th>Runtime Behavior</th></tr></thead><tbody><tr><td>Android</td><td>Executes all notification, badge, deep-link, native UI, and battery features with <code>16 KB</code> ELF alignment</td></tr><tr><td>Win64 / Editor / iOS</td><td>Provides safe no-op stubs so multi-platform PIE testing works without <code>#if PLATFORM_ANDROID</code> clutter</td></tr></tbody></table>
+    
+
+    <h2 id="api-reference">Appendix - API Reference</h2>
+    <p class="caption">This table highlights the primary entry points. Additional properties, helper functions, Blueprint nodes, and native C++ APIs are available in Unreal Editor Details panels, Blueprint context menus, and the plugin C++ headers.</p>
+    <table><thead><tr><th>Name</th><th>Type</th><th>Inputs / Outputs</th><th>Functionality</th></tr></thead><tbody><tr><td><code>UMobileOSCoreSubsystem</code></td><td>Subsystem</td><td>GameInstance lifetime</td><td>Manages JNI calls safely across levels, queues cold-start links, and dispatches on GameThread</td></tr><tr><td><code>HasNotificationPermission</code> / <code>RequestPermission</code> / Exact Settings</td><td>Pure / Callable</td><td>Return: <code>bool</code><br />Out: <code>OnNotificationPermissionResult</code></td><td>Handles Android 13+ runtime prompts and Android 12+ exact alarm grace without Google Play policy risks</td></tr><tr><td><code>ScheduleLocalNotification</code> / <code>CancelLocalNotification</code> / <code>CancelAll</code></td><td>Callable</td><td>In: <code>NotificationId</code>, Title, URI<br />In: <code>DelaySeconds</code>, <code>BadgeCount</code></td><td>Persists alarms across device reboots and updates launcher icon badges cleanly</td></tr><tr><td><code>ClearAllNotificationsAndBadges</code></td><td>Callable</td><td>None</td><td>Clears drawer notifications and resets the app icon badge count back to zero</td></tr><tr><td><code>ConsumeColdStartDeepLink</code> &amp; <code>ParseURIQueryParameters</code></td><td>Callable / Pure</td><td>In: <code>URI</code><br />Out: <code>FMobileDeepLinkPayload</code><br />Return: <code>bool</code> / <code>TMap</code></td><td>Consumes launch URIs once and percent-decodes query parameters safely</td></tr><tr><td><code>ShowNativeAlertDialog</code> / <code>ShareSheet</code> / <code>Toast</code></td><td>Callable</td><td>In: Title, Message, Share text<br />Out: <code>OnAlertButtonClicked</code></td><td>Opens native OS modal alerts, system share sheets, and non-blocking toast messages</td></tr><tr><td><code>GetBatteryState</code> &amp; <code>SetBatteryAlertThresholds</code></td><td>Pure / Callable</td><td>In: Celsius &amp; % thresholds<br />Out: <code>FMobileBatteryState</code></td><td>Exposes live battery percentage, temperature, charge state, and overheat warning flags</td></tr><tr><td><code>OnNotificationPermissionResult</code> &amp; <code>OnExactAlarmPermissionResult</code></td><td>Events</td><td>Out: <code>bool bGranted</code></td><td>Reports permission dialog and OS settings outcomes directly to UI flows</td></tr><tr><td><code>OnDeepLinkReceived</code> / <code>OnAlertButtonClicked</code> / <code>OnBatteryStateChanged</code></td><td>Events</td><td>Out: Payload / ButtonIndex<br />Out: <code>FMobileBatteryState</code></td><td>React cleanly to notification taps, native dialog buttons, and thermal shifts</td></tr><tr><td><code>FMobileDeepLinkPayload</code> / <code>FMobileBatteryState</code> / <code>ChargeState</code></td><td>Structs / Enum</td><td>URI, QueryMap<br />Temp, Percent, Flags</td><td>Structured payloads ready to bind into UMG menus and dynamic quality scalers</td></tr></tbody></table>
+
+    <div class="detailed-docs-cta">
+      <strong>Need the complete method, property, delegate, and struct reference?</strong>
+      <p>Read the screenshot-free <a href="https://twikiastudios.com/products/mobileoscore/detailed-docs/" target="_blank" rel="noopener noreferrer">Detailed Documentation <svg class="ext-icon" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"/></svg></a> (also bundled offline in <code>DetailedDocs.html</code> next to this User Guide).</p>
+    </div>
+
+    <div class="footer">
+      <span class="footer-brand"><img class="brand-icon-sm" src="Docs/Images/twikia-studios-logo.png" alt="Twikia Studios" /><span>MobileOSCore v1.0.0 - Twikia Studios</span></span>
+      <span><a href="https://twikiastudios.com/products/mobileoscore/">https://twikiastudios.com/products/mobileoscore/</a> &middot; &copy; 2026 Twikia Studios. All rights reserved.</span>
+    </div>
+  </div>
+  <div class="lightbox" id="img-lightbox" aria-hidden="true">
+    <img id="img-lightbox-target" src="" alt="" />
+  </div>
+  <script>
+    (function () {
+      var box = document.getElementById('img-lightbox');
+      var target = document.getElementById('img-lightbox-target');
+      document.querySelectorAll('img:not(.brand-icon-lg):not(.brand-icon-sm)').forEach(function (img) {
+        img.addEventListener('click', function () {
+          target.src = img.src;
+          target.alt = img.alt || '';
+          box.classList.add('open');
+          box.setAttribute('aria-hidden', 'false');
+        });
+      });
+      box.addEventListener('click', function (e) {
+        if (e.target === box) {
+          box.classList.remove('open');
+          box.setAttribute('aria-hidden', 'true');
+        }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && box.classList.contains('open')) {
+          box.classList.remove('open');
+          box.setAttribute('aria-hidden', 'true');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NP45SB32"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GeoLocation v1.1.0 - Detailed Documentation</title>
+  <style>
+:root {
+  --bg: #0f141a;
+  --surface: #161d26;
+  --surface-2: #1c2530;
+  --border: #2a3542;
+  --text: #e7edf4;
+  --muted: #9aa7b8;
+  --accent: #58a6ff;
+  --green: #3fb950;
+  --amber: #f0a830;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.62 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+.wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 36px 24px 72px;
+}
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+.title-row h1 { font-size: 32px; margin: 0 0 4px; letter-spacing: -0.02em; }
+.byline { font-size: 13px; color: var(--muted); margin: 0; }
+.byline strong { color: var(--text); }
+.brand-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1f6feb, #58a6ff);
+  color: #fff;
+  font-weight: 800;
+  font-size: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.brand-badge-sm {
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #1f6feb, #58a6ff);
+  color: #fff;
+  font-weight: 800;
+  font-size: 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.footer-brand { display: inline-flex; align-items: center; gap: 8px; }
+.pitch { font-size: 16.5px; color: var(--muted); margin: 0 0 22px; }
+h2 {
+  font-size: 22px;
+  margin: 40px 0 14px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+h3 { font-size: 17px; margin: 22px 0 8px; color: #f4f8fc; }
+p { margin: 8px 0 12px; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code {
+  background: rgba(110, 118, 129, 0.22);
+  padding: 2px 6px;
+  border-radius: 5px;
+  font-family: Consolas, "Cascadia Mono", monospace;
+  font-size: 13px;
+  color: #f0f6fc;
+}
+.toc {
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 18px 0 28px;
+}
+.toc strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.toc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.toc a { display: block; font-size: 14px; }
+.note-box {
+  margin: 14px 0 22px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgba(88, 166, 255, 0.14), rgba(63, 185, 80, 0.08));
+  border: 1px solid rgba(88, 166, 255, 0.35);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0 26px;
+  background: var(--surface);
+  border-radius: 8px;
+  overflow: hidden;
+}
+th, td {
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+  font-size: 13.5px;
+  border-bottom: 1px solid var(--border);
+}
+th { background: var(--surface-2); color: #fff; font-weight: 600; }
+tr:last-child td { border-bottom: 0; }
+.footer {
+  margin-top: 48px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.site-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 13.5px;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.site-breadcrumb a {
+  color: var(--accent);
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="site-breadcrumb" aria-label="Breadcrumb"><a href="../">&larr; Back to GeoLocation User Guide</a><span>&middot;</span><a href="../../">All Products</a><span>&middot;</span><a href="../../../">Twikia Studios Home</a></nav>
+    <div class="title-row">
+      <span class="brand-badge" aria-hidden="true">TS</span>
+      <div>
+        <h1>GeoLocation (v1.1.0) - Detailed Documentation</h1>
+        <p class="byline">By <strong>Twikia Studios</strong> &middot; &copy; 2026 Twikia Studios &middot; <a href="https://twikiastudios.com/products/geolocation/">Visual User Guide</a></p>
+      </div>
+    </div>
+    <p class="pitch">Complete technical reference for UGeoLocationSubsystem, UGeoLocationListener, UGeoLocationAsync, IGeoLocationAccess, circular geofencing, and advisory spoof-risk assessment.</p>
+
+    <div class="note-box">
+      <strong>Complete Text &amp; API Reference:</strong> This page documents every public class, component, subsystem, Details panel property, Blueprint/C++ method, delegate, interface, struct, and enum shipped in <strong>GeoLocation v1.1.0</strong>. For visual setup steps and editor screenshots, open the <a href="https://twikiastudios.com/products/geolocation/">User Guide</a> (or local <code>UserGuide.html</code>).
+    </div>
+
+    <div class="toc">
+      <strong>Quick Navigation</strong>
+      <div class="toc-list">
+        <a href="#features">1. Architecture &amp; Feature Breakdown</a>
+        <a href="#classes">2. Classes, Components &amp; Subsystems (4)</a>
+        <a href="#properties">3. Complete Details Panel Configuration &amp; Properties (58)</a>
+        <a href="#methods">4. Complete Methods &amp; Functions Reference (8)</a>
+        <a href="#delegates">5. Complete Event Delegates &amp; Callbacks (9)</a>
+        <a href="#types">6. Interfaces, Structs &amp; Enums (15)</a>
+      </div>
+    </div>
+
+    <h2 id="features">1. Architecture &amp; Feature Breakdown</h2>
+    <h3>Subsystem, Async Requests &amp; Listener</h3><p>UGeoLocationSubsystem is a UGameInstanceSubsystem implementing IGeoLocationAccess for unified permission requests, continuous GPS/network location tracking, circular geofence registration, and Play Integrity checks across Android, iOS (experimental), and Win64 editor stubs.</p><p>Use UGeoLocationAsync::RequestLocationOperation in Blueprints for latent request-completion flows, or attach UGeoLocationListener to any actor to receive OnLocation, OnGeofence, and OnError broadcasts automatically.</p><h3>Spoof-Risk Scoring &amp; Math</h3><p>GeoMath::Assess evaluates each incoming FGeoFix against FGeoRiskConfig thresholds (MaximumSpeed, MaximumAccuracy, MockWeight, RootWeight, SpeedWeight) and outputs an FGeoRisk score plus FGameplayTagContainer reasons.</p><p>UGeoLocationLibrary::SimulateFix allows development-only synthetic fix injection directly in PIE without a physical mobile device.</p>
+
+    <h2 id="classes">2. Classes, Components &amp; Subsystems</h2>
+    <table><thead><tr><th>Class</th><th>Inherits From</th><th>Header</th><th>Description</th></tr></thead><tbody><tr><td><code>UGeoLocationAsync</code></td><td><code>public UBlueprintAsyncActionBase</code></td><td>GeoLocationAsync.h</td><td>Latent Blueprint async node that submits an FGeoRequest to UGeoLocationSubsystem and fires Completed when finished.</td></tr><tr><td><code>UGeoLocationLibrary</code></td><td><code>public UBlueprintFunctionLibrary</code></td><td>GeoLocationLibrary.h</td><td>Blueprint function library providing version queries, GeoLocation service lookup, and development-only fix simulation.</td></tr><tr><td><code>UGeoLocationListener</code></td><td><code>public UActorComponent</code></td><td>GeoLocationListener.h</td><td>ActorComponent that automatically subscribes to UGeoLocationSubsystem and forwards OnLocation, OnGeofence, and OnError events to the owning actor.</td></tr><tr><td><code>UGeoLocationSubsystem</code></td><td><code>public UGameInstanceSubsystem,public IGeoLocationAccess</code></td><td>GeoLocationSubsystem.h</td><td>GameInstanceSubsystem implementing IGeoLocationAccess for background location tracking, circular geofences, and spoof-risk assessment.</td></tr></tbody></table>
+
+    <h2 id="properties">3. Complete Details Panel Configuration &amp; Properties</h2>
+    <table><thead><tr><th>Owner</th><th>Property</th><th>Type</th><th>Category</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>UGeoLocationSubsystem</code></td><td><code>RiskConfig</code></td><td>FGeoRiskConfig</td><td>Risk</td><td>-</td><td>Thresholds and weights used to score incoming location fixes for spoof/mock/speed anomalies. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoFix</code></td><td><code>Latitude</code></td><td>double</td><td>General</td><td>0</td><td>Latitude in WGS84 decimal degrees [-90, 90]. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoFix</code></td><td><code>Longitude</code></td><td>double</td><td>General</td><td>0</td><td>Longitude in WGS84 decimal degrees [-180, 180]. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoFix</code></td><td><code>Accuracy</code></td><td>float</td><td>General</td><td>0</td><td>Horizontal accuracy radius in meters (smaller values indicate higher precision). Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoFix</code></td><td><code>TimestampSeconds</code></td><td>double</td><td>General</td><td>0</td><td>Unix epoch timestamp of the fix in seconds. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoFix</code></td><td><code>MonotonicSeconds</code></td><td>double</td><td>General</td><td>0</td><td>Monotonic elapsed clock time in seconds since device boot for tamper-resistant delta calculations. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoFix</code></td><td><code>bHasAltitude</code></td><td>bool</td><td>General</td><td>false</td><td>True when Altitude contains a valid elevation reading. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoFix</code></td><td><code>Altitude</code></td><td>double</td><td>General</td><td>0</td><td>Altitude in meters above the WGS84 reference ellipsoid. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoFix</code></td><td><code>bHasSpeed</code></td><td>bool</td><td>General</td><td>false</td><td>True when Speed contains a valid ground speed reading. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoFix</code></td><td><code>Speed</code></td><td>float</td><td>General</td><td>0</td><td>Ground speed in meters per second (m/s). Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoFix</code></td><td><code>bHasBearing</code></td><td>bool</td><td>General</td><td>false</td><td>True when Bearing contains a valid heading reading. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoFix</code></td><td><code>Bearing</code></td><td>float</td><td>General</td><td>0</td><td>Heading in degrees clockwise from true north [0, 360). Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoFix</code></td><td><code>bRootEvidence</code></td><td>bool</td><td>General</td><td>false</td><td>Advisory flag indicating root/jailbreak evidence was detected on the device. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoFix</code></td><td><code>bMock</code></td><td>bool</td><td>General</td><td>false</td><td>True when the OS flagged this fix as originating from a mock location provider. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoFix</code></td><td><code>bAccessory</code></td><td>bool</td><td>General</td><td>false</td><td>True when the fix originated from an external Bluetooth/accessory GPS receiver. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoFix</code></td><td><code>bSimulated</code></td><td>bool</td><td>General</td><td>false</td><td>True when the fix was injected via UGeoLocationLibrary::SimulateFix in development builds. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoRisk</code></td><td><code>Score</code></td><td>int32</td><td>General</td><td>0</td><td>Cumulative risk score (0 = clean; higher values indicate stronger spoof/anomaly signals). Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoRisk</code></td><td><code>bMotionEvaluated</code></td><td>bool</td><td>General</td><td>false</td><td>True when a previous fix was available to evaluate inter-fix speed and motion consistency. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoRisk</code></td><td><code>Reasons</code></td><td>FGameplayTagContainer</td><td>General</td><td>-</td><td>Gameplay tags identifying each triggered risk signal (e.g. GeoLocation.Risk.Mock, GeoLocation.Risk.Speed). Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoFence</code></td><td><code>Id</code></td><td>FString</td><td>General</td><td>-</td><td>Unique identifier string for this geofence region. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoFence</code></td><td><code>Latitude</code></td><td>double</td><td>General</td><td>0</td><td>Center latitude in WGS84 decimal degrees. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoFence</code></td><td><code>Longitude</code></td><td>double</td><td>General</td><td>0</td><td>Center longitude in WGS84 decimal degrees. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoFence</code></td><td><code>Radius</code></td><td>float</td><td>General</td><td>100</td><td>Geofence trigger radius in meters. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoFence</code></td><td><code>Transitions</code></td><td>int32</td><td>General</td><td>3</td><td>Bitmask of transitions to monitor (1 = Enter, 2 = Exit, 4 = Dwell; default 3 = Enter | Exit). Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoFence</code></td><td><code>DwellMilliseconds</code></td><td>int32</td><td>General</td><td>30000</td><td>Dwell duration in milliseconds required before firing a Dwell transition. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoTrackingConfig</code></td><td><code>IntervalMilliseconds</code></td><td>int32</td><td>General</td><td>10000</td><td>Desired update interval in milliseconds between location fixes. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoTrackingConfig</code></td><td><code>MinimumDistance</code></td><td>float</td><td>General</td><td>0</td><td>Minimum displacement in meters before a new update is delivered. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoTrackingConfig</code></td><td><code>bHighAccuracy</code></td><td>bool</td><td>General</td><td>false</td><td>Requests high-accuracy GPS power mode when true instead of balanced/battery-saving updates. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoTrackingConfig</code></td><td><code>NotificationTitle</code></td><td>FString</td><td>General</td><td>TEXT(&quot;Location tracking active&quot;)</td><td>Foreground service notification title displayed on Android while background tracking is active. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoResult</code></td><td><code>RequestId</code></td><td>FGuid</td><td>General</td><td>-</td><td>Unique GUID identifying the originating request. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoResult</code></td><td><code>bSuccess</code></td><td>bool</td><td>General</td><td>false</td><td>True when the operation succeeded without errors. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoResult</code></td><td><code>Error</code></td><td>FString</td><td>General</td><td>-</td><td>Human-readable error description when bSuccess is false. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoResult</code></td><td><code>NativeCode</code></td><td>int32</td><td>General</td><td>0</td><td>Platform-specific native status or error code. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoResult</code></td><td><code>Token</code></td><td>FString</td><td>General</td><td>-</td><td>Integrity or attestation token returned by Play Integrity requests when available. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoResult</code></td><td><code>Payload</code></td><td>FString</td><td>General</td><td>-</td><td>Raw JSON or platform payload returned by the operation. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoRequest</code></td><td><code>Operation</code></td><td>EGeoOperation</td><td>General</td><td>EGeoOperation::Status</td><td>Which GeoLocation operation to execute. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoRequest</code></td><td><code>Config</code></td><td>FGeoTrackingConfig</td><td>General</td><td>-</td><td>Tracking configuration used when Operation is Start. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoRequest</code></td><td><code>Fences</code></td><td>TArray&lt;FGeoFence&gt;</td><td>General</td><td>-</td><td>Geofence definitions used when Operation is Register. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoRequest</code></td><td><code>Ids</code></td><td>TArray&lt;FString&gt;</td><td>General</td><td>-</td><td>Geofence IDs used when Operation is Remove. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoRequest</code></td><td><code>bRationaleAccepted</code></td><td>bool</td><td>General</td><td>false</td><td>Set true after showing your app&#x27;s permission rationale UI to the user. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoRequest</code></td><td><code>bCheckRoot</code></td><td>bool</td><td>General</td><td>false</td><td>Enables optional root/jailbreak evidence checks during status or integrity operations. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoRequest</code></td><td><code>CloudProjectNumber</code></td><td>int64</td><td>General</td><td>0</td><td>Google Cloud project number used for Android Play Integrity requests. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoRequest</code></td><td><code>RequestHash</code></td><td>FString</td><td>General</td><td>-</td><td>Nonce/request hash string passed to Play Integrity attestation. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoStatus</code></td><td><code>bForeground</code></td><td>bool</td><td>General</td><td>false</td><td>True when foreground location permission is granted. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoStatus</code></td><td><code>bPrecise</code></td><td>bool</td><td>General</td><td>false</td><td>True when fine/precise GPS location permission is granted. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoStatus</code></td><td><code>bBackground</code></td><td>bool</td><td>General</td><td>false</td><td>True when background (&quot;Always&quot;) location permission is granted. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoStatus</code></td><td><code>bNotifications</code></td><td>bool</td><td>General</td><td>false</td><td>True when notification permission is granted (required for Android foreground tracking service). Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoStatus</code></td><td><code>bLocationEnabled</code></td><td>bool</td><td>General</td><td>false</td><td>True when device-level location services are enabled. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoStatus</code></td><td><code>bTracking</code></td><td>bool</td><td>General</td><td>false</td><td>True while active location tracking is running. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoStatus</code></td><td><code>GeofenceLimit</code></td><td>int32</td><td>General</td><td>0</td><td>Maximum simultaneous geofences supported by the current OS platform. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoStatus</code></td><td><code>DroppedFixes</code></td><td>int32</td><td>General</td><td>0</td><td>Number of queued location fixes dropped due to buffer limits. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoStatus</code></td><td><code>DroppedEvents</code></td><td>int32</td><td>General</td><td>0</td><td>Number of queued geofence events dropped due to buffer limits. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoStatus</code></td><td><code>Capabilities</code></td><td>FGameplayTagContainer</td><td>General</td><td>-</td><td>Gameplay tags listing active platform capabilities. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoRiskConfig</code></td><td><code>MaximumSpeed</code></td><td>double</td><td>General</td><td>100</td><td>Maximum plausible ground speed in m/s between consecutive fixes before flagging a speed anomaly. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoRiskConfig</code></td><td><code>MaximumAccuracy</code></td><td>float</td><td>General</td><td>50</td><td>Maximum horizontal accuracy radius in meters considered reliable for risk evaluation. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoRiskConfig</code></td><td><code>MockWeight</code></td><td>int32</td><td>General</td><td>100</td><td>Risk score penalty added when a fix is flagged as a mock location. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoRiskConfig</code></td><td><code>RootWeight</code></td><td>int32</td><td>General</td><td>20</td><td>Risk score penalty added when root/jailbreak evidence is present. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>FGeoRiskConfig</code></td><td><code>SpeedWeight</code></td><td>int32</td><td>General</td><td>50</td><td>Risk score penalty added when inter-fix speed exceeds MaximumSpeed. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr></tbody></table>
+
+    <h2 id="methods">4. Complete Methods &amp; Functions Reference</h2>
+    <table><thead><tr><th>Owner</th><th>Method</th><th>Specifiers</th><th>Inputs / Outputs</th><th>Functionality</th></tr></thead><tbody><tr><td><code>UGeoLocationAsync</code></td><td><code>RequestLocationOperation</code></td><td>BlueprintCallable</td><td>In: UObject* WorldContextObject<br />In: const FGeoRequest&amp; Request<br />Return: UGeoLocationAsync*</td><td>Executes an asynchronous GeoLocation operation (permissions, tracking, geofences, or integrity) and outputs the result via Completed. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>UGeoLocationAsync</code></td><td><code>Finish</code></td><td>UFUNCTION</td><td>In: FGeoResult Result</td><td></td></tr><tr><td><code>UGeoLocationLibrary</code></td><td><code>GetPluginVersion</code></td><td>BlueprintPure</td><td>Return: FString</td><td>Returns the GeoLocation plugin semantic version string (e.g. v1.1.0). Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>UGeoLocationLibrary</code></td><td><code>GetLocationService</code></td><td>BlueprintPure</td><td>In: const UObject* WorldContextObject<br />Return: TScriptInterface&lt;IGeoLocationAccess&gt;</td><td>Returns the IGeoLocationAccess service interface from the active GameInstanceSubsystem. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>UGeoLocationLibrary</code></td><td><code>SimulateFix</code></td><td>BlueprintCallable</td><td>In: const FGeoFix&amp; Fix<br />Return: bool</td><td>Injects a synthetic FGeoFix in development/editor builds to test location callbacks and spoof-risk scoring without a physical GPS device. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>UGeoLocationListener</code></td><td><code>Location</code></td><td>UFUNCTION</td><td>In: FGeoFix Fix<br />In: FGeoRisk Risk</td><td></td></tr><tr><td><code>UGeoLocationListener</code></td><td><code>Fence</code></td><td>UFUNCTION</td><td>In: FString Id<br />In: int32 Transition<br />In: bool bReplay</td><td></td></tr><tr><td><code>UGeoLocationListener</code></td><td><code>Error</code></td><td>UFUNCTION</td><td>In: FString Message</td><td></td></tr></tbody></table>
+
+    <h2 id="delegates">5. Complete Event Delegates &amp; Callbacks</h2>
+    <table><thead><tr><th>Owner</th><th>Delegate</th><th>Signature / Parameters</th><th>Description</th></tr></thead><tbody><tr><td><code>UGeoLocationAsync</code></td><td><code>Completed</code></td><td>FGeoCompletion</td><td>Fired when the asynchronous GeoLocation request completes with an FGeoResult. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>UGeoLocationListener</code></td><td><code>OnLocation</code></td><td>FGeoLocationEvent</td><td>Broadcast whenever a new location fix and its computed spoof-risk assessment arrive. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>UGeoLocationListener</code></td><td><code>OnGeofence</code></td><td>FGeoFenceEvent</td><td>Broadcast whenever the device enters, exits, or dwells inside a registered circular geofence. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>UGeoLocationListener</code></td><td><code>OnError</code></td><td>FGeoError</td><td>Broadcast when a location, permission, or geofence operation reports an error message. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>UGeoLocationSubsystem</code></td><td><code>OnLocation</code></td><td>FGeoFix, Fix, FGeoRisk, Risk</td><td>Broadcast whenever a new location fix and its computed spoof-risk assessment arrive. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>UGeoLocationSubsystem</code></td><td><code>OnGeofence</code></td><td>FString, Id, int32, Transition, bool, bReplayed</td><td>Broadcast whenever the device enters, exits, or dwells inside a registered circular geofence. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>UGeoLocationSubsystem</code></td><td><code>OnError</code></td><td>FString, Error</td><td>Broadcast when a location, permission, or geofence operation reports an error message. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>UGeoLocationSubsystem</code></td><td><code>OnCompleted</code></td><td>FGeoResult, Result</td><td>Broadcast when an asynchronous Submit() request finishes with an FGeoResult. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>UGeoLocationSubsystem</code></td><td><code>OnState</code></td><td>FGeoStatus, Status</td><td>Broadcast when permission or tracking state changes. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr></tbody></table>
+
+    <h2 id="types">6. Interfaces, Structs &amp; Enums</h2>
+    <h3>Blueprint &amp; C++ Interfaces</h3>
+    <table><thead><tr><th>Interface</th><th>Method</th><th>Specifiers</th><th>Inputs / Outputs</th><th>Functionality</th></tr></thead><tbody><tr><td><code>IGeoLocationAccess</code></td><td><code>Submit</code></td><td>BlueprintCallable, BlueprintNativeEvent</td><td>In: const FGeoRequest&amp; Request<br />Return: FGuid</td><td>Submits an asynchronous FGeoRequest (permissions, tracking, geofences, or integrity check) and returns its tracking GUID. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>IGeoLocationAccess</code></td><td><code>GetStatus</code></td><td>BlueprintCallable, BlueprintNativeEvent</td><td>Return: FGeoStatus</td><td>Returns the current cached permission, tracking, and capability status snapshot. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>IGeoLocationAccess</code></td><td><code>StartTracking</code></td><td>BlueprintCallable, BlueprintNativeEvent</td><td>In: const FGeoTrackingConfig&amp; Config<br />Return: FGeoResult</td><td>Starts continuous location updates using the specified interval, distance filter, and accuracy config. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>IGeoLocationAccess</code></td><td><code>StopTracking</code></td><td>BlueprintCallable, BlueprintNativeEvent</td><td>None</td><td>Stops active location tracking updates. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>IGeoLocationAccess</code></td><td><code>RegisterGeofences</code></td><td>BlueprintCallable, BlueprintNativeEvent</td><td>In: const TArray&lt;FGeoFence&gt;&amp; Fences<br />Return: FGeoResult</td><td>Registers an array of circular geofences with the native OS geofencing provider. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr><tr><td><code>IGeoLocationAccess</code></td><td><code>ClearGeofences</code></td><td>BlueprintCallable, BlueprintNativeEvent</td><td>None</td><td>Unregisters all active geofences from the native OS geofencing provider. Full Documentation: https://twikiastudios.com/products/geolocation/detailed-docs/ (User Guide: https://twikiastudios.com/products/geolocation/)</td></tr></tbody></table>
+    <h3>Structs</h3>
+    <table><thead><tr><th>Struct</th><th>Header</th><th>Description</th></tr></thead><tbody><tr><td><code>FGeoFix</code></td><td><code>GeoLocationTypes.h</code></td><td>Geographic location fix delivered by the native OS provider or simulation helper.</td></tr><tr><td><code>FGeoRisk</code></td><td><code>GeoLocationTypes.h</code></td><td>Advisory spoof-risk assessment computed from a location fix and previous fix history.</td></tr><tr><td><code>FGeoFence</code></td><td><code>GeoLocationTypes.h</code></td><td>Circular geofence definition registered with the native OS geofencing API.</td></tr><tr><td><code>FGeoTrackingConfig</code></td><td><code>GeoLocationTypes.h</code></td><td>Configuration parameters for continuous location tracking.</td></tr><tr><td><code>FGeoResult</code></td><td><code>GeoLocationTypes.h</code></td><td>Result payload returned synchronously or asynchronously from GeoLocation operations.</td></tr><tr><td><code>FGeoRequest</code></td><td><code>GeoLocationTypes.h</code></td><td>Unified request descriptor passed to Submit() or RequestLocationOperation().</td></tr><tr><td><code>FGeoStatus</code></td><td><code>GeoLocationTypes.h</code></td><td>Snapshot of current location permissions, tracking state, and platform capabilities.</td></tr><tr><td><code>FGeoRiskConfig</code></td><td><code>GeoLocationTypes.h</code></td><td>Configurable thresholds and score weights for spoof-risk evaluation.</td></tr></tbody></table>
+    <h3>Enums</h3>
+    <table><thead><tr><th>Enum</th><th>Values</th><th>Description</th></tr></thead><tbody><tr><td><code>EGeoOperation</code></td><td><code>Status, ForegroundPermission, BackgroundPermission, NotificationPermission, Start, Stop, Register, Remove, Clear, Drain, ClearRecovery, Integrity</code></td><td>Operation type dispatched through IGeoLocationAccess::Submit or UGeoLocationAsync::RequestLocationOperation.</td></tr></tbody></table>
+
+    <div class="footer">
+      <span class="footer-brand"><span class="brand-badge-sm" aria-hidden="true">TS</span><span>GeoLocation v1.1.0 - Twikia Studios</span></span>
+      <span><a href="https://twikiastudios.com/products/geolocation/">User Guide</a> &middot; &copy; 2026 Twikia Studios. All rights reserved.</span>
+    </div>
+  </div>
+</body>
+</html>

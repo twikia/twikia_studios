@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NP45SB32"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mobile OS Core v1.0.0 - Detailed Documentation</title>
+  <style>
+:root {
+  --bg: #0f141a;
+  --surface: #161d26;
+  --surface-2: #1c2530;
+  --border: #2a3542;
+  --text: #e7edf4;
+  --muted: #9aa7b8;
+  --accent: #58a6ff;
+  --green: #3fb950;
+  --amber: #f0a830;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.62 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+.wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 36px 24px 72px;
+}
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+.title-row h1 { font-size: 32px; margin: 0 0 4px; letter-spacing: -0.02em; }
+.byline { font-size: 13px; color: var(--muted); margin: 0; }
+.byline strong { color: var(--text); }
+.brand-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1f6feb, #58a6ff);
+  color: #fff;
+  font-weight: 800;
+  font-size: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.brand-badge-sm {
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #1f6feb, #58a6ff);
+  color: #fff;
+  font-weight: 800;
+  font-size: 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.footer-brand { display: inline-flex; align-items: center; gap: 8px; }
+.pitch { font-size: 16.5px; color: var(--muted); margin: 0 0 22px; }
+h2 {
+  font-size: 22px;
+  margin: 40px 0 14px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+h3 { font-size: 17px; margin: 22px 0 8px; color: #f4f8fc; }
+p { margin: 8px 0 12px; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code {
+  background: rgba(110, 118, 129, 0.22);
+  padding: 2px 6px;
+  border-radius: 5px;
+  font-family: Consolas, "Cascadia Mono", monospace;
+  font-size: 13px;
+  color: #f0f6fc;
+}
+.toc {
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 18px 0 28px;
+}
+.toc strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.toc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.toc a { display: block; font-size: 14px; }
+.note-box {
+  margin: 14px 0 22px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgba(88, 166, 255, 0.14), rgba(63, 185, 80, 0.08));
+  border: 1px solid rgba(88, 166, 255, 0.35);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0 26px;
+  background: var(--surface);
+  border-radius: 8px;
+  overflow: hidden;
+}
+th, td {
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+  font-size: 13.5px;
+  border-bottom: 1px solid var(--border);
+}
+th { background: var(--surface-2); color: #fff; font-weight: 600; }
+tr:last-child td { border-bottom: 0; }
+.footer {
+  margin-top: 48px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.site-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 13.5px;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.site-breadcrumb a {
+  color: var(--accent);
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="site-breadcrumb" aria-label="Breadcrumb"><a href="./">&larr; Back to Mobile OS Core User Guide</a><span>&middot;</span><a href="../">All Products</a><span>&middot;</span><a href="../../">Twikia Studios Home</a></nav>
+    <div class="title-row">
+      <span class="brand-badge" aria-hidden="true">TS</span>
+      <div>
+        <h1>Mobile OS Core (v1.0.0) - Detailed Documentation</h1>
+        <p class="byline">By <strong>Twikia Studios</strong> &middot; &copy; 2026 Twikia Studios &middot; <a href="https://twikiastudios.com/products/mobileoscore/">Visual User Guide</a></p>
+      </div>
+    </div>
+    <p class="pitch">Complete technical reference for UMobileOSCoreSubsystem, reboot-persistent local notifications, launcher icon badges, cold/warm deep-link URI parsing, native OS dialogs/share sheets/toasts, and battery telemetry.</p>
+
+    <div class="note-box">
+      <strong>Complete Text &amp; API Reference:</strong> This page documents every public class, component, subsystem, Details panel property, Blueprint/C++ method, delegate, interface, struct, and enum shipped in <strong>Mobile OS Core v1.0.0</strong>. For visual setup steps and editor screenshots, open the <a href="https://twikiastudios.com/products/mobileoscore/">User Guide</a> (or local <code>UserGuide.html</code>).
+    </div>
+
+    <div class="toc">
+      <strong>Quick Navigation</strong>
+      <div class="toc-list">
+        <a href="#features">1. Architecture &amp; Feature Breakdown</a>
+        <a href="#classes">2. Classes, Components &amp; Subsystems (1)</a>
+        <a href="#properties">3. Complete Details Panel Configuration &amp; Properties (8)</a>
+        <a href="#methods">4. Complete Methods &amp; Functions Reference (17)</a>
+        <a href="#delegates">5. Complete Event Delegates &amp; Callbacks (5)</a>
+        <a href="#types">6. Interfaces, Structs &amp; Enums (3)</a>
+      </div>
+    </div>
+
+    <h2 id="features">1. Architecture &amp; Feature Breakdown</h2>
+    <h3>Notifications, Badges &amp; Deep Links</h3><p>UMobileOSCoreSubsystem exposes reboot-persistent local notifications (with Android 13+ POST_NOTIFICATIONS and Android 12+ exact-alarm permission helpers), launcher icon badge clearing, and unified cold-start / warm deep-link URI capture and query-parameter decoding.</p><p>On Win64 Editor and non-mobile targets, all methods execute safe no-op stubs so multi-platform Blueprints compile and run cleanly in PIE without platform preprocessor guards.</p><h3>Native OS UI &amp; Battery Telemetry</h3><p>Trigger native modal alert dialogs (ShowNativeAlertDialog), OS share sheets (ShowNativeShareSheet), and native toasts (ShowNativeToast) directly from Blueprint or C++.</p><p>Monitor live battery percentage, temperature in Celsius, charging state (EMobileBatteryChargeState), overheat alerts, and low-battery alerts via GetBatteryState(), SetBatteryAlertThresholds(), and OnBatteryStateChanged.</p>
+
+    <h2 id="classes">2. Classes, Components &amp; Subsystems</h2>
+    <table><thead><tr><th>Class</th><th>Inherits From</th><th>Header</th><th>Description</th></tr></thead><tbody><tr><td><code>UMobileOSCoreSubsystem</code></td><td><code>public UGameInstanceSubsystem</code></td><td>MobileOSCoreSubsystem.h</td><td>GameInstanceSubsystem providing unified local notifications, launcher badges, cold/warm deep links, native OS alerts/share sheets/toasts, and battery telemetry for Android and iOS.</td></tr></tbody></table>
+
+    <h2 id="properties">3. Complete Details Panel Configuration &amp; Properties</h2>
+    <table><thead><tr><th>Owner</th><th>Property</th><th>Type</th><th>Category</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>FMobileBatteryState</code></td><td><code>BatteryPercent</code></td><td>float</td><td>MobileOSCore|Battery</td><td>100.0f</td><td>Battery charge percentage from 0 to 100.</td></tr><tr><td><code>FMobileBatteryState</code></td><td><code>TemperatureCelsius</code></td><td>float</td><td>MobileOSCore|Battery</td><td>25.0f</td><td>Battery temperature in degrees Celsius.</td></tr><tr><td><code>FMobileBatteryState</code></td><td><code>ChargeState</code></td><td>EMobileBatteryChargeState</td><td>MobileOSCore|Battery</td><td>EMobileBatteryChargeState::Unknown</td><td>Current charging state reported by the OS.</td></tr><tr><td><code>FMobileBatteryState</code></td><td><code>bIsOverheating</code></td><td>bool</td><td>MobileOSCore|Battery</td><td>false</td><td>True when the OS reports overheating or temperature is at or above the overheat threshold.</td></tr><tr><td><code>FMobileBatteryState</code></td><td><code>bIsLowBattery</code></td><td>bool</td><td>MobileOSCore|Battery</td><td>false</td><td>True when the charge percentage is at or below the low-battery threshold.</td></tr><tr><td><code>FMobileDeepLinkPayload</code></td><td><code>RawURI</code></td><td>FString</td><td>MobileOSCore|DeepLink</td><td>-</td><td>Full raw URI or payload string.</td></tr><tr><td><code>FMobileDeepLinkPayload</code></td><td><code>NotificationId</code></td><td>int32</td><td>MobileOSCore|DeepLink</td><td>-1</td><td>Notification id when launched from a local notification. -1 for an external URI.</td></tr><tr><td><code>FMobileDeepLinkPayload</code></td><td><code>QueryParameters</code></td><td>TMap&lt;FString, FString&gt;</td><td>MobileOSCore|DeepLink</td><td>-</td><td>Parsed query parameters from the URI.</td></tr></tbody></table>
+
+    <h2 id="methods">4. Complete Methods &amp; Functions Reference</h2>
+    <table><thead><tr><th>Owner</th><th>Method</th><th>Specifiers</th><th>Inputs / Outputs</th><th>Functionality</th></tr></thead><tbody><tr><td><code>UMobileOSCoreSubsystem</code></td><td><code>HasNotificationPermission</code></td><td>BlueprintPure</td><td>Return: bool</td><td>Returns true when the app is currently permitted by the OS to post local notifications. Full Documentation: https://twikiastudios.com/products/mobileoscore/detailed-docs/ (User Guide: https://twikiastudios.com/products/mobileoscore/)</td></tr><tr><td><code>UMobileOSCoreSubsystem</code></td><td><code>RequestNotificationPermission</code></td><td>BlueprintCallable</td><td>None</td><td>Requests POST_NOTIFICATIONS on Android 13 and later, then broadcasts OnNotificationPermissionResult. Full Documentation: https://twikiastudios.com/products/mobileoscore/detailed-docs/ (User Guide: https://twikiastudios.com/products/mobileoscore/)</td></tr><tr><td><code>UMobileOSCoreSubsystem</code></td><td><code>CanScheduleExactAlarms</code></td><td>BlueprintPure</td><td>Return: bool</td><td>Returns true when exact alarms are allowed (Android 12 and later may return false until granted in system settings). Full Documentation: https://twikiastudios.com/products/mobileoscore/detailed-docs/ (User Guide: https://twikiastudios.com/products/mobileoscore/)</td></tr><tr><td><code>UMobileOSCoreSubsystem</code></td><td><code>OpenExactAlarmPermissionSettings</code></td><td>BlueprintCallable</td><td>None</td><td>Opens the OS system settings screen where the user can allow exact alarms for this app. Full Documentation: https://twikiastudios.com/products/mobileoscore/detailed-docs/ (User Guide: https://twikiastudios.com/products/mobileoscore/)</td></tr><tr><td><code>UMobileOSCoreSubsystem</code></td><td><code>OpenAppSystemSettings</code></td><td>BlueprintCallable</td><td>None</td><td>Opens this app&#x27;s page in the OS application settings. Full Documentation: https://twikiastudios.com/products/mobileoscore/detailed-docs/ (User Guide: https://twikiastudios.com/products/mobileoscore/)</td></tr><tr><td><code>UMobileOSCoreSubsystem</code></td><td><code>ScheduleLocalNotification</code></td><td>BlueprintCallable</td><td>In: int32 NotificationId<br />In: const FString&amp; Title<br />In: const FString&amp; Body<br />In: const FString&amp; DeepLinkURI<br />In: int64 DelaySeconds<br />In: int32 BadgeCount = 1<br />In: bool bRequireExact = true</td><td>Schedules a reboot-persistent local notification with optional deep-link URI and badge count. DelaySeconds is clamped at 0; Title and Body are limited to 512 characters. Full Documentation: https://twikiastudios.com/products/mobileoscore/detailed-docs/ (User Guide: https://twikiastudios.com/products/mobileoscore/)</td></tr><tr><td><code>UMobileOSCoreSubsystem</code></td><td><code>CancelLocalNotification</code></td><td>BlueprintCallable</td><td>In: int32 NotificationId</td><td>Cancels a single scheduled local notification by its NotificationId. Full Documentation: https://twikiastudios.com/products/mobileoscore/detailed-docs/ (User Guide: https://twikiastudios.com/products/mobileoscore/)</td></tr><tr><td><code>UMobileOSCoreSubsystem</code></td><td><code>CancelAllLocalNotifications</code></td><td>BlueprintCallable</td><td>None</td><td>Cancels every scheduled local notification registered by this app. Full Documentation: https://twikiastudios.com/products/mobileoscore/detailed-docs/ (User Guide: https://twikiastudios.com/products/mobileoscore/)</td></tr><tr><td><code>UMobileOSCoreSubsystem</code></td><td><code>ClearAllNotificationsAndBadges</code></td><td>BlueprintCallable</td><td>None</td><td>Clears all active notifications from the shade and resets the launcher icon badge count. Full Documentation: https://twikiastudios.com/products/mobileoscore/detailed-docs/ (User Guide: https://twikiastudios.com/products/mobileoscore/)</td></tr><tr><td><code>UMobileOSCoreSubsystem</code></td><td><code>ConsumeColdStartDeepLink</code></td><td>BlueprintCallable</td><td>Out: FMobileDeepLinkPayload&amp; OutPayload<br />Return: bool</td><td>Consumes and outputs the pending cold-start deep link or notification tap once, and broadcasts OnDeepLinkReceived. Full Documentation: https://twikiastudios.com/products/mobileoscore/detailed-docs/ (User Guide: https://twikiastudios.com/products/mobileoscore/)</td></tr><tr><td><code>UMobileOSCoreSubsystem</code></td><td><code>ParseURIQueryParameters</code></td><td>BlueprintPure</td><td>In: const FString&amp; URI<br />Return: TMap&lt;FString, FString&gt;</td><td>Parses a URI query string into percent-decoded key-value pairs. Full Documentation: https://twikiastudios.com/products/mobileoscore/detailed-docs/ (User Guide: https://twikiastudios.com/products/mobileoscore/)</td></tr><tr><td><code>UMobileOSCoreSubsystem</code></td><td><code>ShowNativeAlertDialog</code></td><td>BlueprintCallable</td><td>In: const FString&amp; Title<br />In: const FString&amp; Message<br />In: const FString&amp; PositiveButtonText<br />In: const FString&amp; NegativeButtonText = TEXT(&quot;&quot;</td><td>Displays a native modal alert dialog. OnAlertButtonClicked receives 0 for positive, 1 for negative, and 2 for neutral. Full Documentation: https://twikiastudios.com/products/mobileoscore/detailed-docs/ (User Guide: https://twikiastudios.com/products/mobileoscore/)</td></tr><tr><td><code>UMobileOSCoreSubsystem</code></td><td><code>ShowNativeShareSheet</code></td><td>BlueprintCallable</td><td>In: const FString&amp; ShareText<br />In: const FString&amp; ShareSubject = TEXT(&quot;&quot;</td><td>Opens the native OS share sheet with the provided text, optional subject, and chooser title. Full Documentation: https://twikiastudios.com/products/mobileoscore/detailed-docs/ (User Guide: https://twikiastudios.com/products/mobileoscore/)</td></tr><tr><td><code>UMobileOSCoreSubsystem</code></td><td><code>ShowNativeToast</code></td><td>BlueprintCallable</td><td>In: const FString&amp; Message<br />In: bool bLongDuration = false</td><td>Displays a short native OS toast message. Set bLongDuration to true to keep it visible longer. Full Documentation: https://twikiastudios.com/products/mobileoscore/detailed-docs/ (User Guide: https://twikiastudios.com/products/mobileoscore/)</td></tr><tr><td><code>UMobileOSCoreSubsystem</code></td><td><code>GetBatteryState</code></td><td>BlueprintPure</td><td>Return: FMobileBatteryState</td><td>Returns the latest cached battery percentage, temperature in Celsius, charge state, and alert flags. Full Documentation: https://twikiastudios.com/products/mobileoscore/detailed-docs/ (User Guide: https://twikiastudios.com/products/mobileoscore/)</td></tr><tr><td><code>UMobileOSCoreSubsystem</code></td><td><code>SetBatteryAlertThresholds</code></td><td>BlueprintCallable</td><td>In: float OverheatCelsius = 42.0f<br />In: float LowBatteryPercent = 15.0f</td><td>Configures the Celsius and percent thresholds used to compute bIsOverheating and bIsLowBattery flags. Full Documentation: https://twikiastudios.com/products/mobileoscore/detailed-docs/ (User Guide: https://twikiastudios.com/products/mobileoscore/)</td></tr><tr><td><code>UMobileOSCoreSubsystem</code></td><td><code>OnAndroidPermissionsGrantedCallback</code></td><td>UFUNCTION</td><td>In: const TArray&lt;FString&gt;&amp; Permissions<br />In: const TArray&lt;bool&gt;&amp; GrantResults</td><td></td></tr></tbody></table>
+
+    <h2 id="delegates">5. Complete Event Delegates &amp; Callbacks</h2>
+    <table><thead><tr><th>Owner</th><th>Delegate</th><th>Signature / Parameters</th><th>Description</th></tr></thead><tbody><tr><td><code>UMobileOSCoreSubsystem</code></td><td><code>OnNotificationPermissionResult</code></td><td>bool, bGranted</td><td>Broadcast after a notification permission request completes. Full Documentation: https://twikiastudios.com/products/mobileoscore/detailed-docs/ (User Guide: https://twikiastudios.com/products/mobileoscore/)</td></tr><tr><td><code>UMobileOSCoreSubsystem</code></td><td><code>OnExactAlarmPermissionResult</code></td><td>bool, bGranted</td><td>Broadcast after returning from the exact-alarm settings page. Full Documentation: https://twikiastudios.com/products/mobileoscore/detailed-docs/ (User Guide: https://twikiastudios.com/products/mobileoscore/)</td></tr><tr><td><code>UMobileOSCoreSubsystem</code></td><td><code>OnDeepLinkReceived</code></td><td>const FMobileDeepLinkPayload&amp;, DeepLinkPayload</td><td>Broadcast for a warm deep link, a notification tap, or a consumed cold-start link. Full Documentation: https://twikiastudios.com/products/mobileoscore/detailed-docs/ (User Guide: https://twikiastudios.com/products/mobileoscore/)</td></tr><tr><td><code>UMobileOSCoreSubsystem</code></td><td><code>OnAlertButtonClicked</code></td><td>int32, ButtonIndex</td><td>Broadcast with the button index from the native alert dialog. Full Documentation: https://twikiastudios.com/products/mobileoscore/detailed-docs/ (User Guide: https://twikiastudios.com/products/mobileoscore/)</td></tr><tr><td><code>UMobileOSCoreSubsystem</code></td><td><code>OnBatteryStateChanged</code></td><td>const FMobileBatteryState&amp;, BatteryState</td><td>Broadcast whenever the OS reports a battery change. Full Documentation: https://twikiastudios.com/products/mobileoscore/detailed-docs/ (User Guide: https://twikiastudios.com/products/mobileoscore/)</td></tr></tbody></table>
+
+    <h2 id="types">6. Interfaces, Structs &amp; Enums</h2>
+    <h3>Blueprint &amp; C++ Interfaces</h3>
+    <p><em>None defined in this module.</em></p>
+    <h3>Structs</h3>
+    <table><thead><tr><th>Struct</th><th>Header</th><th>Description</th></tr></thead><tbody><tr><td><code>FMobileBatteryState</code></td><td><code>MobileOSCoreTypes.h</code></td><td>Snapshot of battery charge percentage, temperature in Celsius, charging state, and threshold alert flags.</td></tr><tr><td><code>FMobileDeepLinkPayload</code></td><td><code>MobileOSCoreTypes.h</code></td><td>Decoded deep-link or notification-tap payload delivered on cold start or warm resume.</td></tr></tbody></table>
+    <h3>Enums</h3>
+    <table><thead><tr><th>Enum</th><th>Values</th><th>Description</th></tr></thead><tbody><tr><td><code>EMobileBatteryChargeState</code></td><td><code>Unknown, Discharging, Charging, Full, NotCharging</code></td><td>Battery charging state reported by the native OS.</td></tr></tbody></table>
+
+    <div class="footer">
+      <span class="footer-brand"><span class="brand-badge-sm" aria-hidden="true">TS</span><span>Mobile OS Core v1.0.0 - Twikia Studios</span></span>
+      <span><a href="https://twikiastudios.com/products/mobileoscore/">User Guide</a> &middot; &copy; 2026 Twikia Studios. All rights reserved.</span>
+    </div>
+  </div>
+</body>
+</html>

@@ -151,6 +151,16 @@ img.folder-shot { width: 100%; max-width: 720px; margin: 10px 0 6px; }
   gap: 6px;
 }
 .toc a { display: block; font-size: 14px; }
+.toc a.toc-ext-link { display: inline-flex; align-items: center; gap: 6px; }
+.ext-icon { display: inline-block; vertical-align: middle; flex-shrink: 0; opacity: 0.85; }
+.detailed-docs-cta {
+  margin: 22px 0 32px;
+  padding: 16px 20px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgba(88, 166, 255, 0.14), rgba(63, 185, 80, 0.08));
+  border: 1px solid rgba(88, 166, 255, 0.32);
+}
+.detailed-docs-cta a { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; }
 .boundary {
   margin: 42px 0 32px;
   padding: 18px 22px;
@@ -266,6 +276,7 @@ img:not(.brand-icon-lg):not(.brand-icon-sm):hover {
 .site-breadcrumb {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 10px;
   font-size: 13.5px;
   color: var(--muted);
@@ -278,16 +289,12 @@ img:not(.brand-icon-lg):not(.brand-icon-sm):hover {
 </head>
 <body>
   <div class="wrap">
-    <nav class="site-breadcrumb" aria-label="Breadcrumb">
-      <a href="../">&larr; Back to Products</a>
-      <span>&middot;</span>
-      <a href="../../">Twikia Studios Home</a>
-    </nav>
+    <nav class="site-breadcrumb" aria-label="Breadcrumb"><a href="../">&larr; Back to Products</a><span>&middot;</span><a href="detailed-docs/" target="_blank" rel="noopener noreferrer">Detailed Documentation &#8599;</a><span>&middot;</span><a href="../../">Twikia Studios Home</a></nav>
     <div class="title-row">
       <img class="brand-icon-lg" src="Docs/Images/twikia-studios-logo.png" alt="Twikia Studios" />
       <div>
         <h1>Grapple (v1.2.0) - User Guide</h1>
-        <p class="byline">By <strong>Twikia Studios</strong> &middot; &copy; 2026 Twikia Studios</p>
+        <p class="byline">By <strong>Twikia Studios</strong> &middot; &copy; 2026 Twikia Studios &middot; <a href="https://twikiastudios.com/products/grapple/">Online User Guide</a></p>
       </div>
     </div>
     <p class="pitch">Blueprint and C++ friendly grappling hook physics with options exposed cleanly in the Details panel, and everything tunable across C++, Blueprints, and Details panels. Swing around corners with WASD steering, pull across arenas, and render a live sagging rope tether.</p>
@@ -295,15 +302,15 @@ img:not(.brand-icon-lg):not(.brand-icon-sm):hover {
     <div class="toc">
       <strong>Quick Navigation</strong>
       <div class="toc-list">
-        <a href="#setup">Setup</a><a href="#extras-wiring">Extras A - Tether Rope &amp; Explicit Camera Wiring</a><a href="#extras-callbacks">Extras B - Event Callbacks</a><a href="#extras-queries">Extras C - Triggers, Queries &amp; Contracts</a><a href="#api-reference">Appendix - API Reference</a>
+        <a href="#setup">Setup</a><a href="#extras-wiring">Extras A - Tether Rope &amp; Explicit Camera Wiring</a><a href="#extras-callbacks">Extras B - Event Callbacks</a><a href="#extras-queries">Extras C - Triggers, Queries &amp; Contracts</a><a href="#api-reference">Appendix - API Reference</a><a class="toc-ext-link" href="https://twikiastudios.com/products/grapple/detailed-docs/" target="_blank" rel="noopener noreferrer">Detailed Documentation (Full API &amp; Features) <svg class="ext-icon" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"/></svg></a>
       </div>
     </div>
 
     <h2 id="demo">Immediate First-Person Demo Map</h2>
-    
+    <div class="demo-highlight"><strong>No setup needed:</strong> Open <code>/Grapple/Examples/Maps/GrappleDemo</code> and press <strong>Play (PIE)</strong>. All functionality will work out of the box in the demo for testing.</div>
     <img class="hero" src="Docs/Images/demo_arena.png" alt="Grapple Demo" />
-    <img class="folder-shot" src="Docs/Images/demo_folder.png" alt="Content Browser: `L_GrappleDemo` and `BP_GrappleDemoCharacter`." /><p class="folder-caption">Content Browser: <code>L_GrappleDemo</code> and <code>BP_GrappleDemoCharacter</code>.</p>
-    <p class="caption">Open <code>/Grapple/Examples/Maps/L_GrappleDemo</code> and press <strong>Play (PIE)</strong>. All functionality will work out of the box in the demo for testing.</p>
+    <div class="folder-row"><img class="folder-shot" src="Docs/Images/demo_folder.png" alt="Content Browser: Blueprints" /><img class="folder-shot" src="Docs/Images/demo_map_folder.png" alt="Content Browser: Demo Map" /></div>
+    
     <table><thead><tr><th>Input</th><th>Action</th></tr></thead><tbody><tr><td><code>WASD / Mouse</code></td><td>Move, steer your pendulum swing in mid-air, and look around</td></tr><tr><td><code>SpaceBar</code></td><td>Jump off the ground before launching your grapple</td></tr><tr><td><code>Q / E / LMB / RMB (Hold)</code></td><td>Fire the grapple toward your crosshair, hold to swing and pull, release to detach</td></tr></tbody></table>
     
 
@@ -318,7 +325,7 @@ img:not(.brand-icon-lg):not(.brand-icon-sm):hover {
     <h2 id="extras-wiring">Extras A - Tether Rope &amp; Explicit Camera Wiring</h2>
 <div class="grid">
 <div class="card large"><h3>Spawn &amp; Attach Spline Actor</h3><img src="Docs/Images/Nodes/node_wire_spawn_attach_spline.png" alt="Spawn &amp; Attach Spline Actor" /><p>Spawn <code>AGrappleSplineActor</code>, attach it to your character, and pass it into <code>SetSplineActor</code> so the rope renders automatically on every shot.</p><ul><li><strong>Thickness &amp; Heaviness</strong>: adjust rope width and mid-air curve sag</li><li><strong>Velocity Stiffness</strong>: tighten the rope dynamically as pull speed rises</li></ul></div>
-<div class="card large"><h3>Bind Explicit Camera Targets</h3><img src="Docs/Images/Nodes/node_wire_bind_camera_refs.png" alt="Bind Explicit Camera Targets" /><p>Use <code>BindCameraReferences</code> when your character has multiple camera rigs.</p></div>
+<div class="card medium"><h3>Bind Explicit Camera Targets</h3><img src="Docs/Images/Nodes/node_wire_bind_camera_refs.png" alt="Bind Explicit Camera Targets" /><p>Use <code>BindCameraReferences</code> when your character has multiple camera rigs.</p></div>
 </div><h2 id="extras-callbacks">Extras B - Event Callbacks</h2>
 <div class="grid">
 <div class="card small"><h3>OnGrappleStateChanged</h3><img src="Docs/Images/Nodes/node_cb_on_grapple_state_changed.png" alt="OnGrappleStateChanged" /><p>Broadcasts true on latch and false on release.</p></div>
@@ -340,9 +347,14 @@ img:not(.brand-icon-lg):not(.brand-icon-sm):hover {
     <p class="caption">This table highlights the primary entry points. Additional properties, helper functions, Blueprint nodes, and native C++ APIs are available in Unreal Editor Details panels, Blueprint context menus, and the plugin C++ headers.</p>
     <table><thead><tr><th>Name</th><th>Type</th><th>Inputs / Outputs</th><th>Functionality</th></tr></thead><tbody><tr><td><code>UGrappleComponent</code></td><td>Component</td><td>In: Owner <code>ACharacter</code><br />In: <code>IA_Grapple</code></td><td>Handles anchor traces, exponential pull + swing forces, auto-release, and cooldown timers</td></tr><tr><td><code>UGrappleCameraFXComponent</code></td><td>Component</td><td>In: <code>Camera</code> / <code>SpringArm</code><br />In: Profile tunables</td><td>Smoothly tilts camera roll toward the tether and expands FOV while airborne</td></tr><tr><td><code>AGrappleSplineActor</code> / <code>CalculateSpline</code></td><td>Actor / Callable</td><td>In: <code>TargetLocationLocal</code><br />In: <code>PlayerVelocityLocal</code></td><td>Procedural sag-curved rope mesh updated seamlessly from attach to release</td></tr><tr><td><code>TryEnterGrapple</code> / <code>ExitGrapple</code></td><td>Callable</td><td>Return: <code>bool bAttached</code></td><td>Launches aim trace to latch onto valid geometry, or detaches and arms cooldown</td></tr><tr><td><code>TrySetGrapple</code> / <code>ComputeGrappleForces</code></td><td>Callable</td><td>Out: <code>OutImpactPoint</code><br />Return: <code>FVector</code> / <code>bool</code></td><td>Runs view raycasts and computes radial pull + <code>WASD</code> perpendicular swing impulses</td></tr><tr><td><code>SetSplineActor</code> / <code>BindCameraReferences</code></td><td>Callable</td><td>In: <code>SplineActor</code><br />In: <code>Camera</code>, <code>Target</code></td><td>Connects custom tether rope actors and explicit camera/spring-arm rigs</td></tr><tr><td><code>IsGrappling</code> / <code>IsOnCooldown</code> / <code>GetCooldownRemainingRatio</code> / <code>GetGrapplePoint</code></td><td>Pure</td><td>Return: <code>bool</code> / <code>float</code> / <code>FVector</code></td><td>Inspect tether state, <code>[0..1]</code> readiness for crosshair tinting, and anchor position</td></tr><tr><td><code>VectorFrameRateCorrection</code></td><td>Pure</td><td>In: <code>BaseImpulse</code>, <code>DeltaTime</code><br />Return: <code>FVector</code></td><td>Keeps pull and swing arc distances identical across any frame rate</td></tr><tr><td><code>OnGrappleStateChanged</code> / <code>OnGrappleEntered</code> / <code>OnGrappleExited</code></td><td>Events</td><td>Out: <code>bIsGrappling</code><br />Out: <code>GrapplePoint</code> / <code>Cooldown</code></td><td>Fires hook attach sparks, rope tension loops, and detach wind-down cues</td></tr><tr><td><code>IGrappleCharacterContract</code> / <code>IGrappleSplineContract</code> / <code>IGrappleListener</code></td><td>Interfaces</td><td>Return: <code>ViewLocation</code> / <code>Aim</code><br />Out: Lifecycle events</td><td>Clean extension points for custom character rigs, rope visuals, and external listeners</td></tr></tbody></table>
 
+    <div class="detailed-docs-cta">
+      <strong>Need the complete method, property, delegate, and struct reference?</strong>
+      <p>Read the screenshot-free <a href="https://twikiastudios.com/products/grapple/detailed-docs/" target="_blank" rel="noopener noreferrer">Detailed Documentation <svg class="ext-icon" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"/></svg></a> (also bundled offline in <code>DetailedDocs.html</code> next to this User Guide).</p>
+    </div>
+
     <div class="footer">
       <span class="footer-brand"><img class="brand-icon-sm" src="Docs/Images/twikia-studios-logo.png" alt="Twikia Studios" /><span>Grapple v1.2.0 - Twikia Studios</span></span>
-      <span>&copy; 2026 Twikia Studios. All rights reserved.</span>
+      <span><a href="https://twikiastudios.com/products/grapple/">https://twikiastudios.com/products/grapple/</a> &middot; &copy; 2026 Twikia Studios. All rights reserved.</span>
     </div>
   </div>
   <div class="lightbox" id="img-lightbox" aria-hidden="true">
